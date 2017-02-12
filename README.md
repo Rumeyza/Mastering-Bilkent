@@ -7,15 +7,19 @@ Some intended features:
 
 Thought to be must: 
 
-Instructor, student, developer sign in/up system
-Student(course) register system with class key (& password). 
-Documentation (video, quiz, slide, etc.) upload system for instructors. (Contents/categorizes may be extended or reduced) 
-Easily accessible content (sorted and classified by the topics of the lecture) for users
+1.Instructor, student, developer sign in/up system
+
+2.Student(course) register system with class key (& password). 
+
+3.Documentation (video, quiz, slide, etc.) upload system for instructors. (Contents/categorizes may be extended or reduced) 
+
+4.Easily accessible content (sorted and classified by the topics of the lecture) for users
 
 Optional:
 
-Completeness track for their progress in the content for each individual user
-Course / Instructor evaluation system for students. 
+1.Completeness track for their progress in the content for each individual user
+
+2.Course / Instructor evaluation system for students. 
 
 This desktop application is inspired by Unilica and Coursera. 
 
