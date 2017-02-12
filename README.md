@@ -23,7 +23,7 @@ Optional:
 
 2.Course / Instructor evaluation system for students. 
 
-This desktop application is inspired by Unilica and Coursera. 
+This desktop application is inspired from Unilica and Coursera. 
 
 www.unilica.com
 
