@@ -7,7 +7,7 @@ Mastering Bilkent is an educational desktop application that allows academic sta
 
 Some intended features: 
 
-Thought to be must: 
+Essential features: 
 
 1.Instructor, student, developer sign in/up system
 
@@ -17,7 +17,7 @@ Thought to be must:
 
 4.Easily accessible content (sorted and classified by the topics of the lecture) for users
 
-Optional:
+Optional features:
 
 1.Completeness track for their progress in the content for each individual user
 
