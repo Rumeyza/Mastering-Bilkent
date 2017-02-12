@@ -9,19 +9,19 @@ Mastering Bilkent is an educational desktop application that allows academic sta
 
 ####Essential features: 
 
-1.Instructor, student, developer sign in/up system
+a. Instructor, student, developer sign in/up system
 
-2.Student(course) register system with class key (& password). 
+b. Student(course) register system with class key (& password). 
 
-3.Documentation (video, quiz, slide, etc.) upload system for instructors. (Contents/categorizes may be extended or reduced) 
+c. Documentation (video, quiz, slide, etc.) upload system for instructors. (Contents/categorizes may be extended or reduced) 
 
-4.Easily accessible content (sorted and classified by the topics of the lecture) for users
+d. Easily accessible content (sorted and classified by the topics of the lecture) for users
 
 ####Optional features:
 
-1.Completeness track for their progress in the content for each individual user
+a. Completeness track for their progress in the content for each individual user
 
-2.Course / Instructor evaluation system for students. 
+b. Course / Instructor evaluation system for students. 
 
 This desktop application is inspired from Unilica and Coursera. 
 
