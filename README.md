@@ -1,5 +1,10 @@
 # Mastering Bilkent 
 #####Object Oriented Software Engineering(CS 319) Course Project
+#####Group 1.A
+#####Team Members: 
+Ertan Aday
+Furkan Arif Bozdağ
+Rümeyza Dinçer
 
 ###Description: 
 
@@ -28,4 +33,6 @@ This desktop application is inspired from Unilica and Coursera.
 www.unilica.com
 
 www.coursera.org
+
+
 
