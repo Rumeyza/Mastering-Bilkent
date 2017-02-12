@@ -1,4 +1,4 @@
 # Mastering Bilkent 
 CS 319 - Object Oriented Software Engineering Course Project
 
-Project Description : 
+Project Description : Our project aims to 
