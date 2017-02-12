@@ -5,4 +5,5 @@ public class tryclass {
 	{
 		System.out.println("deneme");
 	}
+}
 
