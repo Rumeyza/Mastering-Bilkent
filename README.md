@@ -26,6 +26,8 @@ a. Completeness track for their progress in the content for each individual user
 
 b. Course / Instructor evaluation system for students. 
 
+c. Course prerequisite check system.
+
 This desktop application is inspired from Unilica and Coursera. 
 
 www.unilica.com
