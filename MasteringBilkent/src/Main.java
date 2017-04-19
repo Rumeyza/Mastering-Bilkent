@@ -62,14 +62,19 @@ public class Main extends Application{
         iv1.setFitHeight(100);
         iv1.setImage(avatar);
         GridPane.setConstraints(iv1, 0,0,1,3);
+        
         Text text2 = new Text(10, 20, "Furkan Arif Bozdağ");
         GridPane.setConstraints(text2, 1,0,2,1);
+        
         Text text3 = new Text(10, 20, "Bilkent University");
         GridPane.setConstraints(text3, 1,1,2,1);
+        
         Text text4 = new Text(10, 20, "CS /");
         GridPane.setConstraints(text4, 1,2);
+        
         Text text5 = new Text(10, 20, "Undergraduate");
         GridPane.setConstraints(text5, 2,2);
+        
         Text text6 = new Text(10, 20, "arif.bozdag@ug.bilkent.edu.tr");
         GridPane.setConstraints(text6, 0,3,3,3);
 
@@ -79,20 +84,18 @@ public class Main extends Application{
 
         Hyperlink link1 = new Hyperlink("Main Page");
         //link1.setOnAction(e -> );
+        
         Hyperlink link2 = new Hyperlink("My Courses");
         //link2.setOnAction(e -> );
+        
         Hyperlink link3 = new Hyperlink("Profile");
         link3.setOnAction(e -> primaryStage.setScene(scene2));
+        
         Hyperlink link4 = new Hyperlink("Send Feedback");
         link4.setOnAction(e -> AlertBox.display("contact","mastering@bilkent.edu.tr"));
+        
         Hyperlink link5 = new Hyperlink("Settings");
         //link5.setOnAction(e -> );
-
-
-        Text buttonE = new Text(10, 20,"My Courses");
-        Text buttonF = new Text(10, 20,"Profile");
-        Text buttonG = new Text(10, 20,"Send Feedback");
-        Text buttonH = new Text(10, 20,"Settings");
 
         //search bar
         final TextField searchfield = new TextField();
@@ -106,8 +109,6 @@ public class Main extends Application{
         BorderPane layout1 = new BorderPane();
         layout1.setCenter(centerMenu);
         layout1.setLeft(leftMenu);
-
-        //StackPane layout = new StackPane(); *---- ÇÖP SANIRIM :d
 
         //SCENE 1 -> HOME PAGE
         scene1 = new Scene(layout1);
