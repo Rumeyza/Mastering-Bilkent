@@ -47,45 +47,43 @@ public class RegisterPage {
          grid.add(textFlow, 2, 0);
         //user name
          Label userName = new Label("Enter Your Name:");
-         grid.add(userName, 0, 2);
+         grid.add(userName, 1, 2);
          TextField userNameTextField = new TextField();
-         grid.add(userNameTextField, 1, 2);
+         grid.add(userNameTextField, 2, 2);
 
         //user surname
          Label userSurname = new Label("Enter Your Surname:");
-         grid.add(userSurname, 0, 3);
+         grid.add(userSurname, 1, 3);
          TextField userSurnameTextField = new TextField();
-         grid.add(userSurnameTextField, 1, 3);
+         grid.add(userSurnameTextField, 2, 3);
          
         //user email
          Label userEmail = new Label("Enter Your E-mail:");
-         grid.add(userEmail, 0, 4);
+         grid.add(userEmail, 1, 4);
          TextField userEmailTextField = new TextField();
-         grid.add(userEmailTextField, 1, 4);
+         grid.add(userEmailTextField, 2, 4);
 
         //user choose password
          
          Label pw = new Label("Enter Your Password:");
-         grid.add(pw, 0, 5);
+         grid.add(pw, 1, 5);
          PasswordField pwBox = new PasswordField();
-         grid.add(pwBox, 1, 5);
+         grid.add(pwBox, 2, 5);
 
         //user re enter password
          Label repw = new Label("Re-Enter Your Password:");
-         grid.add(repw, 0, 6);
+         grid.add(repw, 1, 6);
          PasswordField repwBox = new PasswordField();
-         grid.add(repwBox, 1, 6);
+         grid.add(repwBox, 2, 6);
 
         //user department
          Label userDepartment = new Label("Institution:");
-         grid.add(userDepartment, 0, 7);
+         grid.add(userDepartment, 1, 7);
          TextField userDepartmentTextField = new TextField();
-         grid.add(userDepartmentTextField, 1, 7);
+         grid.add(userDepartmentTextField, 2, 7);
          
 
-         Button registerButton = new Button("Complete Registration");
-         registerButton.setStyle("-fx-background-color: #00ffff");
-         
+         Button registerButton = new Button("Complete Registration");         
          grid.add( registerButton, 2, 8);
          
          // User Roles:
@@ -96,7 +94,7 @@ public class RegisterPage {
          	    );
          	final ComboBox<String> userRolesBox = new ComboBox<String>(userRoles);
          	userRolesBox.setPromptText("I am");
-         	grid.add( userRolesBox, 2, 3);
+         	grid.add( userRolesBox, 3, 3);
          	
          	userRolesBox.setOnAction((event)->{
          		String role = (String) userRolesBox.getSelectionModel().getSelectedItem();
@@ -106,14 +104,14 @@ public class RegisterPage {
          	        	    FXCollections.observableArrayList( "Undergraduate", "Graduate", "None"   );
          	        final ComboBox<String> studentStatusBox = new ComboBox<String>(studentStatus);
          	        studentStatusBox.setPromptText( "My Ünvan is");
-         	        grid.add( studentStatusBox, 2, 4);
+         	        grid.add( studentStatusBox, 3, 4);
          		}
          		else{
          	        ObservableList<String> instructorStatus = 
          	        	    FXCollections.observableArrayList( "Prof.","Assoc. Prof", "Asst. Prof", "Instructor");
          	        final ComboBox<String> instructorStatusBox = new ComboBox<String>(instructorStatus);
          	        instructorStatusBox.setPromptText( "My Ünvan is");
-         	        grid.add( instructorStatusBox, 2, 4);
+         	        grid.add( instructorStatusBox, 3, 4);
          		}
          	});
 
