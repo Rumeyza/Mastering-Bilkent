@@ -37,7 +37,7 @@ public class HomePage{
         line.setStartY(20);
         line.setEndX(750);
         line.setEndY(20);
-      //
+      
         HBox logo = new HBox();
         logo.setPadding(new Insets(10));
         logo.setSpacing(8);
