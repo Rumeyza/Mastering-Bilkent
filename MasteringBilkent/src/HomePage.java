@@ -72,23 +72,23 @@ public class HomePage{
         String fontFamily1 = "Helvetica";
         double titleFontSize1 = 19;
 
-        User ari = new User();
-        Text username = new Text(10, 20, ari.getUserName() + " " + ari.getUserSurname());
-        username.setFont(Font.font(fontFamily1, titleFontSize1));
+        int i = 0;
+        Text text1 = new Text(10, 20, Main.arr.get(i).getUserName() + " " + Main.arr.get(i).getUserSurname());
+        text1.setFont(Font.font(fontFamily1, titleFontSize1));
 
-        Text text3 = new Text(10, 20, "Bilkent University");
+        Text text2 = new Text(10, 20, Main.arr.get(i).getUserInstitution());
+        text2.setFont(Font.font(fontFamily1, titleFontSize1));
+        GridPane.setConstraints(text2, 0,1,2,1);
+
+        Text text3 = new Text(10, 20,  Main.arr.get(i).getUserDepartment()+ " / " + Main.arr.get(i).getUserTitle());
         text3.setFont(Font.font(fontFamily1, titleFontSize1));
-        GridPane.setConstraints(text3, 0,1,2,1);
+        GridPane.setConstraints(text3, 0,2);
 
-        Text text4 = new Text(10, 20, "CS /" + "Undergraduate");
+        Text text4 = new Text(10, 20, Main.arr.get(i).getUserEmail());
         text4.setFont(Font.font(fontFamily1, titleFontSize1));
-        GridPane.setConstraints(text4, 0,2);
+        GridPane.setConstraints(text4, 0,3,3,3);
 
-        Text text6 = new Text(10, 20, "arif.bozdag@ug.bilkent.edu.tr");
-        text6.setFont(Font.font(fontFamily1, titleFontSize1));
-        GridPane.setConstraints(text6, 0,3,3,3);
-
-        infogrid.getChildren().addAll(username, text3, text4, text6);
+        infogrid.getChildren().addAll(text1, text2, text3, text4);
 
         //navigator list
 
@@ -103,8 +103,8 @@ public class HomePage{
         Hyperlink link3 = new Hyperlink("Profile");
         link3.setStyle("-fx-text-fill: white;");
         link3.setOnAction(e -> {
-            LoginApp.outStage.setScene(ProfilePage.startScene());
-            LoginApp.outStage.setTitle("Your Profile");
+            Main.outStage.setScene(ProfilePage.startScene());
+            Main.outStage.setTitle("Your Profile");
         });
 
         Hyperlink link4 = new Hyperlink("Send Feedback");
@@ -118,8 +118,8 @@ public class HomePage{
         Hyperlink logoutlink = new Hyperlink("Logout");
         logoutlink.setStyle("-fx-text-fill: white;");
         logoutlink.setOnAction(e -> {
-            LoginApp.outStage.setScene(LoginApp.startScene());
-            LoginApp.outStage.setTitle("Mastering Bilkent");
+            Main.outStage.setScene(LoginApp.startScene());
+            Main.outStage.setTitle("Mastering Bilkent");
         });
 
         //search bar
