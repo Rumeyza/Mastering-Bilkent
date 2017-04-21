@@ -1,3 +1,4 @@
+
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.paint.Color;
@@ -16,18 +17,18 @@ import javafx.scene.text.Font;
 import javafx.collections.*;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Hyperlink;
- 
+
 
 public class RegisterPage {
 
     static Scene scene;
 
     public static void start() {
-    	
-    	BorderPane border = new BorderPane();
-    	border.setStyle("-fx-background: #FFFFFF;");
-    	VBox centerMenu = new VBox();
-    	centerMenu.setStyle("-fx-background: #FFFFFF;");
+
+        BorderPane border = new BorderPane();
+        border.setStyle("-fx-background: #FFFFFF;");
+        VBox centerMenu = new VBox();
+        centerMenu.setStyle("-fx-background: #FFFFFF;");
         centerMenu.setPadding(new Insets(10));
         centerMenu.setSpacing(8);
         centerMenu.setAlignment(Pos.TOP_CENTER);
@@ -50,9 +51,9 @@ public class RegisterPage {
         logo.getChildren().addAll(scenetitle1, scenetitle2);
 
         centerMenu.getChildren().addAll(logo);
-    	border.setTop(centerMenu);
+        border.setTop(centerMenu);
         //Grid
-    	GridPane grid = new GridPane();
+        GridPane grid = new GridPane();
         grid.setAlignment(Pos.TOP_CENTER);
         grid.setHgap(30);
         grid.setVgap(30);
@@ -63,22 +64,22 @@ public class RegisterPage {
         Label userName = new Label("Enter Your Name:");
         grid.add(userName, 0, 1);
         TextField userNameTextField = new TextField();
-        userNameTextField.setPrefWidth(10); 
+        userNameTextField.setPrefWidth(10);
         grid.add(userNameTextField, 1, 1);
-       
+
 
         //user surname
         Label userSurname = new Label("Enter Your Surname:");
         grid.add(userSurname, 0, 2);
         TextField userSurnameTextField = new TextField();
         grid.add(userSurnameTextField, 1, 2);
-         
+
         //user email
         Label userEmail = new Label("Enter Your E-mail:");
         grid.add(userEmail, 0, 3);
         TextField userEmailTextField = new TextField();
         grid.add(userEmailTextField, 1,3);
-         
+
         //user choose password
         Label pw = new Label("Enter Your Password:");
         grid.add(pw, 0,4);
@@ -96,39 +97,39 @@ public class RegisterPage {
         grid.add(userDepartment, 0,6);
         TextField userDepartmentTextField = new TextField();
         grid.add(userDepartmentTextField, 1,6);
-         
-        Button registerButton = new Button("Complete Registration");         
+
+        Button registerButton = new Button("Complete Registration");
         grid.add( registerButton, 1,7);
         Hyperlink backHyper = new Hyperlink("Return to Login Page");
         grid.add(backHyper, 1, 8);
         backHyper.setOnAction(e-> {
-        	 LoginApp.outStage.setScene(LoginApp.startScene());
-             LoginApp.outStage.setTitle("Mastering Bilkent");
+            Main.outStage.setScene(LoginApp.startScene());
+            Main.outStage.setTitle("Mastering Bilkent");
         });
 
-         
-         // User Roles:
+
+        // User Roles:
         ObservableList<String> userRoles =FXCollections.observableArrayList( "a Student","an Instructor");
         ComboBox<String> userRolesBox = new ComboBox<String>(userRoles);
-        ComboBox<String> statusBox = new ComboBox<String>();	
+        ComboBox<String> statusBox = new ComboBox<String>();
         userRolesBox.setPromptText("I am");
         grid.add( userRolesBox, 0, 0);
-         	
+
         userRolesBox.setOnAction((event)->{
-        	String role = (String) userRolesBox.getSelectionModel().getSelectedItem();
-        	statusBox.setPromptText( "My Degree is");
-            if( role.equals("a Student")){    	        	  
-            	//User Status for Student:
-         	    ObservableList<String> studentStatus = FXCollections.observableArrayList( "Undergraduate", "Graduate", "None"   );
-         	    statusBox.setItems(studentStatus);
-         	}
-         	else{
-         		ObservableList<String> instructorStatus = FXCollections.observableArrayList( "Prof.","Assoc. Prof", "Asst. Prof", "Instructor");
-         	    statusBox.setItems(instructorStatus);
-         	}
-      	    grid.add( statusBox, 1,0);
-         });
-        
+            String role = (String) userRolesBox.getSelectionModel().getSelectedItem();
+            statusBox.setPromptText( "My Degree is");
+            if( role.equals("a Student")){
+                //User Status for Student:
+                ObservableList<String> studentStatus = FXCollections.observableArrayList( "Undergraduate", "Graduate", "None"   );
+                statusBox.setItems(studentStatus);
+            }
+            else{
+                ObservableList<String> instructorStatus = FXCollections.observableArrayList( "Prof.","Assoc. Prof", "Asst. Prof", "Instructor");
+                statusBox.setItems(instructorStatus);
+            }
+            grid.add( statusBox, 1,0);
+        });
+
         border.setCenter(grid);
         scene = new Scene(border);
     }
