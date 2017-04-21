@@ -8,6 +8,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.*;
+import javafx.scene.shape.*;
+
 
 public class HomePage{
 
@@ -24,29 +26,32 @@ public class HomePage{
 
         //Mastering Bilkent Title
         String fontFamily = "Helvetica";
-        double titleFontSize = 48;
+        double titleFontSize = 36;
 
-        Text scenetitle1 = new Text("MASTERING");
-        scenetitle1.setFill(Color.BLUE);
+        Text scenetitle1 = new Text("Mastering Bilkent Student Home Page");
+        scenetitle1.setFill(Color.rgb(46, 113, 129));
         scenetitle1.setFont(Font.font(fontFamily, FontWeight.EXTRA_BOLD, titleFontSize));
-
-        Text scenetitle2 = new Text(" BILKENT");
-        scenetitle2.setFill(Color.RED);
-        scenetitle2.setFont(Font.font(fontFamily, FontWeight.EXTRA_BOLD, titleFontSize));
-
+        
+        Line line = new Line();
+        line.setStartX(0);
+        line.setStartY(20);
+        line.setEndX(750);
+        line.setEndY(20);
+      
         HBox logo = new HBox();
         logo.setPadding(new Insets(10));
         logo.setSpacing(8);
         logo.setAlignment(Pos.TOP_CENTER);
-        logo.getChildren().addAll(scenetitle1, scenetitle2);
+        logo.getChildren().addAll(scenetitle1);
 
         Hyperlink buttonA = new Hyperlink("Register Another Course");
 
-        centerMenu.getChildren().addAll(logo, buttonA);
+        centerMenu.getChildren().addAll(logo,line, buttonA);
         //  CENTER END
 
         //  LEFT
         VBox leftMenu = new VBox();
+        leftMenu.setStyle("-fx-background-color: #4198AE;");
         leftMenu.setPadding(new Insets(10));
         leftMenu.setSpacing(8);
 
@@ -92,24 +97,30 @@ public class HomePage{
         //navigator list
 
         Hyperlink link1 = new Hyperlink("Main Page");
+        link1.setStyle("-fx-text-fill: white;");
         //link1.setOnAction(e -> );
 
         Hyperlink link2 = new Hyperlink("My Courses");
+        link2.setStyle("-fx-text-fill: white;");
         //link2.setOnAction(e -> );
 
         Hyperlink link3 = new Hyperlink("Profile");
+        link3.setStyle("-fx-text-fill: white;");
         link3.setOnAction(e -> {
             LoginApp.outStage.setScene(ProfilePage.startScene());
             LoginApp.outStage.setTitle("Your Profile");
         });
 
         Hyperlink link4 = new Hyperlink("Send Feedback");
+        link4.setStyle("-fx-text-fill: white;");
         link4.setOnAction(e -> AlertBox.display("contact","mastering@bilkent.edu.tr"));
 
         Hyperlink link5 = new Hyperlink("Settings");
+        link5.setStyle("-fx-text-fill: white;");
         //link5.setOnAction(e -> );
 
-        Hyperlink logoutlink = new Hyperlink("logout");
+        Hyperlink logoutlink = new Hyperlink("Logout");
+        logoutlink.setStyle("-fx-text-fill: white;");
         logoutlink.setOnAction(e -> {
             LoginApp.outStage.setScene(LoginApp.startScene());
             LoginApp.outStage.setTitle("Mastering Bilkent");
@@ -123,6 +134,7 @@ public class HomePage{
 
         leftMenu.getChildren().addAll( infogrid, link1, link2, link3, link4, link5,logoutlink, searchfield);
         leftMenu.setAlignment(Pos.CENTER_LEFT);
+       
         //  LEFT END
 
         //  BORDER PANE
@@ -132,14 +144,6 @@ public class HomePage{
         layout1.setStyle("-fx-background: #FFFFFF;");
 
         scene = new Scene(layout1);
-
-        /*SCENE 2 -> PROFİLE PAGE
-        Hyperlink buttonlayout2 = new Hyperlink("Turn back nothing here :/");
-        buttonlayout2.setOnAction(e -> primaryStage.setScene(scene1));
-
-        StackPane layout2 = new StackPane();
-        layout2.getChildren().addAll(buttonlayout2);
-        scene2 = new Scene(layout2);*/
 
     }
 
