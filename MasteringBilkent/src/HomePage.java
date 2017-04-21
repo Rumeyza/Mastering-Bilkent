@@ -145,14 +145,6 @@ public class HomePage{
 
         scene = new Scene(layout1);
 
-        /*SCENE 2 -> PROFİLE PAGE
-        Hyperlink buttonlayout2 = new Hyperlink("Turn back nothing here :/");
-        buttonlayout2.setOnAction(e -> primaryStage.setScene(scene1));
-
-        StackPane layout2 = new StackPane();
-        layout2.getChildren().addAll(buttonlayout2);
-        scene2 = new Scene(layout2);*/
-
     }
 
     public static Scene startScene() {
