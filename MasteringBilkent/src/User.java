@@ -1,4 +1,6 @@
-
+/**
+ * Created by Asus on 21.4.2017.
+ */
 public class User {
 
     private static int ID = 0;
@@ -8,8 +10,9 @@ public class User {
     private String userSurname = "";
     private String userPassword = "";
     private String userEmail = "";
-    private String UserInstitution = "";
-    private String UserTitle = "";
+    private String userInstitution = "";
+    private String userDepartment = "";
+    private String userTitle = "";
 
     public User() {
         userId = ID++;
@@ -17,18 +20,28 @@ public class User {
         userSurname = "Bozdağ";
         userPassword = "12345";
         userEmail = "bozdag.arif@gmail.com";
-        UserInstitution = "Bilkent University";
-        UserTitle = "Undergraduate Student";
+        userInstitution = "Bilkent University";
+        userDepartment = "CS";
+        userTitle = "Undergraduate";
     }
 
-    public User(String name, String surname, String pass, String email, String inst, String title) {
+    public User(String name, String surname, String pass, String email, String inst, String dept, String title) {
         this.userId = ID++;
         this.userName = name;
         this.userSurname = surname;
         this.userPassword = pass;
         this.userEmail = email;
-        this.UserInstitution = inst;
-        this.UserTitle = title;
+        this.userInstitution = inst;
+        this.userDepartment = dept;
+        this.userTitle = title;
+    }
+
+    public static int getID() {
+        return ID;
+    }
+
+    public static void setID(int ID) {
+        User.ID = ID;
     }
 
     public int getUserId() {
@@ -72,18 +85,26 @@ public class User {
     }
 
     public String getUserInstitution() {
-        return UserInstitution;
+        return userInstitution;
     }
 
     public void setUserInstitution(String userInstitution) {
-        UserInstitution = userInstitution;
+        this.userInstitution = userInstitution;
+    }
+
+    public String getUserDepartment() {
+        return userDepartment;
+    }
+
+    public void setUserDepartment(String userDepartment) {
+        this.userDepartment = userDepartment;
     }
 
     public String getUserTitle() {
-        return UserTitle;
+        return userTitle;
     }
 
     public void setUserTitle(String userTitle) {
-        UserTitle = userTitle;
+        this.userTitle = userTitle;
     }
 }
