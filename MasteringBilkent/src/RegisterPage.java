@@ -125,7 +125,7 @@ public class RegisterPage {
          	    statusBox.setItems(instructorStatus);
          	}
       	    grid.add( statusBox, 1,0);
-         });
+         });//deneme
         
         border.setCenter(grid);
         scene = new Scene(border);
