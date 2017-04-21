@@ -25,7 +25,9 @@ public class RegisterPage {
     public static void start() {
     	
     	BorderPane border = new BorderPane();
+    	border.setStyle("-fx-background: #FFFFFF;");
     	VBox centerMenu = new VBox();
+    	centerMenu.setStyle("-fx-background: #FFFFFF;");
         centerMenu.setPadding(new Insets(10));
         centerMenu.setSpacing(8);
         centerMenu.setAlignment(Pos.TOP_CENTER);
@@ -125,7 +127,7 @@ public class RegisterPage {
          	    statusBox.setItems(instructorStatus);
          	}
       	    grid.add( statusBox, 1,0);
-         });//deneme
+         });
         
         border.setCenter(grid);
         scene = new Scene(border);
