@@ -1,3 +1,4 @@
+
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -31,14 +32,15 @@ public class HomePage{
         Text scenetitle1 = new Text("Mastering Bilkent Student Home Page");
         scenetitle1.setFill(Color.rgb(46, 113, 129));
         scenetitle1.setFont(Font.font(fontFamily, FontWeight.EXTRA_BOLD, titleFontSize));
-        
-        Line line = new Line(0, 20, 750, 20);
-       
+
         HBox logo = new HBox();
         logo.setPadding(new Insets(10));
         logo.setSpacing(8);
         logo.setAlignment(Pos.TOP_CENTER);
         logo.getChildren().addAll(scenetitle1);
+
+        //Line
+        Line line = new Line(0, 20, 750, 20);
 
         Hyperlink buttonA = new Hyperlink("Register Another Course");
 
@@ -51,44 +53,42 @@ public class HomePage{
         leftMenu.setPadding(new Insets(10));
         leftMenu.setSpacing(8);
 
+        //profile image
+        GridPane imagegrid = new GridPane();
+        Image avatar = new Image("file:avatar.png");
+        ImageView iv1 = new ImageView();
+        iv1.setFitWidth(240);
+        iv1.setFitHeight(300);
+        iv1.setImage(avatar);
+        imagegrid.add(iv1,0,0);
+        imagegrid.setAlignment(Pos.CENTER);
+
         //user information grid
         GridPane infogrid = new GridPane();
         infogrid.setPadding(new Insets(10,10,10,10));
         infogrid.setVgap(8);
         infogrid.setHgap(10);
 
-        //profile image
-        Image avatar = new Image("file:avatar.png");
-        ImageView iv1 = new ImageView();
-        iv1.setFitWidth(80);
-        iv1.setFitHeight(100);
-        iv1.setImage(avatar);
-        GridPane.setConstraints(iv1, 0,0,1,3);
-
         String fontFamily1 = "Helvetica";
         double titleFontSize1 = 19;
 
-        Text text2 = new Text(10, 20, "Furkan Arif Bozdağ");
-        text2.setFont(Font.font(fontFamily1, titleFontSize1));
-        GridPane.setConstraints(text2, 1,0,2,1);
+        User ari = new User();
+        Text username = new Text(10, 20, ari.getUserName() + " " + ari.getUserSurname());
+        username.setFont(Font.font(fontFamily1, titleFontSize1));
 
         Text text3 = new Text(10, 20, "Bilkent University");
         text3.setFont(Font.font(fontFamily1, titleFontSize1));
-        GridPane.setConstraints(text3, 1,1,2,1);
+        GridPane.setConstraints(text3, 0,1,2,1);
 
-        Text text4 = new Text(10, 20, "CS /");
+        Text text4 = new Text(10, 20, "CS /" + "Undergraduate");
         text4.setFont(Font.font(fontFamily1, titleFontSize1));
-        GridPane.setConstraints(text4, 1,2);
-
-        Text text5 = new Text(10, 20, "Undergraduate");
-        text5.setFont(Font.font(fontFamily1, titleFontSize1));
-        GridPane.setConstraints(text5, 2,2);
+        GridPane.setConstraints(text4, 0,2);
 
         Text text6 = new Text(10, 20, "arif.bozdag@ug.bilkent.edu.tr");
         text6.setFont(Font.font(fontFamily1, titleFontSize1));
         GridPane.setConstraints(text6, 0,3,3,3);
 
-        infogrid.getChildren().addAll(iv1, text2, text3, text4, text5, text6);
+        infogrid.getChildren().addAll(username, text3, text4, text6);
 
         //navigator list
 
@@ -128,9 +128,9 @@ public class HomePage{
         searchfield.setPrefColumnCount(10);
         searchfield.getText();
 
-        leftMenu.getChildren().addAll( infogrid, link1, link2, link3, link4, link5,logoutlink, searchfield);
-        leftMenu.setAlignment(Pos.CENTER_LEFT);
-       
+        leftMenu.getChildren().addAll(imagegrid, infogrid, link1, link2, link3, link4, link5,logoutlink, searchfield);
+        leftMenu.setAlignment(Pos.TOP_LEFT);
+
         //  LEFT END
 
         //  BORDER PANE
