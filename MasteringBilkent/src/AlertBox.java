@@ -1,6 +1,3 @@
-package sample; /**
- * Created by Asus on 19.4.2017.
- */
 import javafx.stage.*;
 import javafx.scene.*;
 import javafx.scene.layout.*;

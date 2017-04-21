@@ -1,5 +1,3 @@
-package sample;
-
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -10,9 +8,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
-/**
- * Created by Asus on 20.4.2017.
- */
+
 public class ProfilePage {
 
     static Scene scene;
