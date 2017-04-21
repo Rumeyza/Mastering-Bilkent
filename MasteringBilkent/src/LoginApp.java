@@ -1,12 +1,8 @@
 
-import javafx.geometry.Rectangle2D;
-import javafx.stage.Screen;
-import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.paint.Color;
-import javafx.stage.Stage;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.GridPane;
 import javafx.geometry.Pos;
@@ -20,18 +16,12 @@ import javafx.scene.text.Font;
 import javafx.scene.text.TextFlow;
 
 
-public class LoginApp extends Application {
+public class LoginApp{
 
-    public static void main(String[] args) {
-        launch(args);
-    }
-
-    static Stage outStage;
     static Scene scene;
 
-    @Override
-    public void start(Stage primaryStage) {
-        primaryStage.setTitle("MASTERING BILKENT");
+    public static void start() {
+
         GridPane grid = new GridPane();
 
         grid.setAlignment(Pos.CENTER);
@@ -81,41 +71,27 @@ public class LoginApp extends Application {
         grid.add(actiontarget, 1, 6);
 
         registerHyper.setOnAction(e-> {
-            primaryStage.setScene(RegisterPage.startScene());
-            primaryStage.setTitle("Register now!");
+            Main.outStage.setScene(RegisterPage.startScene());
+            Main.outStage.setTitle("Register now!");
         });
 
         btn.setOnAction(e -> {
-        	if(userTextField.getText().equals("rumeyza")){
-                primaryStage.setScene(HomePage.startScene());
-                primaryStage.setTitle("Homepage");
-            }
+                    if(userTextField.getText().equals("rumeyza")){
+                        Main.outStage.setScene(HomePage.startScene());
+                        Main.outStage.setTitle("Homepage");
+                    }
 
-        }
+                }
         );
 
         scene = new Scene(grid);
-        primaryStage.setScene(scene);
 
-        //for fullscreen stage
-        Screen screen1 = Screen.getPrimary();
-        Rectangle2D bounds = screen1.getVisualBounds();
-        primaryStage.setX(bounds.getMinX());
-        primaryStage.setY(bounds.getMinY());
-        primaryStage.setWidth(bounds.getWidth());
-        primaryStage.setHeight(bounds.getHeight());
-
-        outStage = primaryStage;
-        outStage.show();
     }
 
     public static Scene startScene() {
-        //start(Stage outStage);
+        start();
         return scene;
     }
 
-    public static Stage getScene() {
-        return outStage;
-    }
 }
     
