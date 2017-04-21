@@ -1,6 +1,4 @@
-/**
- * Created by Asus on 21.4.2017.
- */
+
 public class User {
 
     private static int ID = 0;

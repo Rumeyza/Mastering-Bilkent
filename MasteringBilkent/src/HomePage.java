@@ -32,12 +32,8 @@ public class HomePage{
         scenetitle1.setFill(Color.rgb(46, 113, 129));
         scenetitle1.setFont(Font.font(fontFamily, FontWeight.EXTRA_BOLD, titleFontSize));
         
-        Line line = new Line();
-        line.setStartX(0);
-        line.setStartY(20);
-        line.setEndX(750);
-        line.setEndY(20);
-      
+        Line line = new Line(0, 20, 750, 20);
+       
         HBox logo = new HBox();
         logo.setPadding(new Insets(10));
         logo.setSpacing(8);
