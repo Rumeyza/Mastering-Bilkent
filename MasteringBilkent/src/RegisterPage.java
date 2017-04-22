@@ -100,6 +100,7 @@ public class RegisterPage {
 
         Button registerButton = new Button("Complete Registration");
         grid.add( registerButton, 1,7);
+    
         Hyperlink backHyper = new Hyperlink("Return to Login Page");
         grid.add(backHyper, 1, 8);
         backHyper.setOnAction(e-> {
@@ -132,16 +133,61 @@ public class RegisterPage {
         
         registerButton.setOnAction((event)->{
         
-        	String uName, uSurname, uPassword, uEmail, uInst, uDept, uTitle;
+        	String uName, uSurname, uPassword,uRePassword, uEmail, uInst, uDept, uRole, uTitle;
+        	int error = 1;
         	uName = userNameTextField.getText();
+			if(uName.equals("")){
+				userName.setTextFill(Color.RED);
+				userNameTextField.setPromptText("Please Enter a Name");
+				error = -1;
+        	}
         	uSurname = userSurnameTextField.getText();
+        	if(uSurname.equals("")){
+				userSurname.setTextFill(Color.RED);
+				userSurnameTextField.setPromptText("Please Enter a Surname");
+				error = -1;
+			}
         	uPassword = pwBox.getText();
+        	if(uPassword.equals("")){
+				pw.setTextFill(Color.RED);
+				pwBox.setPromptText("Please Enter a Surname");
+				error = -1;
+        	}
+        	uRePassword = repwBox.getText();
+        	if(uRePassword.equals("")){
+				repw.setTextFill(Color.RED);
+				repwBox.setPromptText("Please Enter Your Password Again");
+				error = -1;
+        	}
+        	if(!(uPassword.equals(uRePassword))){
+        		repw.setTextFill(Color.RED);
+				repwBox.setPromptText("Wrong Password is Entered");
+				error = -1;
+        	}
         	uEmail = userEmailTextField.getText();
+        	if(uEmail.equals("")){
+				userEmail.setTextFill(Color.RED);
+				userEmailTextField.setPromptText("Please Enter Your Email Address");
+				error = -1;
+        	}
         	uDept = userDepartmentTextField.getText();
+        	if(uDept.equals("")){
+				userDepartment.setTextFill(Color.RED);
+				userDepartmentTextField.setPromptText("Please Enter Your Department");
+				error = -1;
+        	}
+        	uRole = (String) userRolesBox.getSelectionModel().getSelectedItem();
+        	if(uRole.equals("")){
+           		error = -1;
+        	}
         	uTitle = (String) titleBox.getSelectionModel().getSelectedItem();
+        	if(uTitle.equals("")){
+        		error = -1;
+        	}
         	uInst = "Bilkent University";
-        	
-        	User newUser = new User(uName, uSurname, uPassword, uEmail, uInst, uDept, uTitle);
+        	if(error==-1)
+        		return;
+        	User newUser = new User(uName, uSurname, uPassword, uEmail, uInst, uDept, uRole, uTitle);
         	
         	Main.arr.add(newUser);
         	
@@ -160,6 +206,7 @@ public class RegisterPage {
         start();
         return scene;
     }
+   
     
    
 }

@@ -54,7 +54,8 @@ public class LoginApp  extends Application {
         Label userName = new Label("User Name:");
         grid.add(userName, 0, 1);
 
-        TextField userTextField = new TextField("rumeyza");
+        TextField userTextField = new TextField();
+        userTextField.setPromptText("Enter Name");
         grid.add(userTextField, 1, 1);
 
         Label pw = new Label("Password  :");
@@ -83,10 +84,15 @@ public class LoginApp  extends Application {
         });
 
         btn.setOnAction(e -> {
-                    if(userTextField.getText().equals("rumeyza")){
-                        primaryStage.setScene(HomePage.startScene());
+        	int result = Main.findUser( userTextField.getText(),pwBox.getText());
+                    if(result!=-1){
+                    	userTextField.setStyle("-fx-text-inner-color: black;");             
+                        primaryStage.setScene(HomePage.startScene(result));
                         primaryStage.setTitle("Homepage");
                     }
+                    else{
+                    	 userTextField.setText("User Name and Password Doesn't Match/Exist!");
+                    	 userTextField.setStyle("-fx-text-inner-color: red;");                    }
 
                 }
         );
@@ -105,11 +111,5 @@ public class LoginApp  extends Application {
     public static void method(String[] args) {
         launch(args);
     }
-
-   /* public static Scene startScene() {
-        start();
-        return scene;
-    }*/
-
 }
     

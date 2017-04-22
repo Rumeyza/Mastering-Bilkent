@@ -1,6 +1,4 @@
-/**
- * Created by Asus on 21.4.2017.
- */
+
 public class User {
 
     private static int ID = 0;
@@ -12,20 +10,22 @@ public class User {
     private String userEmail = "";
     private String userInstitution = "";
     private String userDepartment = "";
+    private String userRole = "";
     private String userTitle = "";
 
     public User() {
         userId = ID++;
-        userName = "Furkan Arif";
-        userSurname = "BozdaÄŸ";
-        userPassword = "12345";
-        userEmail = "bozdag.arif@gmail.com";
-        userInstitution = "Bilkent University";
-        userDepartment = "CS";
-        userTitle = "Undergraduate";
+        userName = "";
+        userSurname = "";
+        userPassword = "";
+        userEmail = "";
+        userInstitution ="";
+        userDepartment ="";
+        userRole = "";
+        userTitle = "";
     }
 
-    public User(String name, String surname, String pass, String email, String inst, String dept, String title) {
+    public User(String name, String surname, String pass, String email, String inst, String dept, String role, String title) {
         this.userId = ID++;
         this.userName = name;
         this.userSurname = surname;
@@ -33,6 +33,7 @@ public class User {
         this.userEmail = email;
         this.userInstitution = inst;
         this.userDepartment = dept;
+        this.userRole = role;
         this.userTitle = title;
     }
 
@@ -98,6 +99,13 @@ public class User {
 
     public void setUserDepartment(String userDepartment) {
         this.userDepartment = userDepartment;
+    }
+    public String getUserRole() {
+        return userRole;
+    }
+
+    public void setUserRole(String userRole) {
+        this.userRole = userRole;
     }
 
     public String getUserTitle() {
