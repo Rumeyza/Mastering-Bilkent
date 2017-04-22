@@ -93,7 +93,7 @@ public class RegisterPage {
         grid.add(repwBox, 1,5);
 
         //user department
-        Label userDepartment = new Label("Institution:");
+        Label userDepartment = new Label("Department:");
         grid.add(userDepartment, 0,6);
         TextField userDepartmentTextField = new TextField();
         grid.add(userDepartmentTextField, 1,6);
@@ -111,23 +111,45 @@ public class RegisterPage {
         // User Roles:
         ObservableList<String> userRoles =FXCollections.observableArrayList( "a Student","an Instructor");
         ComboBox<String> userRolesBox = new ComboBox<String>(userRoles);
-        ComboBox<String> statusBox = new ComboBox<String>();
+        ComboBox<String> titleBox = new ComboBox<String>();
         userRolesBox.setPromptText("I am");
         grid.add( userRolesBox, 0, 0);
 
         userRolesBox.setOnAction((event)->{
             String role = (String) userRolesBox.getSelectionModel().getSelectedItem();
-            statusBox.setPromptText( "My Degree is");
+            titleBox.setPromptText( "My Title is");
             if( role.equals("a Student")){
                 //User Status for Student:
                 ObservableList<String> studentStatus = FXCollections.observableArrayList( "Undergraduate", "Graduate", "None"   );
-                statusBox.setItems(studentStatus);
+                titleBox.setItems(studentStatus);
             }
             else{
                 ObservableList<String> instructorStatus = FXCollections.observableArrayList( "Prof.","Assoc. Prof", "Asst. Prof", "Instructor");
-                statusBox.setItems(instructorStatus);
+                titleBox.setItems(instructorStatus);
             }
-            grid.add( statusBox, 1,0);
+            grid.add( titleBox, 1,0);
+        });
+        
+        registerButton.setOnAction((event)->{
+        
+        	String uName, uSurname, uPassword, uEmail, uInst, uDept, uTitle;
+        	uName = userNameTextField.getText();
+        	uSurname = userSurnameTextField.getText();
+        	uPassword = pwBox.getText();
+        	uEmail = userEmailTextField.getText();
+        	uDept = userDepartmentTextField.getText();
+        	uTitle = titleBox.getAccessibleText();
+        	uInst = "Bilkent University";
+        	
+        	User newUser = new User(uName, uSurname, uPassword, uEmail, uInst, uDept, uTitle);
+        	
+        	Main.arr.add(newUser);
+        	
+        	LoginApp.myStage.setScene(LoginApp.scene);
+        	
+        	for( int i = 0; i < Main.arr.size(); i++)
+           	 System.out.println("Users: " + Main.arr.get(i).getUserName());
+        	
         });
 
         border.setCenter(grid);
@@ -138,5 +160,7 @@ public class RegisterPage {
         start();
         return scene;
     }
+    
+   
 }
     
