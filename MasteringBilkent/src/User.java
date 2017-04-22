@@ -17,7 +17,7 @@ public class User {
     public User() {
         userId = ID++;
         userName = "Furkan Arif";
-        userSurname = "Bozdağ";
+        userSurname = "BozdaÄŸ";
         userPassword = "12345";
         userEmail = "bozdag.arif@gmail.com";
         userInstitution = "Bilkent University";
