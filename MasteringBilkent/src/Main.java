@@ -14,7 +14,7 @@ public class Main {
     }
 
     public static void main(String[] args) {
-         User user1 = new User("root","","root@mastering.bilkent","","","","","");
+         User user1 = new User("Root","Mastering Bilkent","root","root@mastering.bilkent","","","","");
          arr = new ArrayList<User>();
          arr.add(0,user1);
          Application.launch(LoginApp.class, args);

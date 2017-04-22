@@ -51,11 +51,11 @@ public class LoginApp  extends Application {
         textFlow.setStyle("-fx-padding: 0, 10, 0, 10");
         grid.add(textFlow, 0, 0,2,1);
 
-        Label userName = new Label("User Name:");
+        Label userName = new Label("E-mail:");
         grid.add(userName, 0, 1);
 
         TextField userTextField = new TextField();
-        userTextField.setPromptText("Enter Name");
+        userTextField.setPromptText("Enter E-mail");
         grid.add(userTextField, 1, 1);
 
         Label pw = new Label("Password  :");

@@ -27,7 +27,7 @@ public class ProfilePage {
         infogrid.setHgap(10);
 
         //profile image
-        Image avatar = new Image("file:/Users/rumeyzadincer/git/Mastering-Bilkent/MasteringBilkent/avatar.png");
+        Image avatar = new Image("file:avatar.png");
         ImageView iv1 = new ImageView();
         iv1.setFitWidth(240);
         iv1.setFitHeight(240);
