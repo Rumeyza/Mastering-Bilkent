@@ -103,8 +103,8 @@ public class HomePage{
         Hyperlink link3 = new Hyperlink("Profile");
         link3.setStyle("-fx-text-fill: white;");
         link3.setOnAction(e -> {
-            Main.outStage.setScene(ProfilePage.startScene());
-            Main.outStage.setTitle("Your Profile");
+            LoginApp.myStage.setScene(ProfilePage.startScene());
+            LoginApp.myStage.setTitle("Your Profile");
         });
 
         Hyperlink link4 = new Hyperlink("Send Feedback");
@@ -118,8 +118,8 @@ public class HomePage{
         Hyperlink logoutlink = new Hyperlink("Logout");
         logoutlink.setStyle("-fx-text-fill: white;");
         logoutlink.setOnAction(e -> {
-            Main.outStage.setScene(LoginApp.startScene());
-            Main.outStage.setTitle("Mastering Bilkent");
+            LoginApp.myStage.setScene(LoginApp.scene);
+            LoginApp.myStage.setTitle("Mastering Bilkent");
         });
 
         //search bar

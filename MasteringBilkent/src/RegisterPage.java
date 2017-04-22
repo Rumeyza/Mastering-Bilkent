@@ -103,8 +103,8 @@ public class RegisterPage {
         Hyperlink backHyper = new Hyperlink("Return to Login Page");
         grid.add(backHyper, 1, 8);
         backHyper.setOnAction(e-> {
-            Main.outStage.setScene(LoginApp.startScene());
-            Main.outStage.setTitle("Mastering Bilkent");
+           LoginApp.myStage.setScene(LoginApp.scene);
+           LoginApp.myStage.setTitle("Mastering Bilkent");
         });
 
 

@@ -6,6 +6,8 @@ import javafx.scene.paint.Color;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.GridPane;
 import javafx.geometry.Pos;
+import javafx.geometry.Rectangle2D;
+import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.text.Text;
 import javafx.scene.control.Label;
@@ -14,13 +16,17 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Font;
 import javafx.scene.text.TextFlow;
+import javafx.stage.Screen;
+import javafx.stage.Stage;
 
 
-public class LoginApp{
+public class LoginApp  extends Application {
 
     static Scene scene;
-
-    public static void start() {
+    static Stage myStage;
+    @Override
+    public void start(Stage primaryStage) {
+    	primaryStage.setTitle("Mastering Bilkent");
 
         GridPane grid = new GridPane();
 
@@ -71,27 +77,38 @@ public class LoginApp{
         grid.add(actiontarget, 1, 6);
 
         registerHyper.setOnAction(e-> {
-            Main.outStage.setScene(RegisterPage.startScene());
-            Main.outStage.setTitle("Register now!");
+            primaryStage.setScene(RegisterPage.startScene());
+            primaryStage.setTitle("Register now!");
         });
 
         btn.setOnAction(e -> {
                     if(userTextField.getText().equals("rumeyza")){
-                        Main.outStage.setScene(HomePage.startScene());
-                        Main.outStage.setTitle("Homepage");
+                        primaryStage.setScene(HomePage.startScene());
+                        primaryStage.setTitle("Homepage");
                     }
 
                 }
         );
-
+        Screen screen1 = Screen.getPrimary();
+        Rectangle2D bounds = screen1.getVisualBounds();
+        primaryStage.setX(bounds.getMinX());
+        primaryStage.setY(bounds.getMinY());
+        primaryStage.setWidth(bounds.getWidth());
+        primaryStage.setHeight(bounds.getHeight());
         scene = new Scene(grid);
+        primaryStage.setScene(scene);
+        myStage = primaryStage;
+        primaryStage.show();
 
     }
+    public static void method(String[] args) {
+        launch(args);
+    }
 
-    public static Scene startScene() {
+   /* public static Scene startScene() {
         start();
         return scene;
-    }
+    }*/
 
 }
     

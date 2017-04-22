@@ -55,8 +55,8 @@ public class ProfilePage {
 
         Hyperlink returnlink = new Hyperlink("return");
         returnlink.setOnAction(e -> {
-            Main.outStage.setScene(HomePage.startScene());
-            Main.outStage.setTitle("Home Page");
+        	LoginApp.myStage.setScene(HomePage.startScene());
+        	LoginApp.myStage.setTitle("Home Page");
         });
         GridPane.setConstraints(returnlink, 0,7);
 
