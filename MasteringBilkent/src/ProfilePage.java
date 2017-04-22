@@ -3,10 +3,13 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Hyperlink;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.shape.Line;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
@@ -52,18 +55,72 @@ public class ProfilePage {
         text4.setFont(Font.font(fontFamily1, titleFontSize1));
         GridPane.setConstraints(text4, 0,3,3,3);
 
-        Hyperlink returnlink = new Hyperlink("return");
-        returnlink.setOnAction(e -> {
-        	LoginApp.myStage.setScene(HomePage.startScene(userIndex));
-        	LoginApp.myStage.setTitle("Home Page");
-        });
-        GridPane.setConstraints(returnlink, 0,7);
-
-        infogrid.getChildren().addAll(text1, text2, text3, text4, returnlink);
+        infogrid.getChildren().addAll(text1, text2, text3, text4);
 
         layout.getChildren().addAll(iv1, infogrid);
 
-        scene = new Scene(layout);
+        
+        //navigator list
+        
+        Line line = new Line(0,0, 200, 0);
+        line .setStyle("-fx-stroke: #FFFFFF;");
+        GridPane.setConstraints(line , 0,6);
+
+        Hyperlink link1 = new Hyperlink("Home Page");
+        link1.setStyle("-fx-text-fill: white");
+        link1.setOnAction(e -> {
+            LoginApp.myStage.setScene(HomePage.startScene(userIndex));
+            LoginApp.myStage.setTitle("Home Page");
+        });
+
+        Hyperlink link2 = new Hyperlink("My Courses");
+        link2.setStyle("-fx-text-fill: white");
+        //link2.setOnAction(e -> );
+
+        Hyperlink link3 = new Hyperlink("Profile");
+        link3.setStyle("-fx-text-fill: white");
+        link3.setOnAction(e -> {
+            LoginApp.myStage.setScene(ProfilePage.startScene(userIndex));
+            LoginApp.myStage.setTitle("Your Profile");
+        });
+
+        Hyperlink link4 = new Hyperlink("Send Feedback");
+        link4.setStyle("-fx-text-fill: white");
+        link4.setOnAction(e -> AlertBox.display("contact","mastering@bilkent.edu.tr"));
+
+        Hyperlink link5 = new Hyperlink("Settings");
+        link5.setStyle("-fx-text-fill: white");
+        //link5.setOnAction(e -> );
+
+        Hyperlink logoutlink = new Hyperlink("Logout");
+        logoutlink.setStyle("-fx-text-fill: white");
+        logoutlink.setOnAction(e -> {
+            LoginApp.myStage.setScene(LoginApp.scene);
+            LoginApp.myStage.setTitle("Mastering Bilkent");
+        });
+
+        //search bar
+        final TextField searchfield = new TextField();
+        searchfield.setPromptText("Find Course");
+        searchfield.setPrefColumnCount(10);
+        searchfield.getText();
+
+        VBox leftMenu = new VBox();
+        leftMenu.setStyle("-fx-background-color: #4198AE;");
+        leftMenu.setPadding(new Insets(10));
+        leftMenu.setSpacing(8);
+
+        leftMenu.getChildren().addAll(line, link1, link2, link3, link4, link5,logoutlink, searchfield);
+        leftMenu.setAlignment(Pos.CENTER_LEFT);
+
+        //  LEFT END
+
+        BorderPane layout1 = new BorderPane();
+        layout1.setCenter(layout);
+        layout1.setLeft(leftMenu);
+        layout1.setStyle("-fx-background: #FFFFFF;");
+
+        scene = new Scene(layout1);
     }
 
     public static Scene startScene(int index) {
