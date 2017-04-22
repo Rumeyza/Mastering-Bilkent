@@ -24,6 +24,7 @@ public class LoginApp  extends Application {
 
     static Scene scene;
     static Stage myStage;
+    
     @Override
     public void start(Stage primaryStage) {
     	primaryStage.setTitle("Mastering Bilkent");
@@ -98,7 +99,7 @@ public class LoginApp  extends Application {
         scene = new Scene(grid);
         primaryStage.setScene(scene);
         myStage = primaryStage;
-        primaryStage.show();
+        myStage.show();
 
     }
     public static void method(String[] args) {
