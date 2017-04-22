@@ -86,16 +86,23 @@ public class LoginApp  extends Application {
         btn.setOnAction(e -> {
         	int result = Main.findUser( userTextField.getText(),pwBox.getText());
                     if(result!=-1){
-                    	userTextField.setStyle("-fx-text-inner-color: black;");             
+                    	userTextField.setStyle("-fx-text-inner-color: black;");     
+                    //	userTextField.setText("");
+                    	pwBox.setText("");
+                    	userName.setTextFill(Color.BLACK);
+                    	pw.setTextFill(Color.BLACK);
                         primaryStage.setScene(HomePage.startScene(result));
                         primaryStage.setTitle("Homepage");
+                        
                     }
                     else{
-                    	 userTextField.setText("User Name and Password Doesn't Match/Exist!");
-                    	 userTextField.setStyle("-fx-text-inner-color: red;");                    }
+                    	userName.setTextFill(Color.RED);
+                    	pw.setTextFill(Color.RED);
+                    }
 
                 }
         );
+        
         Screen screen1 = Screen.getPrimary();
         Rectangle2D bounds = screen1.getVisualBounds();
         primaryStage.setX(bounds.getMinX());

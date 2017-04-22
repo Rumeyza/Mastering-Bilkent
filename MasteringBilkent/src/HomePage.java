@@ -16,7 +16,7 @@ public class HomePage{
 
     static Scene scene;
 
-    public static void start(){
+    public static void start(int userIndex){
 
         //  BORDER PANE COMPONENTS
         //  CENTER
@@ -28,8 +28,13 @@ public class HomePage{
         //Mastering Bilkent Title
         String fontFamily = "Helvetica";
         double titleFontSize = 36;
+        
+        Text scenetitle1;
+        if(Main.arr.get(userIndex).getUserRole().equals("an Instructor"))
+        	scenetitle1 = new Text("Mastering Bilkent Instructor Home Page");
 
-        Text scenetitle1 = new Text("Mastering Bilkent Student Home Page");
+        else
+        	scenetitle1 = new Text("Mastering Bilkent Student Home Page");
         scenetitle1.setFill(Color.rgb(46, 113, 129));
         scenetitle1.setFont(Font.font(fontFamily, FontWeight.EXTRA_BOLD, titleFontSize));
 
@@ -72,22 +77,21 @@ public class HomePage{
         String fontFamily1 = "Helvetica";
         double titleFontSize1 = 16;
 
-        int i = 0;
-        Text userName = new Text(10, 20, Main.arr.get(i).getUserName() + " " + Main.arr.get(i).getUserSurname());
+        Text userName = new Text(10, 20, Main.arr.get(userIndex).getUserName() + " " + Main.arr.get(userIndex).getUserSurname());
         userName.setFont(Font.font(fontFamily1, titleFontSize1));
         userName.setFill(Color.WHITE);
 
-        Text userInst = new Text(10, 20, Main.arr.get(i).getUserInstitution());
+        Text userInst = new Text(10, 20, Main.arr.get(userIndex).getUserInstitution());
         userInst.setFont(Font.font(fontFamily1, titleFontSize1));
         userInst.setFill(Color.WHITE);
         GridPane.setConstraints(userInst, 0,1,2,1);
 
-        Text userDep = new Text(10, 20,  Main.arr.get(i).getUserDepartment()+ " / " + Main.arr.get(i).getUserTitle());
+        Text userDep = new Text(10, 20,  Main.arr.get(userIndex).getUserDepartment()+ " / " + Main.arr.get(userIndex).getUserTitle());
         userDep.setFont(Font.font(fontFamily1, titleFontSize1));
         userDep.setFill(Color.WHITE);
         GridPane.setConstraints(userDep, 0,2);
 
-        Text userEmail = new Text(10, 20, Main.arr.get(i).getUserEmail());
+        Text userEmail = new Text(10, 20, Main.arr.get(userIndex).getUserEmail());
         userEmail.setFont(Font.font(fontFamily1, titleFontSize1));
         userEmail.setFill(Color.WHITE);
         GridPane.setConstraints(userEmail, 0,3,3,3);
@@ -112,7 +116,7 @@ public class HomePage{
         Hyperlink link3 = new Hyperlink("Profile");
         link3.setStyle("-fx-text-fill: white");
         link3.setOnAction(e -> {
-            LoginApp.myStage.setScene(ProfilePage.startScene());
+            LoginApp.myStage.setScene(ProfilePage.startScene(userIndex));
             LoginApp.myStage.setTitle("Your Profile");
         });
 
@@ -152,8 +156,8 @@ public class HomePage{
 
     }
 
-    public static Scene startScene() {
-        start();
+    public static Scene startScene(int index) {
+        start(index);
         return scene;
     }
 }
