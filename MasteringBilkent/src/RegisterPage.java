@@ -138,7 +138,7 @@ public class RegisterPage {
         	uPassword = pwBox.getText();
         	uEmail = userEmailTextField.getText();
         	uDept = userDepartmentTextField.getText();
-        	uTitle = titleBox.getAccessibleText();
+        	uTitle = (String) titleBox.getSelectionModel().getSelectedItem();
         	uInst = "Bilkent University";
         	
         	User newUser = new User(uName, uSurname, uPassword, uEmail, uInst, uDept, uTitle);
