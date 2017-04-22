@@ -29,12 +29,7 @@ public class HomePage{
         String fontFamily = "Helvetica";
         double titleFontSize = 36;
         
-        Text scenetitle1;
-        if(Main.arr.get(userIndex).getUserRole().equals("an Instructor"))
-        	scenetitle1 = new Text("Mastering Bilkent Instructor Home Page");
-
-        else
-        	scenetitle1 = new Text("Mastering Bilkent Student Home Page");
+        Text scenetitle1 = new Text("Mastering Bilkent Student Home Page");
         scenetitle1.setFill(Color.rgb(46, 113, 129));
         scenetitle1.setFont(Font.font(fontFamily, FontWeight.EXTRA_BOLD, titleFontSize));
 
