@@ -27,10 +27,10 @@ public class ProfilePage {
         infogrid.setHgap(10);
 
         //profile image
-        Image avatar = new Image("file:avatar2.jpg");
+        Image avatar = new Image("file:/Users/rumeyzadincer/git/Mastering-Bilkent/MasteringBilkent/avatar.png");
         ImageView iv1 = new ImageView();
         iv1.setFitWidth(240);
-        iv1.setFitHeight(300);
+        iv1.setFitHeight(240);
         iv1.setImage(avatar);
         GridPane.setConstraints(iv1, 0,0,1,3);
 

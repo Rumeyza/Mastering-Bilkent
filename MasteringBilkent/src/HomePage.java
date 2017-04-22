@@ -55,10 +55,10 @@ public class HomePage{
 
         //profile image
         GridPane imagegrid = new GridPane();
-        Image avatar = new Image("file:avatar.png");
+        Image avatar = new Image("file:/Users/rumeyzadincer/git/Mastering-Bilkent/MasteringBilkent/avatar.png");
         ImageView iv1 = new ImageView();
         iv1.setFitWidth(240);
-        iv1.setFitHeight(300);
+        iv1.setFitHeight(240);
         iv1.setImage(avatar);
         imagegrid.add(iv1,0,0);
         imagegrid.setAlignment(Pos.CENTER);
@@ -70,53 +70,62 @@ public class HomePage{
         infogrid.setHgap(10);
 
         String fontFamily1 = "Helvetica";
-        double titleFontSize1 = 19;
+        double titleFontSize1 = 16;
 
         int i = 0;
-        Text text1 = new Text(10, 20, Main.arr.get(i).getUserName() + " " + Main.arr.get(i).getUserSurname());
-        text1.setFont(Font.font(fontFamily1, titleFontSize1));
+        Text userName = new Text(10, 20, Main.arr.get(i).getUserName() + " " + Main.arr.get(i).getUserSurname());
+        userName.setFont(Font.font(fontFamily1, titleFontSize1));
+        userName.setFill(Color.WHITE);
 
-        Text text2 = new Text(10, 20, Main.arr.get(i).getUserInstitution());
-        text2.setFont(Font.font(fontFamily1, titleFontSize1));
-        GridPane.setConstraints(text2, 0,1,2,1);
+        Text userInst = new Text(10, 20, Main.arr.get(i).getUserInstitution());
+        userInst.setFont(Font.font(fontFamily1, titleFontSize1));
+        userInst.setFill(Color.WHITE);
+        GridPane.setConstraints(userInst, 0,1,2,1);
 
-        Text text3 = new Text(10, 20,  Main.arr.get(i).getUserDepartment()+ " / " + Main.arr.get(i).getUserTitle());
-        text3.setFont(Font.font(fontFamily1, titleFontSize1));
-        GridPane.setConstraints(text3, 0,2);
+        Text userDep = new Text(10, 20,  Main.arr.get(i).getUserDepartment()+ " / " + Main.arr.get(i).getUserTitle());
+        userDep.setFont(Font.font(fontFamily1, titleFontSize1));
+        userDep.setFill(Color.WHITE);
+        GridPane.setConstraints(userDep, 0,2);
 
-        Text text4 = new Text(10, 20, Main.arr.get(i).getUserEmail());
-        text4.setFont(Font.font(fontFamily1, titleFontSize1));
-        GridPane.setConstraints(text4, 0,3,3,3);
-
-        infogrid.getChildren().addAll(text1, text2, text3, text4);
+        Text userEmail = new Text(10, 20, Main.arr.get(i).getUserEmail());
+        userEmail.setFont(Font.font(fontFamily1, titleFontSize1));
+        userEmail.setFill(Color.WHITE);
+        GridPane.setConstraints(userEmail, 0,3,3,3);
+        
+        Line line2 = new Line(0,0, 200, 0);
+        line2.setStyle("-fx-stroke: #FFFFFF;");
+        GridPane.setConstraints(line2, 0,6);
+        
+        infogrid.getChildren().addAll(userName, userInst, userDep, userEmail,line2);
+       
 
         //navigator list
 
         Hyperlink link1 = new Hyperlink("Main Page");
-        link1.setStyle("-fx-text-fill: white;");
+        link1.setStyle("-fx-text-fill: white");
         //link1.setOnAction(e -> );
 
         Hyperlink link2 = new Hyperlink("My Courses");
-        link2.setStyle("-fx-text-fill: white;");
+        link2.setStyle("-fx-text-fill: white");
         //link2.setOnAction(e -> );
 
         Hyperlink link3 = new Hyperlink("Profile");
-        link3.setStyle("-fx-text-fill: white;");
+        link3.setStyle("-fx-text-fill: white");
         link3.setOnAction(e -> {
             LoginApp.myStage.setScene(ProfilePage.startScene());
             LoginApp.myStage.setTitle("Your Profile");
         });
 
         Hyperlink link4 = new Hyperlink("Send Feedback");
-        link4.setStyle("-fx-text-fill: white;");
+        link4.setStyle("-fx-text-fill: white");
         link4.setOnAction(e -> AlertBox.display("contact","mastering@bilkent.edu.tr"));
 
         Hyperlink link5 = new Hyperlink("Settings");
-        link5.setStyle("-fx-text-fill: white;");
+        link5.setStyle("-fx-text-fill: white");
         //link5.setOnAction(e -> );
 
         Hyperlink logoutlink = new Hyperlink("Logout");
-        logoutlink.setStyle("-fx-text-fill: white;");
+        logoutlink.setStyle("-fx-text-fill: white");
         logoutlink.setOnAction(e -> {
             LoginApp.myStage.setScene(LoginApp.scene);
             LoginApp.myStage.setTitle("Mastering Bilkent");
