@@ -106,7 +106,10 @@ public class ProfilePage {
         searchfield.getText();
 
         VBox leftMenu = new VBox();
-        leftMenu.setStyle("-fx-background-color: #4198AE;");
+        if(Main.arr.get(userIndex).getUserRole().equals("an Instructor"))
+        	   leftMenu.setStyle("-fx-background-color: #99004C;");
+        else
+        	leftMenu.setStyle("-fx-background-color: #4198AE;");
         leftMenu.setPadding(new Insets(10));
         leftMenu.setSpacing(8);
 
