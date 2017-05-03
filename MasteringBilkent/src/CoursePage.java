@@ -25,6 +25,7 @@ public class CoursePage {
 
     public static void start(int userIndex){
 
+
         //  BORDER PANE COMPONENTS
         //  CENTER
         VBox centerMenu = new VBox();
@@ -112,7 +113,11 @@ public class CoursePage {
         Hyperlink link1 = new Hyperlink("Home Page");
         link1.setStyle("-fx-text-fill: white");
         link1.setOnAction(e -> {
-            LoginApp.myStage.setScene(HomePage.startScene(userIndex));
+            if(Main.arr.get(userIndex).getUserRole().equals("an Instructor"))
+                LoginApp.myStage.setScene(InstructorHomePage.startScene(userIndex));
+            else
+                LoginApp.myStage.setScene(HomePage.startScene(userIndex));
+
             LoginApp.myStage.setTitle("Mastering Bilkent");//---------------------------------> her classın başına koyalım
         });
 
