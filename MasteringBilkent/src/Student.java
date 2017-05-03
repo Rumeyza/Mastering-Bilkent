@@ -10,6 +10,13 @@ public class Student extends User{
     public String semester;
     public ArrayList<Integer> courseEnrolmentList;
 
+    public Student(){
+        super();
+        this.schoolYear = "third year";
+        this.semester = "first semester";
+        this.courseEnrolmentList = new ArrayList<Integer>();
+    }
+
     public Student(String name, String surname, String pass, String email, String inst, String dept, String role, String title,
                    String schoolYear, String semester) {
         super(name, surname, pass, email, inst, dept, role, title);
