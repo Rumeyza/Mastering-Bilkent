@@ -42,9 +42,16 @@ public class HomePage{
         //Line
         Line line = new Line(0, 20, 750, 20);
 
+        Hyperlink buttonB = new Hyperlink("Math 101");
+        buttonB.setOnAction(e-> {
+            LoginApp.myStage.setScene(CoursePage.startScene(userIndex));
+            LoginApp.myStage.setTitle("Mastering Bilkent - My Courses");
+        });
+
         Hyperlink buttonA = new Hyperlink("Register Another Course");
 
-        centerMenu.getChildren().addAll(logo,line, buttonA);
+        centerMenu.getChildren().addAll(logo, line, buttonB, buttonA);
+        
         //  CENTER END
 
         //  LEFT
