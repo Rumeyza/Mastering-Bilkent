@@ -63,7 +63,7 @@ public class CoursePage {
 
         //profile image
         GridPane imagegrid = new GridPane();
-        Image avatar = new Image("file:avatar.png");
+        Image avatar = new Image("file:bilkent.png");
         ImageView iv1 = new ImageView();
         iv1.setFitWidth(240);
         iv1.setFitHeight(240);

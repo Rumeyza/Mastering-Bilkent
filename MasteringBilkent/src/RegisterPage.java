@@ -97,12 +97,17 @@ public class RegisterPage {
         grid.add(userDepartment, 0,6);
         TextField userDepartmentTextField = new TextField();
         grid.add(userDepartmentTextField, 1,6);
+        
+        Label schoolYear = new Label("School Year For Students(1 to 4):");
+        grid.add(schoolYear, 0,7);
+        TextField schoolYearTextField = new TextField();
+        grid.add(schoolYearTextField, 1,7);
 
         Button registerButton = new Button("Complete Registration");
-        grid.add( registerButton, 1,7);
+        grid.add( registerButton, 1,8);
     
         Hyperlink backHyper = new Hyperlink("Return to Login Page");
-        grid.add(backHyper, 1, 8);
+        grid.add(backHyper, 1, 9);
         backHyper.setOnAction(e-> {
            LoginApp.myStage.setScene(LoginApp.scene);
            LoginApp.myStage.setTitle("Mastering Bilkent");
@@ -133,7 +138,7 @@ public class RegisterPage {
         
         registerButton.setOnAction((event)->{
         
-        	String uName, uSurname, uPassword,uRePassword, uEmail, uInst, uDept, uRole, uTitle;
+        	String uName, uSurname, uPassword,uRePassword, uEmail, uInst, uDept, uRole, uTitle, uYear;
         	int error = 1;
         	uName = userNameTextField.getText();
 			if(uName.equals("")){
@@ -184,12 +189,17 @@ public class RegisterPage {
         	if(uTitle.equals("")){
         		error = -1;
         	}
+        	uYear = (String) schoolYearTextField.getText();
         	uInst = "Bilkent University";
         	if(error==-1)
         		return;
-        	User newUser = new User(uName, uSurname, uPassword, uEmail, uInst, uDept, uRole, uTitle);
+        	if(uRole.equals("a Student")){
+        		User newUser = new Student(uName, uSurname, uPassword, uEmail, uInst, uDept, uRole, uTitle, uYear, "Spring 2017");
+        		Main.arr.add(newUser);
+        	}
+        
         	
-        	Main.arr.add(newUser);
+        	
         	
         	LoginApp.myStage.setScene(LoginApp.scene);
         	
