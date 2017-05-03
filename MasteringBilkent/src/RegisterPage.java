@@ -198,9 +198,7 @@ public class RegisterPage {
         		Main.arr.add(newUser);
         	}
         
-        	
-        	
-        	
+    
         	LoginApp.myStage.setScene(LoginApp.scene);
         	
         	for( int i = 0; i < Main.arr.size(); i++)
