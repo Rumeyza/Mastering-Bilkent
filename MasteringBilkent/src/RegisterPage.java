@@ -182,23 +182,30 @@ public class RegisterPage {
 				error = -1;
         	}
         	uRole = (String) userRolesBox.getSelectionModel().getSelectedItem();
-        	if(uRole.equals("")){
+        	if(uRole == null||!(uRole.equals("a Student")||uRole.equals("an Instructor"))){
            		error = -1;
         	}
         	uTitle = (String) titleBox.getSelectionModel().getSelectedItem();
-        	if(uTitle.equals("")){
+        	if(uTitle == null||uTitle.equals("")){
         		error = -1;
         	}
         	uYear = (String) schoolYearTextField.getText();
         	uInst = "Bilkent University";
         	if(error==-1)
         		return;
+        	
         	if(uRole.equals("a Student")){
         		User newUser = new Student(uName, uSurname, uPassword, uEmail, uInst, uDept, uRole, uTitle, uYear, "Spring 2017");
         		Main.arr.add(newUser);
+        	} 
+        	else if(uRole.equals("an Instructor")){
+        		User newUser = new Instructor(uName, uSurname, uPassword, uEmail, uInst, uDept, uRole, uTitle);
+        		Main.arr.add(newUser);
         	}
-        
-    
+        	else{
+        		return;
+        	}
+        	
         	LoginApp.myStage.setScene(LoginApp.scene);
         	
         	for( int i = 0; i < Main.arr.size(); i++)
@@ -214,8 +221,5 @@ public class RegisterPage {
         start();
         return scene;
     }
-   
-    
-   
 }
     
