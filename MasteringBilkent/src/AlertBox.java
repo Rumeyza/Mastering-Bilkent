@@ -3,7 +3,7 @@ import javafx.scene.*;
 import javafx.scene.layout.*;
 import javafx.scene.control.*;
 import javafx.geometry.*;
-
+//arif baba oley
 public class AlertBox {
 
     public static void display(){
