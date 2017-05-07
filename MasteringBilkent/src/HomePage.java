@@ -107,7 +107,7 @@ public class HomePage{
 
         //navigator list
 
-        Hyperlink link1 = new Hyperlink("Main Page");
+        Hyperlink link1 = new Hyperlink("All Courses");
         link1.setStyle("-fx-text-fill: white");
         link1.setOnAction(e -> LoginApp.myStage.setScene(Offerings.startScene(userIndex))); 
 
