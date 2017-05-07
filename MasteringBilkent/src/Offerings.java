@@ -37,8 +37,9 @@ public class Offerings {
 
 	        //Line
 	        Line line = new Line(0, 20, 750, 20);
-
-	        centerMenu.getChildren().addAll(logo, line);
+	      //  Hyperlink course = new Hyperlink(courseArr.get(0));
+	     //   link1.setStyle("-fx-text-fill: white");
+	        //link1.setOnAction(e -> );*/
 	        
 	        //  CENTER END*/
 
@@ -95,9 +96,9 @@ public class Offerings {
 
 	        //navigator list
 
-	        Hyperlink link1 = new Hyperlink("All Courses");
+	  /*      Hyperlink link1 = new Hyperlink("All Courses");
 	        link1.setStyle("-fx-text-fill: white");
-	        //link1.setOnAction(e -> );
+	        //link1.setOnAction(e -> );*/
 
 	        Hyperlink link2 = new Hyperlink("My Courses");
 	        link2.setStyle("-fx-text-fill: white");
@@ -131,7 +132,7 @@ public class Offerings {
 	        searchfield.setPrefColumnCount(10);
 	        searchfield.getText();
 
-	        leftMenu.getChildren().addAll(imagegrid, infogrid, link2, link1, link3, link4, link5,logoutlink, searchfield);
+	        leftMenu.getChildren().addAll(imagegrid, infogrid, link2, link3, link4, link5,logoutlink, searchfield);
 	        leftMenu.setAlignment(Pos.TOP_LEFT);
 
 	        //  LEFT END

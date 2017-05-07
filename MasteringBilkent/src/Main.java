@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Main {
     
     static ArrayList<User> arr;
-    static ArrayList<Content> contArr;
+    static ArrayList<Course> courseArr;
     
     public static void main(String[] args) {
         
@@ -13,17 +13,17 @@ public class Main {
         arr = new ArrayList<User>();
         arr.add(0,user1);
         
-        Content OOD = new Course("Object Oriented Design - CS319" , "Bora Güngören");
-        contArr = new ArrayList<Content>();
-        contArr.add(0, OOD);
+        Course OOD = new Course("Object Oriented Design - CS319" , "Bora Güngören");
+        courseArr = new ArrayList<Course>();
+        courseArr.add(0, OOD);
         
         Application.launch(LoginApp.class, args);
     }
 
     public static int findContent(int contId){
         int result = -1;
-        for(int i = 0; i < Main.contArr.size() ; i++){
-            if(Main.contArr.get(i).contentId == contId)
+        for(int i = 0; i < Main.courseArr.size() ; i++){
+            if(Main.courseArr.get(i).contentId == contId)
                 result = i;
         }
         return result;
