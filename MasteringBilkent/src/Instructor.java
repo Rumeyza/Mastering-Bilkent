@@ -20,7 +20,7 @@ public class Instructor extends User {
 
     public boolean createCourse(String contentname, String key, boolean v){
         for(int i = 0; i < courseList.size() ; i++){
-            if(courseList.get(i).contentName.equals(contentname))
+            if(courseList.get(i).getContentName().equals(contentname))
                 return false;
         }
         Content course = new Course( contentname,  super.getUserName(),  key,  v);
@@ -31,7 +31,7 @@ public class Instructor extends User {
 
     public boolean deleteCourse(int courseId){
         for(int i = 0; i < courseList.size() ; i++){
-            if(courseList.get(i).contentId == courseId)
+            if(courseList.get(i).getContentId() == courseId)
                 courseList.remove(courseId);
             return true;
         }

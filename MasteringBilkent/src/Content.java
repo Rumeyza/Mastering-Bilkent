@@ -4,10 +4,10 @@
  */
 public class Content {
 
-    public static int contID = 1000;
+    private static int contID = 1000;
 
-    public String contentName;
-    public int contentId;
+    private String contentName;
+    private int contentId;
 
     public Content(){
         this.contentName = "Default Content";

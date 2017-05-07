@@ -23,7 +23,7 @@ public class Main {
     public static int findContent(int contId){
         int result = -1;
         for(int i = 0; i < Main.courseArr.size() ; i++){
-            if(Main.courseArr.get(i).contentId == contId)
+            if(Main.courseArr.get(i).getContentId() == contId)
                 result = i;
         }
         return result;

@@ -4,13 +4,13 @@
  */
 public class Course extends Content {
 
-    public String instructor;
-    public String courseKey;
-    public boolean visibility;
+    private String instructor;
+    private String courseKey;
+    private boolean visibility;
     //public String[] contentList;
 
     public Course() {
-        super();
+        super("Default Course");
         this.instructor = "Default Instructor";
         this.courseKey = null;
         this.visibility = true;
