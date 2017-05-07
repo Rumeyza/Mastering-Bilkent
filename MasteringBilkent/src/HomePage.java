@@ -109,6 +109,8 @@ public class HomePage{
 
         Hyperlink link1 = new Hyperlink("Main Page");
         link1.setStyle("-fx-text-fill: white");
+        link1.setOnAction(e -> LoginApp.myStage.setScene(Offerings.startScene(userIndex))); 
+
         //link1.setOnAction(e -> );
 
         Hyperlink link2 = new Hyperlink("My Courses");
@@ -129,6 +131,10 @@ public class HomePage{
         Hyperlink link5 = new Hyperlink("Settings");
         link5.setStyle("-fx-text-fill: white");
         //link5.setOnAction(e -> );
+        
+  /*      Hyperlink offerings = new Hyperlink("Course List");
+        offerings.setStyle("-fx-text-fill: white");
+        offerings.setOnAction(e -> LoginApp.myStage.setScene(Offerings.startScene(userIndex))); */
 
         Hyperlink logoutlink = new Hyperlink("Logout");
         logoutlink.setStyle("-fx-text-fill: white");
