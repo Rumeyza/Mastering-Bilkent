@@ -13,7 +13,8 @@ public class Main {
         arr = new ArrayList<User>();
         arr.add(0,user1);
         
-        Course OOD = new Course("Object Oriented Design - CS319" , "Bora Güngören");
+        Course OOD = new Course("CS319 - Object Oriented Software Engineering " , "Bora Güngören");
+        Course PL = new Course("CS315 - Programming Languages " , "Buğra Gedik");
         courseArr = new ArrayList<Course>();
         courseArr.add(0, OOD);
         

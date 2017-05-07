@@ -37,9 +37,36 @@ public class Offerings {
 
 	        //Line
 	        Line line = new Line(0, 20, 750, 20);
-	      //  Hyperlink course = new Hyperlink(courseArr.get(0));
-	     //   link1.setStyle("-fx-text-fill: white");
-	        //link1.setOnAction(e -> );*/
+	        
+	        centerMenu.getChildren().addAll(logo, line);
+	        int courseSize = Main.courseArr.size();
+	        Hyperlink course;
+	        Text ins; 
+	        VBox courseBox; 
+ 	       
+	        for(int i = 0 ; i < courseSize;i++){
+	        	courseBox = new VBox();
+	 	        courseBox.setPadding(new Insets(15));
+	 	        courseBox.setSpacing(10);
+	 	        courseBox.setAlignment(Pos.TOP_CENTER);
+	 	        courseBox.setStyle("-fx-background-color:  #009999");
+	        	course = new Hyperlink(Main.courseArr.get(i).getContentName());
+	        	course.setStyle("-fx-text-fill: white");
+		        course.setFont(Font.font("Helvetica", 24));   
+		        course.setBorder(Border.EMPTY);
+		        ins =  new Text(Main.courseArr.get(i).getInstructor()+" / Spring 2017");
+		        ins.setFill(Color.WHITE);
+		        ins.setFont(Font.font("Helvetica",18));
+	 	        courseBox.getChildren().addAll(course, ins);
+	 	        centerMenu.getChildren().add(courseBox);
+	 	        
+	        }
+	        
+	       
+	       
+	       
+	      //link1.setOnAction(e -> );*/
+	       
 	        
 	        //  CENTER END*/
 
