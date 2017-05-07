@@ -38,8 +38,6 @@ public class Offerings {
 	        //Line
 	        Line line = new Line(0, 20, 750, 20);
 
-	       
-
 	        centerMenu.getChildren().addAll(logo, line);
 	        
 	        //  CENTER END*/
