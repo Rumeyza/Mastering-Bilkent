@@ -42,15 +42,10 @@ public class HomePage{
         //Line
         Line line = new Line(0, 20, 750, 20);
 
-        Hyperlink buttonB = new Hyperlink("Math 101");
-        buttonB.setOnAction(e-> {
-            LoginApp.myStage.setScene(CoursePage.startScene(userIndex));
-            LoginApp.myStage.setTitle("Mastering Bilkent - My Courses");
-        });
 
         Hyperlink buttonA = new Hyperlink("Register Another Course");
 
-        centerMenu.getChildren().addAll(logo, line, buttonB, buttonA);
+        centerMenu.getChildren().addAll(logo, line, buttonA);
         
         //  CENTER END
 
@@ -107,13 +102,15 @@ public class HomePage{
 
         //navigator list
 
-        Hyperlink link1 = new Hyperlink("Main Page");
+        Hyperlink link1 = new Hyperlink("All Courses");
         link1.setStyle("-fx-text-fill: white");
+        link1.setOnAction(e -> LoginApp.myStage.setScene(Offerings.startScene(userIndex))); 
+
         //link1.setOnAction(e -> );
 
-        Hyperlink link2 = new Hyperlink("My Courses");
+     /*   Hyperlink link2 = new Hyperlink("My Courses");
         link2.setStyle("-fx-text-fill: white");
-        //link2.setOnAction(e -> );
+        //link2.setOnAction(e -> );*/
 
         Hyperlink link3 = new Hyperlink("Profile");
         link3.setStyle("-fx-text-fill: white");
@@ -129,6 +126,10 @@ public class HomePage{
         Hyperlink link5 = new Hyperlink("Settings");
         link5.setStyle("-fx-text-fill: white");
         //link5.setOnAction(e -> );
+        
+  /*      Hyperlink offerings = new Hyperlink("Course List");
+        offerings.setStyle("-fx-text-fill: white");
+        offerings.setOnAction(e -> LoginApp.myStage.setScene(Offerings.startScene(userIndex))); */
 
         Hyperlink logoutlink = new Hyperlink("Logout");
         logoutlink.setStyle("-fx-text-fill: white");
@@ -143,7 +144,7 @@ public class HomePage{
         searchfield.setPrefColumnCount(10);
         searchfield.getText();
 
-        leftMenu.getChildren().addAll(imagegrid, infogrid, link1, link2, link3, link4, link5,logoutlink, searchfield);
+        leftMenu.getChildren().addAll(imagegrid, infogrid, link1, link3, link4, link5,logoutlink, searchfield);
         leftMenu.setAlignment(Pos.TOP_LEFT);
 
         //  LEFT END
