@@ -25,10 +25,6 @@ public class DatabaseManager {
   	return null;
   }
 	
- //ýlgýn12
-	public static void a(){
-		int a = 0;
-	}
 
 	//creations
 	public void createTableInstructor() throws Exception{
