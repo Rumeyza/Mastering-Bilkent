@@ -5,17 +5,8 @@ import javafx.scene.*;
 import javafx.scene.layout.*;
 import javafx.scene.control.*;
 import javafx.geometry.*;
-//arif baba oley
-public class AlertBox {
 
-    public static void display(){
-        Stage window = new Stage();
-        window.initModality(Modality.APPLICATION_MODAL);
-        VBox layout = new VBox();
-        Scene scene = new Scene(layout);
-        window.setScene(scene);
-        window.showAndWait();
-    }
+public class AlertBox {
 
     public static void display(String title, String message){
         Stage window = new Stage();

@@ -1,5 +1,6 @@
 package GUI;
 
+import ApplicationLogic.Video;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -141,7 +142,7 @@ public class HomePage{
         searchfield.setPrefColumnCount(10);
         searchfield.getText();
 
-        leftMenu.getChildren().addAll(imagegrid, infogrid, link1, link3, link4, link5,logoutlink, searchfield);
+        leftMenu.getChildren().addAll(imagegrid, infogrid, link1, link3, link4, link5 ,logoutlink, searchfield);
         leftMenu.setAlignment(Pos.TOP_LEFT);
 
         //  LEFT END
