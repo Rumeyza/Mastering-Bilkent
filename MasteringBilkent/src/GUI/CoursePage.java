@@ -81,9 +81,9 @@ public class CoursePage {
         String fontFamily1 = "Helvetica";
         double titleFontSize1 = 16;
 
-        User user = Main.arr.get(userIndex);
+     //   User user = Main.courseArr.get(userIndex);
 
-        Text userName = new Text(10, 20, user.getUserName() + " " + user.getUserSurname());
+  /*      Text userName = new Text(10, 20, user.getUserName() + " " + user.getUserSurname());
         userName.setFont(Font.font(fontFamily1, titleFontSize1));
         userName.setFill(Color.WHITE);
 
@@ -106,7 +106,7 @@ public class CoursePage {
         line2.setStyle("-fx-stroke: #FFFFFF;");
         GridPane.setConstraints(line2, 0,6);
 
-        infogrid.getChildren().addAll(userName, userInst, userDep, userEmail, line2);
+        infogrid.getChildren().addAll(userName, userInst, userDep, userEmail, line2);*/
 
 
         //NAVİGATOR LİST

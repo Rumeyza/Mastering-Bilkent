@@ -48,7 +48,6 @@ public class Offerings {
 	        centerMenu.getChildren().addAll(logo, line);
 	       
 	        int courseSize = Main.courseArr.size();
-	   //     Hyperlink course=Hyperlink[courseSize];
 	        ArrayList<Hyperlink> course = new ArrayList<Hyperlink>();
 	        Text ins; 
 	        VBox courseBox; 
@@ -60,6 +59,7 @@ public class Offerings {
 	 	        courseBox.setStyle("-fx-background-color:  #990000");
 	        	course.add(i,new Hyperlink(Main.courseArr.get(i).getContentName()));
 	        	int id = Main.courseArr.get(i).getContentId();
+	        	System.out.println(id);
 	        	course.get(i).setOnAction(e -> LoginApp.myStage.setScene(CoursePage.startScene(id))); 
 	        	course.get(i).setStyle("-fx-text-fill: white");
 		        course.get(i).setFont(Font.font("Helvetica", 24));   
@@ -75,7 +75,6 @@ public class Offerings {
 	        sp.setFitToHeight(true);
 	        sp.setVmax(1000);
 	        sp.setPrefSize(115, 150);
-	        
 	        sp.setContent(centerMenu);
 	      
 	        
