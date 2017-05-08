@@ -102,12 +102,12 @@ public class ProfilePage {
 
         //search bar
         final TextField searchfield = new TextField();
-        searchfield.setPromptText("Find ApplicationLogic.Course");
+        searchfield.setPromptText("Find Course");
         searchfield.setPrefColumnCount(10);
         searchfield.getText();
 
         VBox leftMenu = new VBox();
-        if(Main.arr.get(userIndex).getUserRole().equals("an ApplicationLogic.Instructor"))
+        if(Main.arr.get(userIndex).getUserRole().equals("an Instructor"))
         	   leftMenu.setStyle("-fx-background-color: #99004C;");
         else
         	leftMenu.setStyle("-fx-background-color: #4198AE;");

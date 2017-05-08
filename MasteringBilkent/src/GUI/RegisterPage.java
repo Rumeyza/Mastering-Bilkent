@@ -119,7 +119,7 @@ public class RegisterPage {
 
 
         // ApplicationLogic.User Roles:
-        ObservableList<String> userRoles =FXCollections.observableArrayList( "a ApplicationLogic.Student","an ApplicationLogic.Instructor");
+        ObservableList<String> userRoles =FXCollections.observableArrayList( "a Student","an Instructor");
         ComboBox<String> userRolesBox = new ComboBox<String>(userRoles);
         ComboBox<String> titleBox = new ComboBox<String>();
         userRolesBox.setPromptText("I am");
@@ -128,13 +128,13 @@ public class RegisterPage {
         userRolesBox.setOnAction((event)->{
             String role = (String) userRolesBox.getSelectionModel().getSelectedItem();
             titleBox.setPromptText( "My Title is");
-            if( role.equals("a ApplicationLogic.Student")){
+            if( role.equals("a Student")){
                 //ApplicationLogic.User Status for ApplicationLogic.Student:
                 ObservableList<String> studentStatus = FXCollections.observableArrayList( "Undergraduate", "Graduate", "None"   );
                 titleBox.setItems(studentStatus);
             }
             else{
-                ObservableList<String> instructorStatus = FXCollections.observableArrayList( "Prof.","Assoc. Prof", "Asst. Prof", "ApplicationLogic.Instructor");
+                ObservableList<String> instructorStatus = FXCollections.observableArrayList( "Prof.","Assoc. Prof", "Asst. Prof", "Instructor");
                 titleBox.setItems(instructorStatus);
             }
             grid.add( titleBox, 1,0);
@@ -186,7 +186,7 @@ public class RegisterPage {
 				error = -1;
         	}
         	uRole = (String) userRolesBox.getSelectionModel().getSelectedItem();
-        	if(uRole == null||!(uRole.equals("a ApplicationLogic.Student")||uRole.equals("an ApplicationLogic.Instructor"))){
+        	if(uRole == null||!(uRole.equals("a Student")||uRole.equals("an Instructor"))){
            		error = -1;
         	}
         	uTitle = (String) titleBox.getSelectionModel().getSelectedItem();
@@ -198,11 +198,11 @@ public class RegisterPage {
         	if(error==-1)
         		return;
         	
-        	if(uRole.equals("a ApplicationLogic.Student")){
+        	if(uRole.equals("a Student")){
         		User newUser = new Student(uName, uSurname, uPassword, uEmail, uInst, uDept, uRole, uTitle, uYear, "Spring 2017");
         		Main.arr.add(newUser);
         	} 
-        	else if(uRole.equals("an ApplicationLogic.Instructor")){
+        	else if(uRole.equals("an Instructor")){
         		User newUser = new Instructor(uName, uSurname, uPassword, uEmail, uInst, uDept, uRole, uTitle);
         		Main.arr.add(newUser);
         	}
