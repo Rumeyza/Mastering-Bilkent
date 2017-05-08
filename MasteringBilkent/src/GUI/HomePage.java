@@ -31,7 +31,7 @@ public class HomePage{
         double titleFontSize = 36;
         
         Text scenetitle1 = new Text("Mastering Bilkent Student Home Page");
-        scenetitle1.setFill(Color.rgb(46, 113, 129));
+        scenetitle1.setFill(Color.rgb(0, 51,102));
         scenetitle1.setFont(Font.font(fontFamily, FontWeight.EXTRA_BOLD, titleFontSize));
 
         HBox logo = new HBox();
@@ -52,7 +52,7 @@ public class HomePage{
 
         //  LEFT
         VBox leftMenu = new VBox();
-        leftMenu.setStyle("-fx-background-color: #4198AE;");
+        leftMenu.setStyle("-fx-background-color: #003366;");
         leftMenu.setPadding(new Insets(10));
         leftMenu.setSpacing(8);
 

@@ -30,7 +30,7 @@ public class Offerings {
 	        double titleFontSize = 36;
 	        
 	        Text scenetitle1 = new Text("Mastering Bilkent Course List");
-	        scenetitle1.setFill(Color.rgb(46, 113, 129));
+	        scenetitle1.setFill(Color.rgb(0, 51,102));
 	        scenetitle1.setFont(Font.font(fontFamily, FontWeight.EXTRA_BOLD, titleFontSize));
 
 	        HBox logo = new HBox();
@@ -53,7 +53,7 @@ public class Offerings {
 	 	        courseBox.setPadding(new Insets(15));
 	 	        courseBox.setSpacing(10);
 	 	        courseBox.setAlignment(Pos.TOP_CENTER);
-	 	        courseBox.setStyle("-fx-background-color:  #009999");
+	 	        courseBox.setStyle("-fx-background-color:  #990000");
 	        	course = new Hyperlink(Main.courseArr.get(i).getContentName());
 	        	course.setStyle("-fx-text-fill: white");
 		        course.setFont(Font.font("Helvetica", 24));   
@@ -66,10 +66,12 @@ public class Offerings {
 	 	        
 	        }
 	        
-	       
-	        sp.setVmax(440);
+	        sp.setFitToHeight(true);
+	        sp.setVmax(1000);
 	        sp.setPrefSize(115, 150);
+	        
 	        sp.setContent(centerMenu);
+	      
 	      
 	       
 	      //link1.setOnAction(e -> );*/
@@ -79,7 +81,7 @@ public class Offerings {
 
 	        //  LEFT
 	        VBox leftMenu = new VBox();
-	        leftMenu.setStyle("-fx-background-color: #4198AE;");
+	        leftMenu.setStyle("-fx-background-color: #003366;");
 	        leftMenu.setPadding(new Insets(10));
 	        leftMenu.setSpacing(8);
 
