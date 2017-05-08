@@ -4,6 +4,7 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Hyperlink;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -18,6 +19,7 @@ public class Offerings {
 
 	        //  BORDER PANE COMPONENTS
 	        //  CENTER
+		  	ScrollPane sp = new ScrollPane();
 	        VBox centerMenu = new VBox();
 	        centerMenu.setPadding(new Insets(10));
 	        centerMenu.setSpacing(8);
@@ -27,7 +29,7 @@ public class Offerings {
 	        String fontFamily = "Helvetica";
 	        double titleFontSize = 36;
 	        
-	        Text scenetitle1 = new Text("Mastering Bilkent ApplicationLogic.Course List");
+	        Text scenetitle1 = new Text("Mastering Bilkent Course List");
 	        scenetitle1.setFill(Color.rgb(46, 113, 129));
 	        scenetitle1.setFont(Font.font(fontFamily, FontWeight.EXTRA_BOLD, titleFontSize));
 
@@ -65,7 +67,10 @@ public class Offerings {
 	        }
 	        
 	       
-	       
+	        sp.setVmax(440);
+	        sp.setPrefSize(115, 150);
+	        sp.setContent(centerMenu);
+	      
 	       
 	      //link1.setOnAction(e -> );*/
 	       
@@ -168,8 +173,8 @@ public class Offerings {
 
 	        //  BORDER PANE
 	        BorderPane layout1 = new BorderPane();
-	        layout1.setCenter(centerMenu);
-	       layout1.setLeft(leftMenu);
+	        layout1.setCenter(sp);
+	        layout1.setLeft(leftMenu);
 	        layout1.setStyle("-fx-background: #FFFFFF;");
 
 	        scene = new Scene(layout1);

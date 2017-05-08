@@ -18,9 +18,20 @@ public class Main {
         
         Course OOD = new Course("CS319 - Object Oriented Software Engineering " , "Bora Güngören");
         Course PL = new Course("CS315 - Programming Languages " , "Buğra Gedik");
+        Course OS = new Course("CS342 - Operating Systems " , "Özcan Öztürk");
+        Course DB = new Course("CS353 - Database Systems" , "Özgür Ulusoy");
+        Course CS101 = new Course("CS101 - Algorithms and Programming" , "David Davenport");
+        Course CS223 = new Course("CS223 - Digital Design" , "William Sawyer");
+        Course CS224 = new Course("CS224 - Computer Organization" , "Fazlı Can");
         courseArr = new ArrayList<Course>();
         courseArr.add(0, OOD);
         courseArr.add(1, PL);
+        courseArr.add(2, OS);
+        courseArr.add(3, DB);
+        courseArr.add(4, CS101);
+        courseArr.add(5, CS223);
+        courseArr.add(6, CS224);
+        
 
         
         Application.launch(LoginApp.class, args);
