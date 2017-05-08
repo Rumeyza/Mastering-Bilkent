@@ -470,7 +470,7 @@ Dynamic libraries:
 
 VM Arguments:
 jvm_args: -Dfile.encoding=UTF-8 
-java_command: Main
+java_command: GUI.Main
 java_class_path (initial): /Users/rumeyzadincer/git/Mastering-Bilkent/MasteringBilkent/src:/Users/rumeyzadincer/.p2/pool/plugins/org.eclipse.fx.ide.css.jfx8_2.4.0.201605112122.jar
 Launcher Type: SUN_STANDARD
 

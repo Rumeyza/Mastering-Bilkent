@@ -1,3 +1,4 @@
+package GUI;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -6,17 +7,25 @@ import javafx.scene.control.Hyperlink;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.*;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-import javafx.scene.text.*;
-import javafx.scene.shape.*;
-
-
-public class InstructorHomePage{
+import javafx.scene.shape.Line;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
+import ApplicationLogic.User;
+/**
+ * Created by Asus on 1.5.2017.
+ */
+public class CoursePage {
 
     static Scene scene;
 
     public static void start(int userIndex){
+
 
         //  BORDER PANE COMPONENTS
         //  CENTER
@@ -28,9 +37,9 @@ public class InstructorHomePage{
         //Mastering Bilkent Title
         String fontFamily = "Helvetica";
         double titleFontSize = 36;
-        
-        Text scenetitle1 = new Text("Mastering Bilkent Instructor Home Page");
-        scenetitle1.setFill(Color.rgb(153, 0, 76));
+
+        Text scenetitle1 = new Text("ApplicationLogic.Course Page");
+        scenetitle1.setFill(Color.rgb(46, 113, 129));
         scenetitle1.setFont(Font.font(fontFamily, FontWeight.EXTRA_BOLD, titleFontSize));
 
         HBox logo = new HBox();
@@ -42,26 +51,20 @@ public class InstructorHomePage{
         //Line
         Line line = new Line(0, 20, 750, 20);
 
-        Hyperlink buttonB = new Hyperlink("Math 101");
-        buttonB.setOnAction(e-> {
-            LoginApp.myStage.setScene(CoursePage.startScene(userIndex));
-            LoginApp.myStage.setTitle("Mastering Bilkent - My Courses");
-        });
+        Hyperlink buttonA = new Hyperlink("Register Another ApplicationLogic.Course");
 
-        Hyperlink buttonA = new Hyperlink("Create Another Course");
-
-        centerMenu.getChildren().addAll(logo, line, buttonB, buttonA);
+        centerMenu.getChildren().addAll(logo,line, buttonA);
         //  CENTER END
 
         //  LEFT
         VBox leftMenu = new VBox();
-        leftMenu.setStyle("-fx-background-color: #99004C;");
+        leftMenu.setStyle("-fx-background-color: #4198AE;");
         leftMenu.setPadding(new Insets(10));
         leftMenu.setSpacing(8);
 
         //profile image
         GridPane imagegrid = new GridPane();
-        Image avatar = new Image("file:avatar.png");
+        Image avatar = new Image("file:bilkent.png");
         ImageView iv1 = new ImageView();
         iv1.setFitWidth(240);
         iv1.setFitHeight(240);
@@ -78,37 +81,46 @@ public class InstructorHomePage{
         String fontFamily1 = "Helvetica";
         double titleFontSize1 = 16;
 
-        Text userName = new Text(10, 20, Main.arr.get(userIndex).getUserName() + " " + Main.arr.get(userIndex).getUserSurname());
+        User user = Main.arr.get(userIndex);
+
+        Text userName = new Text(10, 20, user.getUserName() + " " + user.getUserSurname());
         userName.setFont(Font.font(fontFamily1, titleFontSize1));
         userName.setFill(Color.WHITE);
 
-        Text userInst = new Text(10, 20, Main.arr.get(userIndex).getUserInstitution());
+        Text userInst = new Text(10, 20, user.getUserInstitution());
         userInst.setFont(Font.font(fontFamily1, titleFontSize1));
         userInst.setFill(Color.WHITE);
         GridPane.setConstraints(userInst, 0,1,2,1);
 
-        Text userDep = new Text(10, 20,  Main.arr.get(userIndex).getUserDepartment()+ " / " + Main.arr.get(userIndex).getUserTitle());
+        Text userDep = new Text(10, 20,  user.getUserDepartment()+ " / " + user.getUserTitle());
         userDep.setFont(Font.font(fontFamily1, titleFontSize1));
         userDep.setFill(Color.WHITE);
         GridPane.setConstraints(userDep, 0,2);
 
-        Text userEmail = new Text(10, 20, Main.arr.get(userIndex).getUserEmail());
+        Text userEmail = new Text(10, 20, user.getUserEmail());
         userEmail.setFont(Font.font(fontFamily1, titleFontSize1));
         userEmail.setFill(Color.WHITE);
         GridPane.setConstraints(userEmail, 0,3,3,3);
-        
+
         Line line2 = new Line(0,0, 200, 0);
         line2.setStyle("-fx-stroke: #FFFFFF;");
         GridPane.setConstraints(line2, 0,6);
-        
-        infogrid.getChildren().addAll(userName, userInst, userDep, userEmail,line2);
-       
 
-        //navigator list
+        infogrid.getChildren().addAll(userName, userInst, userDep, userEmail, line2);
 
-        Hyperlink link1 = new Hyperlink("Main Page");
+
+        //NAVİGATOR LİST
+
+        Hyperlink link1 = new Hyperlink("Home Page");
         link1.setStyle("-fx-text-fill: white");
-        //link1.setOnAction(e -> );
+        link1.setOnAction(e -> {
+            if(Main.arr.get(userIndex).getUserRole().equals("an ApplicationLogic.Instructor"))
+                LoginApp.myStage.setScene(InstructorHomePage.startScene(userIndex));
+            else
+                LoginApp.myStage.setScene(HomePage.startScene(userIndex));
+
+            LoginApp.myStage.setTitle("Mastering Bilkent");//---------------------------------> her classın başına koyalım
+        });
 
         Hyperlink link2 = new Hyperlink("My Courses");
         link2.setStyle("-fx-text-fill: white");
@@ -138,7 +150,7 @@ public class InstructorHomePage{
 
         //search bar
         final TextField searchfield = new TextField();
-        searchfield.setPromptText("Find Course");
+        searchfield.setPromptText("Find ApplicationLogic.Course");
         searchfield.setPrefColumnCount(10);
         searchfield.getText();
 

@@ -1,3 +1,5 @@
+package GUI;
+
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -25,7 +27,7 @@ public class Offerings {
 	        String fontFamily = "Helvetica";
 	        double titleFontSize = 36;
 	        
-	        Text scenetitle1 = new Text("Mastering Bilkent Course List");
+	        Text scenetitle1 = new Text("Mastering Bilkent ApplicationLogic.Course List");
 	        scenetitle1.setFill(Color.rgb(46, 113, 129));
 	        scenetitle1.setFont(Font.font(fontFamily, FontWeight.EXTRA_BOLD, titleFontSize));
 
@@ -155,7 +157,7 @@ public class Offerings {
 
 	        //search bar
 	        final TextField searchfield = new TextField();
-	        searchfield.setPromptText("Find Course");
+	        searchfield.setPromptText("Find ApplicationLogic.Course");
 	        searchfield.setPrefColumnCount(10);
 	        searchfield.getText();
 

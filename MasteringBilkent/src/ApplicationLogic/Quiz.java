@@ -1,3 +1,5 @@
+package ApplicationLogic;
+
 import java.util.ArrayList;
 
 /**
@@ -11,7 +13,7 @@ public class Quiz extends Content{
     private boolean graded;
 
     public Quiz() {
-        super( "Default Quiz");
+        super( "Default ApplicationLogic.Quiz");
         this.size = 1;
         this.description = "This is an example quiz of size of one question.";
         this.graded = false;

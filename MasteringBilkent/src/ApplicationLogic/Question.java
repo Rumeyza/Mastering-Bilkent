@@ -1,3 +1,5 @@
+package ApplicationLogic;
+
 import java.util.Arrays;
 
 /**
@@ -41,7 +43,7 @@ public class Question { //asdfbkhgbhjbkhkbh
 
     @Override
     public String toString() {
-        return "Question{" +
+        return "ApplicationLogic.Question{" +
                 "questionText='" + questionText + '\'' +
                 ", choiseList=" + Arrays.toString(choiseList) +
                 ", answer='" + answer + '\'' +

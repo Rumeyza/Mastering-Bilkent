@@ -1,3 +1,4 @@
+package ApplicationLogic;
 
 public class User {
 
