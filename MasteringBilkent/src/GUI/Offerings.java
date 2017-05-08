@@ -1,5 +1,8 @@
 package GUI;
 
+import java.util.ArrayList;
+
+import ApplicationLogic.User;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -43,8 +46,10 @@ public class Offerings {
 	        Line line = new Line(0, 20, 750, 20);
 	        
 	        centerMenu.getChildren().addAll(logo, line);
+	       
 	        int courseSize = Main.courseArr.size();
-	        Hyperlink course;
+	   //     Hyperlink course=Hyperlink[courseSize];
+	        ArrayList<Hyperlink> course = new ArrayList<Hyperlink>();
 	        Text ins; 
 	        VBox courseBox; 
 	        for(int i = 0 ; i < courseSize;i++){
@@ -53,16 +58,16 @@ public class Offerings {
 	 	        courseBox.setSpacing(10);
 	 	        courseBox.setAlignment(Pos.TOP_CENTER);
 	 	        courseBox.setStyle("-fx-background-color:  #990000");
-	        	course = new Hyperlink(Main.courseArr.get(i).getContentName());
+	        	course.add(i,new Hyperlink(Main.courseArr.get(i).getContentName()));
 	        	int id = Main.courseArr.get(i).getContentId();
-	        	course.setOnAction(e -> LoginApp.myStage.setScene(CoursePage.startScene(id))); 
-	        	course.setStyle("-fx-text-fill: white");
-		        course.setFont(Font.font("Helvetica", 24));   
-		        course.setBorder(Border.EMPTY);
+	        	course.get(i).setOnAction(e -> LoginApp.myStage.setScene(CoursePage.startScene(id))); 
+	        	course.get(i).setStyle("-fx-text-fill: white");
+		        course.get(i).setFont(Font.font("Helvetica", 24));   
+		        course.get(i).setBorder(Border.EMPTY);
 		        ins =  new Text(Main.courseArr.get(i).getInstructor()+" / Spring 2017");
 		        ins.setFill(Color.WHITE);
 		        ins.setFont(Font.font("Helvetica",18));
-	 	        courseBox.getChildren().addAll(course, ins);
+	 	        courseBox.getChildren().addAll(course.get(i), ins);
 	 	        centerMenu.getChildren().add(courseBox);
 	 	        
 	        }
