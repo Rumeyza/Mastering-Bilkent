@@ -127,10 +127,7 @@ public class HomePage{
         link5.setStyle("-fx-text-fill: white");
         //link5.setOnAction(e -> );
         
-  /*      Hyperlink offerings = new Hyperlink("ApplicationLogic.Course List");
-        offerings.setStyle("-fx-text-fill: white");
-        offerings.setOnAction(e -> GUI.LoginApp.myStage.setScene(GUI.Offerings.startScene(userIndex))); */
-
+ 
         Hyperlink logoutlink = new Hyperlink("Logout");
         logoutlink.setStyle("-fx-text-fill: white");
         logoutlink.setOnAction(e -> {

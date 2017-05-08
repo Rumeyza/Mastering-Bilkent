@@ -72,10 +72,7 @@ public class Offerings {
 	        
 	        sp.setContent(centerMenu);
 	      
-	      
-	       
-	      //link1.setOnAction(e -> );*/
-	       
+	        
 	        
 	        //  CENTER END*/
 
