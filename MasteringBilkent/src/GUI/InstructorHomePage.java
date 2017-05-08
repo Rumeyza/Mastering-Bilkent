@@ -30,7 +30,7 @@ public class InstructorHomePage{
         String fontFamily = "Helvetica";
         double titleFontSize = 36;
         
-        Text scenetitle1 = new Text("Mastering Bilkent ApplicationLogic.Instructor Home Page");
+        Text scenetitle1 = new Text("Mastering Bilkent Instructor Home Page");
         scenetitle1.setFill(Color.rgb(153, 0, 76));
         scenetitle1.setFont(Font.font(fontFamily, FontWeight.EXTRA_BOLD, titleFontSize));
 
@@ -49,7 +49,7 @@ public class InstructorHomePage{
             LoginApp.myStage.setTitle("Mastering Bilkent - My Courses");
         });
 
-        Hyperlink buttonA = new Hyperlink("Create Another ApplicationLogic.Course");
+        Hyperlink buttonA = new Hyperlink("Create Another Course");
 
         centerMenu.getChildren().addAll(logo, line, buttonB, buttonA);
         //  CENTER END
