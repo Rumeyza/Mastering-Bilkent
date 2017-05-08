@@ -57,10 +57,8 @@ public class DatabaseManager {
 
 	
 	
-	
-	
-	
-	//insertions
+
+//insertions
 	public void insertToCourse(int id, String visibility, String key, int c_id, String name) throws Exception{
 		try{
 			Connection con = getConnection();
@@ -90,4 +88,6 @@ public class DatabaseManager {
 	}
 
 }
+
+
 
