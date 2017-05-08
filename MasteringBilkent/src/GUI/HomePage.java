@@ -26,7 +26,6 @@ public class HomePage{
         centerMenu.setSpacing(8);
         centerMenu.setAlignment(Pos.TOP_CENTER);
 
-        //Mastering Bilkent Title
         String fontFamily = "Helvetica";
         double titleFontSize = 36;
         
