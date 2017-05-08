@@ -206,6 +206,7 @@ public class RegisterPage {
         		User newUser = new Instructor(uName, uSurname, uPassword, uEmail, uInst, uDept, uRole, uTitle);
         		Main.arr.add(newUser);
         	}
+        	
         	else{
         		return;
         	}
