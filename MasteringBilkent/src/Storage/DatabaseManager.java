@@ -25,7 +25,7 @@ public class DatabaseManager {
   	return null;
   }
 	
-	//ýlgýn deneme
+ //ýlgýn12
 	
 	//creations
 	public void createTableInstructor() throws Exception{
