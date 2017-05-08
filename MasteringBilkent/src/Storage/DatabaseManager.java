@@ -54,40 +54,40 @@ public class DatabaseManager {
 			create.executeUpdate();
 	} catch(Exception e){System.out.println(e);}
 	}
-}
+
 	
 	
 	
 	
 	
 	//insertions
-	/*public void insertToCourse( int i_id, String type, key, id, name) throws Exception{
+	public void insertToCourse(int id, String visibility, String key, int c_id, String name) throws Exception{
 		try{
 			Connection con = getConnection();
-			PreparedStatement insert  = con.prepareStatement("INSERT INTO Course (i_id, courseType, courseKey, course_id, courseName) VALUES (" +i_id+ ", ‘“+type+”’, ‘“+key+”’, “+id+”, ‘“+name+”’)");
+			PreparedStatement insert  = con.prepareStatement("INSERT INTO Course (course_id, i_id, courseType, courseKey, courseName) VALUES (" +c_id+ "," +id+ ", '" +visibility+ "', '" +key+ "', '" +name+ "')");
 
 			insert.executeUpdate();
 		} catch(Exception e){System.out.println(e);}
 	}
 
 
-	public void insertToInstructor(int id, name, age, pNumber, location, department, address, email) throws Exception{
+	public void insertToInstructor(int id, String name, String surname, String pass, String email, String inst, String dept, String title) throws Exception{
 		try{
 			Connection con = getConnection();
-			PreparedStatement insert  = con.prepareStatement("INSERT INTO Instructor (i_id, name, age, phoneNumber, location, department, address, email) VALUES (“+id+”, ‘“+name+”’, “+age+”, “+pNumber+”, ‘“+location+”’, ‘“+department+”’, ‘“+address+”’, ‘“+email+”’)");
+			PreparedStatement insert  = con.prepareStatement("INSERT INTO Instructor (i_id, i_name, i_surname, i_password, i_email, i_institution, i_department, i_title) VALUES ("+id+", '"+name+"', '"+surname+"', '"+pass+"', '"+email+"', '"+inst+"', '"+dept+"', '"+title+"')");
 
 			insert.executeUpdate();
 		} catch(Exception e){System.out.println(e);}
 	}
 
-	public void insertToStudent(int id, String name, age, pNumber, location, department, address, email) throws Exception{
+	public void insertToStudent(int id, String name, String surname, String pass, String email, String inst, String dept, String title, String schoolYear, String semester) throws Exception{
 		try{
 			Connection con = getConnection();
-			PreparedStatement insert  = con.prepareStatement("INSERT INTO Student (s_id, name, age, phoneNumber, location, department, address, email) VALUES ("+id+", ‘"+name+"’, "+age+", "+pNumber+", ‘"+location+"’, ‘"+department+"’, ‘"+address+"’, ‘"+email+"’)");
+			PreparedStatement insert  = con.prepareStatement("INSERT INTO Student (s_id, s_name, s_surname, s_password, s_email, s_institution, s_department, s_title, s_schoolYear, s_semester) VALUES ("+id+", '"+name+"', '"+surname+"', '"+pass+"', '"+email+"', '"+inst+"', '"+dept+"', '"+title+"', '"+schoolYear+"', '"+semester+"')");
 
 			insert.executeUpdate();
 		} catch(Exception e){System.out.println(e);}
 	}
 
 }
-*/
+
