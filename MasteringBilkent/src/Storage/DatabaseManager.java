@@ -29,6 +29,9 @@ public class DatabaseManager {
 	public static void a(){
 		int a = 0;
 	}
+	public static void b(){
+		int a = 0;
+	}
 	//creations
 	public void createTableInstructor() throws Exception{
 		try{
