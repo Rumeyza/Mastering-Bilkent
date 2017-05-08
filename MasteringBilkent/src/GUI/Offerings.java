@@ -1,5 +1,8 @@
 package GUI;
 
+import java.util.ArrayList;
+
+import ApplicationLogic.User;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -30,7 +33,7 @@ public class Offerings {
 	        double titleFontSize = 36;
 	        
 	        Text scenetitle1 = new Text("Mastering Bilkent Course List");
-	        scenetitle1.setFill(Color.rgb(46, 113, 129));
+	        scenetitle1.setFill(Color.rgb(0, 51,102));
 	        scenetitle1.setFont(Font.font(fontFamily, FontWeight.EXTRA_BOLD, titleFontSize));
 
 	        HBox logo = new HBox();
@@ -43,43 +46,45 @@ public class Offerings {
 	        Line line = new Line(0, 20, 750, 20);
 	        
 	        centerMenu.getChildren().addAll(logo, line);
+	       
 	        int courseSize = Main.courseArr.size();
-	        Hyperlink course;
+	   //     Hyperlink course=Hyperlink[courseSize];
+	        ArrayList<Hyperlink> course = new ArrayList<Hyperlink>();
 	        Text ins; 
 	        VBox courseBox; 
- 	       
 	        for(int i = 0 ; i < courseSize;i++){
 	        	courseBox = new VBox();
 	 	        courseBox.setPadding(new Insets(15));
 	 	        courseBox.setSpacing(10);
 	 	        courseBox.setAlignment(Pos.TOP_CENTER);
-	 	        courseBox.setStyle("-fx-background-color:  #009999");
-	        	course = new Hyperlink(Main.courseArr.get(i).getContentName());
-	        	course.setStyle("-fx-text-fill: white");
-		        course.setFont(Font.font("Helvetica", 24));   
-		        course.setBorder(Border.EMPTY);
+	 	        courseBox.setStyle("-fx-background-color:  #990000");
+	        	course.add(i,new Hyperlink(Main.courseArr.get(i).getContentName()));
+	        	int id = Main.courseArr.get(i).getContentId();
+	        	course.get(i).setOnAction(e -> LoginApp.myStage.setScene(CoursePage.startScene(id))); 
+	        	course.get(i).setStyle("-fx-text-fill: white");
+		        course.get(i).setFont(Font.font("Helvetica", 24));   
+		        course.get(i).setBorder(Border.EMPTY);
 		        ins =  new Text(Main.courseArr.get(i).getInstructor()+" / Spring 2017");
 		        ins.setFill(Color.WHITE);
 		        ins.setFont(Font.font("Helvetica",18));
-	 	        courseBox.getChildren().addAll(course, ins);
+	 	        courseBox.getChildren().addAll(course.get(i), ins);
 	 	        centerMenu.getChildren().add(courseBox);
 	 	        
 	        }
 	        
-	       
-	        sp.setVmax(440);
+	        sp.setFitToHeight(true);
+	        sp.setVmax(1000);
 	        sp.setPrefSize(115, 150);
+	        
 	        sp.setContent(centerMenu);
 	      
-	       
-	      //link1.setOnAction(e -> );*/
-	       
+	        
 	        
 	        //  CENTER END*/
 
 	        //  LEFT
 	        VBox leftMenu = new VBox();
-	        leftMenu.setStyle("-fx-background-color: #4198AE;");
+	        leftMenu.setStyle("-fx-background-color: #003366;");
 	        leftMenu.setPadding(new Insets(10));
 	        leftMenu.setSpacing(8);
 

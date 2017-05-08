@@ -1,5 +1,6 @@
 package GUI;
 
+import ApplicationLogic.Video;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -26,12 +27,11 @@ public class HomePage{
         centerMenu.setSpacing(8);
         centerMenu.setAlignment(Pos.TOP_CENTER);
 
-        //Mastering Bilkent Title
         String fontFamily = "Helvetica";
         double titleFontSize = 36;
         
         Text scenetitle1 = new Text("Mastering Bilkent Student Home Page");
-        scenetitle1.setFill(Color.rgb(46, 113, 129));
+        scenetitle1.setFill(Color.rgb(0, 51,102));
         scenetitle1.setFont(Font.font(fontFamily, FontWeight.EXTRA_BOLD, titleFontSize));
 
         HBox logo = new HBox();
@@ -52,7 +52,7 @@ public class HomePage{
 
         //  LEFT
         VBox leftMenu = new VBox();
-        leftMenu.setStyle("-fx-background-color: #4198AE;");
+        leftMenu.setStyle("-fx-background-color: #003366;");
         leftMenu.setPadding(new Insets(10));
         leftMenu.setSpacing(8);
 
@@ -128,10 +128,7 @@ public class HomePage{
         link5.setStyle("-fx-text-fill: white");
         //link5.setOnAction(e -> );
         
-  /*      Hyperlink offerings = new Hyperlink("ApplicationLogic.Course List");
-        offerings.setStyle("-fx-text-fill: white");
-        offerings.setOnAction(e -> GUI.LoginApp.myStage.setScene(GUI.Offerings.startScene(userIndex))); */
-
+ 
         Hyperlink logoutlink = new Hyperlink("Logout");
         logoutlink.setStyle("-fx-text-fill: white");
         logoutlink.setOnAction(e -> {
@@ -145,7 +142,7 @@ public class HomePage{
         searchfield.setPrefColumnCount(10);
         searchfield.getText();
 
-        leftMenu.getChildren().addAll(imagegrid, infogrid, link1, link3, link4, link5,logoutlink, searchfield);
+        leftMenu.getChildren().addAll(imagegrid, infogrid, link1, link3, link4, link5 ,logoutlink, searchfield);
         leftMenu.setAlignment(Pos.TOP_LEFT);
 
         //  LEFT END
