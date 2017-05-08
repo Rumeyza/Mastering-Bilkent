@@ -24,8 +24,7 @@ public class CoursePage {
 
     static Scene scene;
 
-    public static void start(int userIndex){
-
+    public static void start(int courseIndex){
 
         //  BORDER PANE COMPONENTS
         //  CENTER
@@ -38,7 +37,7 @@ public class CoursePage {
         String fontFamily = "Helvetica";
         double titleFontSize = 36;
 
-        Text scenetitle1 = new Text("Course Page");
+        Text scenetitle1 = new Text("Mastering Bilkent Course Page");
         scenetitle1.setFill(Color.rgb(46, 113, 129));
         scenetitle1.setFont(Font.font(fontFamily, FontWeight.EXTRA_BOLD, titleFontSize));
 
@@ -51,9 +50,9 @@ public class CoursePage {
         //Line
         Line line = new Line(0, 20, 750, 20);
 
-        Hyperlink buttonA = new Hyperlink("Register Another Course");
+      
 
-        centerMenu.getChildren().addAll(logo,line, buttonA);
+        centerMenu.getChildren().addAll(logo,line);
         //  CENTER END
 
         //  LEFT
@@ -83,41 +82,27 @@ public class CoursePage {
 
      //   User user = Main.courseArr.get(userIndex);
 
-  /*      Text userName = new Text(10, 20, user.getUserName() + " " + user.getUserSurname());
-        userName.setFont(Font.font(fontFamily1, titleFontSize1));
-        userName.setFill(Color.WHITE);
+        Text courseName = new Text(10, 20, Main.courseArr.get(courseIndex).getInstructor());
+        courseName.setFont(Font.font(fontFamily1, titleFontSize1));
+        courseName.setFill(Color.WHITE);
+        GridPane.setConstraints(courseName, 0,3,2,1);
 
-        Text userInst = new Text(10, 20, user.getUserInstitution());
-        userInst.setFont(Font.font(fontFamily1, titleFontSize1));
-        userInst.setFill(Color.WHITE);
-        GridPane.setConstraints(userInst, 0,1,2,1);
+        Text courseInst = new Text(10, 20, Main.courseArr.get(courseIndex).getContentName());
+        courseInst.setFont(Font.font(fontFamily1, titleFontSize1));
+        courseInst.setFill(Color.WHITE);
+        GridPane.setConstraints(courseInst, 0,1,2,1);
 
-        Text userDep = new Text(10, 20,  user.getUserDepartment()+ " / " + user.getUserTitle());
-        userDep.setFont(Font.font(fontFamily1, titleFontSize1));
-        userDep.setFill(Color.WHITE);
-        GridPane.setConstraints(userDep, 0,2);
-
-        Text userEmail = new Text(10, 20, user.getUserEmail());
-        userEmail.setFont(Font.font(fontFamily1, titleFontSize1));
-        userEmail.setFill(Color.WHITE);
-        GridPane.setConstraints(userEmail, 0,3,3,3);
-
-        Line line2 = new Line(0,0, 200, 0);
-        line2.setStyle("-fx-stroke: #FFFFFF;");
-        GridPane.setConstraints(line2, 0,6);
-
-        infogrid.getChildren().addAll(userName, userInst, userDep, userEmail, line2);*/
-
+        infogrid.getChildren().addAll(courseName, courseInst);
 
         //NAVİGATOR LİST
 
         Hyperlink link1 = new Hyperlink("Home Page");
         link1.setStyle("-fx-text-fill: white");
         link1.setOnAction(e -> {
-            if(Main.arr.get(userIndex).getUserRole().equals("an ApplicationLogic.Instructor"))
-                LoginApp.myStage.setScene(InstructorHomePage.startScene(userIndex));
+            if(Main.arr.get(courseIndex).getUserRole().equals("an ApplicationLogic.Instructor"))
+                LoginApp.myStage.setScene(InstructorHomePage.startScene(courseIndex));
             else
-                LoginApp.myStage.setScene(HomePage.startScene(userIndex));
+                LoginApp.myStage.setScene(HomePage.startScene(courseIndex));
 
             LoginApp.myStage.setTitle("Mastering Bilkent");//---------------------------------> her classın başına koyalım
         });
@@ -129,7 +114,7 @@ public class CoursePage {
         Hyperlink link3 = new Hyperlink("Profile");
         link3.setStyle("-fx-text-fill: white");
         link3.setOnAction(e -> {
-            LoginApp.myStage.setScene(ProfilePage.startScene(userIndex));
+            LoginApp.myStage.setScene(ProfilePage.startScene(courseIndex));
             LoginApp.myStage.setTitle("Your Profile");
         });
 
