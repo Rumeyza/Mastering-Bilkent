@@ -139,7 +139,7 @@ public class InstructorHomePage{
 
         //search bar
         final TextField searchfield = new TextField();
-        searchfield.setPromptText("Find ApplicationLogic.Course");
+        searchfield.setPromptText("Find Course");
         searchfield.setPrefColumnCount(10);
         searchfield.getText();
 
