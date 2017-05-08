@@ -44,7 +44,7 @@ public class Offerings {
 			logo.getChildren().addAll(scenetitle1);
 
 			//Line
-			Line line = new Line(0, 20, 100, 20);
+			Line line = new Line(0, 20, 1100, 20);
 
 			centerMenu.getChildren().addAll(logo, line);
 
