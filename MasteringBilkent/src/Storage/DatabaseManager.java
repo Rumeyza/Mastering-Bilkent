@@ -6,7 +6,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 public class DatabaseManager {
-	
+		
 	public Connection getConnection() throws Exception{
   	
   	try{
@@ -25,22 +25,22 @@ public class DatabaseManager {
   	return null;
   }
 	
-
 	//creations
 	public void createTableInstructor() throws Exception{
 		try{
 			Connection con = getConnection();
-			PreparedStatement create = con.prepareStatement("CREATE TABLE Instructor (i_id int NOT NULL, name varchar(50) NOT NULL, age int, phoneNumber int, location varchar(50), department varchar(50) NOT NULL, address varchar(250), email varchar(100) NOT NULL, PRIMARY KEY(i_id))");
+			PreparedStatement create = con.prepareStatement("CREATE TABLE Instructor (i_id int NOT NULL, i_name varchar(64) NOT NULL, i_surname varchar(64) NOT NULL, i_password varchar(64) NOT NULL, i_email varchar(64) NOT NULL, i_institution varchar(128), i_department varchar(64), i_title varchar(64), PRIMARY KEY(i_id))");
 
 			create.executeUpdate();
 	} catch(Exception e){System.out.println(e);}
 	}
 
-
 	public void createTableStudent() throws Exception{
 		try{
 			Connection con = getConnection();
-			PreparedStatement create = con.prepareStatement("CREATE TABLE Student (s_id int NOT NULL, name varchar(50) NOT NULL, age int, phoneNumber int, location varchar(50), department varchar(50) NOT NULL, address varchar(250), email varchar(100) NOT NULL, PRIMARY KEY(s_id))");
+			PreparedStatement create = con.prepareStatement("CREATE TABLE Student(s_id int NOT NULL, s_name varchar(64) NOT NULL, s_surname varchar(64) NOT NULL, s_password varchar(64) NOT NULL, s_email varchar(64) NOT NULL, s_institution varchar(128), s_department varchar(64), s_title varchar(64), s_schoolYear varchar(64), s_semester varchar(64), PRIMARY KEY(s_id))");
+																								//String name, String surname, String pass, String email, String inst, String dept, String role, String title,
+																										//String schoolYear, String semester
 
 			create.executeUpdate();
 	} catch(Exception e){System.out.println(e);}
@@ -49,14 +49,11 @@ public class DatabaseManager {
 	public void createTableCourse() throws Exception{
 		try{
 			Connection con = getConnection();
-			PreparedStatement create = con.prepareStatement("CREATE TABLE Course(i_id int NOT NULL, courseType varchar(50) NOT NULL, courseKey varchar(50), course_id int NOT NULL, courseName varchar(50) NOT NULL, PRIMARY KEY(i_id, course_id))");
+			PreparedStatement create = con.prepareStatement("CREATE TABLE Course(course_id int NOT NULL, i_id int NOT NULL, courseType varchar(50) NOT NULL, courseKey varchar(50), courseName varchar(50) NOT NULL, PRIMARY KEY(i_id, course_id))");
 
 			create.executeUpdate();
-	} catch(Exception e){System.out.println(e);}
+		} catch(Exception e){System.out.println(e);}
 	}
-
-	
-	
 
 //insertions
 	public void insertToCourse(int id, String visibility, String key, int c_id, String name) throws Exception{
