@@ -17,11 +17,14 @@ public class Main {
         Course PL = new Course("CS315 - Programming Languages " , "Buğra Gedik");
         courseArr = new ArrayList<Course>();
         courseArr.add(0, OOD);
+        courseArr.add(1, PL);
+
         
         Application.launch(LoginApp.class, args);
     }
 
-    public static int findContent(int contId){
+
+    public static int findCourse(int contId){
         int result = -1;
         for(int i = 0; i < Main.courseArr.size() ; i++){
             if(Main.courseArr.get(i).getContentId() == contId)
@@ -29,7 +32,8 @@ public class Main {
         }
         return result;
     }
-    
+
+    //Logic check logic
     public static int findUser(String userName, String password){
         int result = -1;
         for(int i = 0; i < Main.arr.size() ; i++){

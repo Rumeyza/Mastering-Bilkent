@@ -15,7 +15,7 @@ public class VideoPage {
         public void start(Stage stage) throws Exception {
 
             WebView webview = new WebView();
-            webview.getEngine().load("https://www.google.com/");
+            webview.getEngine().load("https://www.youtube.com/watch?v=5FPIcb5QVNw");
             webview.setPrefSize(1080, 720);
 
             stage.setScene(new Scene(webview));

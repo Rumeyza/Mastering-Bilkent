@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 
 /**
  * Created by Asus on 3.5.2017.
@@ -7,7 +8,7 @@ public class Course extends Content {
     private String instructor;
     private String courseKey;
     private boolean visibility;
-    //public String[] contentList;
+    public ArrayList<Content> contentList;
 
     public Course() {
         super("Default Course");
@@ -63,5 +64,9 @@ public class Course extends Content {
 
     public void setVisibility(boolean visibility) {
         this.visibility = visibility;
+    }
+
+    public void addContent(){
+
     }
 }
