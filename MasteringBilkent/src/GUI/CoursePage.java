@@ -38,7 +38,7 @@ public class CoursePage {
         String fontFamily = "Helvetica";
         double titleFontSize = 36;
 
-        Text scenetitle1 = new Text("ApplicationLogic.Course Page");
+        Text scenetitle1 = new Text("Course Page");
         scenetitle1.setFill(Color.rgb(46, 113, 129));
         scenetitle1.setFont(Font.font(fontFamily, FontWeight.EXTRA_BOLD, titleFontSize));
 
@@ -51,7 +51,7 @@ public class CoursePage {
         //Line
         Line line = new Line(0, 20, 750, 20);
 
-        Hyperlink buttonA = new Hyperlink("Register Another ApplicationLogic.Course");
+        Hyperlink buttonA = new Hyperlink("Register Another Course");
 
         centerMenu.getChildren().addAll(logo,line, buttonA);
         //  CENTER END

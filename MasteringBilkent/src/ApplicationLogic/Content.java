@@ -5,7 +5,7 @@ package ApplicationLogic;
  */
 public class Content {
 
-    private static int contID = 1000;
+    private static int contID = 0;
 
     private String contentName;
     private int contentId;

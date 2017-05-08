@@ -47,7 +47,6 @@ public class Offerings {
 	        Hyperlink course;
 	        Text ins; 
 	        VBox courseBox; 
- 	       
 	        for(int i = 0 ; i < courseSize;i++){
 	        	courseBox = new VBox();
 	 	        courseBox.setPadding(new Insets(15));
@@ -55,6 +54,8 @@ public class Offerings {
 	 	        courseBox.setAlignment(Pos.TOP_CENTER);
 	 	        courseBox.setStyle("-fx-background-color:  #990000");
 	        	course = new Hyperlink(Main.courseArr.get(i).getContentName());
+	        	int id = Main.courseArr.get(i).getContentId();
+	        	course.setOnAction(e -> LoginApp.myStage.setScene(CoursePage.startScene(id))); 
 	        	course.setStyle("-fx-text-fill: white");
 		        course.setFont(Font.font("Helvetica", 24));   
 		        course.setBorder(Border.EMPTY);
