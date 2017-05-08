@@ -158,7 +158,6 @@ public class CoursePage {
         leftMenu.setAlignment(Pos.TOP_LEFT);
 
         //  LEFT END
-
         //  BORDER PANE
         BorderPane layout1 = new BorderPane();
         layout1.setCenter(centerMenu);
