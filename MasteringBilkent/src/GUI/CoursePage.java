@@ -95,6 +95,7 @@ public class CoursePage {
         infogrid.getChildren().addAll(courseName, courseInst);
 
         //NAVİGATOR LİST
+        //comment
 
         Hyperlink link1 = new Hyperlink("Return");
         link1.setStyle("-fx-text-fill: white");
