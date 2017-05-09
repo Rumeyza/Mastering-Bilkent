@@ -64,7 +64,7 @@ public class Offerings {
 				course.add(i,new Hyperlink(Main.courseArr.get(i).getContentName()));
 				int id = Main.courseArr.get(i).getContentId();
 				System.out.println(id);
-				course.get(i).setOnAction(e -> LoginApp.myStage.setScene(CoursePage.startScene(id, role)));
+				course.get(i).setOnAction(e -> LoginApp.myStage.setScene(CoursePage.startScene(id, userIndex)));
 				course.get(i).setStyle("-fx-text-fill: white");
 				course.get(i).setFont(Font.font("Helvetica", 24));
 				course.get(i).setBorder(Border.EMPTY);

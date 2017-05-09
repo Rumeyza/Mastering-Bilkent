@@ -24,7 +24,7 @@ public class CoursePage {
 
     static Scene scene;
 
-    public static void start(int courseIndex, String role){
+    public static void start(int courseIndex, int userIndex){
 
         //  BORDER PANE COMPONENTS
         //  CENTER
@@ -57,7 +57,7 @@ public class CoursePage {
 
         //  LEFT
         VBox leftMenu = new VBox();
-        leftMenu.setStyle("-fx-background-color: #4198AE;");
+        leftMenu.setStyle("-fx-background-color: #003366;");
         leftMenu.setPadding(new Insets(10));
         leftMenu.setSpacing(8);
 
@@ -96,14 +96,13 @@ public class CoursePage {
 
         //NAVİGATOR LİST
 
-        Hyperlink link1 = new Hyperlink("Home Page");
+        Hyperlink link1 = new Hyperlink("Return");
         link1.setStyle("-fx-text-fill: white");
         link1.setOnAction(e -> {
-            if(Main.arr.get(courseIndex).getUserRole().equals("an ApplicationLogic.Instructor"))
-                LoginApp.myStage.setScene(InstructorHomePage.startScene(courseIndex));
-            else
-                LoginApp.myStage.setScene(HomePage.startScene(courseIndex));
-
+        	if(Main.arr.get(userIndex).getUserRole().equals("an Instructor"))
+        		LoginApp.myStage.setScene(Offerings.startScene(userIndex,"instructor"));
+        	else
+        		 LoginApp.myStage.setScene(Offerings.startScene(userIndex,"student"));
             LoginApp.myStage.setTitle("Mastering Bilkent");//---------------------------------> her classın başına koyalım
         });
 
@@ -153,8 +152,8 @@ public class CoursePage {
 
     }
 
-    public static Scene startScene(int index, String role) {
-        start(index, role);
+    public static Scene startScene(int index, int userIndex) {
+        start(index, userIndex);
         return scene;
     }
 }
