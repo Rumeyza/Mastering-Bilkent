@@ -1,6 +1,7 @@
 package GUI;
 
 import ApplicationLogic.Course;
+import ApplicationLogic.Instructor;
 import ApplicationLogic.User;
 import javafx.application.Application;
 import java.util.ArrayList;
@@ -13,8 +14,10 @@ public class Main {
     public static void main(String[] args) {
         
         User user1 = new User("Root","Mastering Bilkent","a","a","","","",""); //root@mastering.bilkent
+        User user2 = new Instructor("b","b","b","b","b","b","an Instructor","b");
         arr = new ArrayList<User>();
         arr.add(0,user1);
+        arr.add(1,user2);
         
         Course OOD = new Course("CS319 - Object Oriented Software Engineering " , "Bora Güngören");
         Course PL = new Course("CS315 - Programming Languages " , "Buğra Gedik");

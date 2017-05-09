@@ -18,7 +18,7 @@ import javafx.scene.shape.*;
 
 public class Offerings {
 	static Scene scene;
-		public static void start(int userIndex){
+		public static void start(int userIndex, String role){
 
 			//  BORDER PANE COMPONENTS
 			//  CENTER
@@ -57,11 +57,14 @@ public class Offerings {
 				courseBox.setPadding(new Insets(15));
 				courseBox.setSpacing(10);
 				courseBox.setAlignment(Pos.TOP_CENTER);
-				courseBox.setStyle("-fx-background-color:  #990000");
+				if(role.equals("student"))
+					courseBox.setStyle("-fx-background-color:  #990000");
+				else
+					courseBox.setStyle("-fx-background-color:  #003366");
 				course.add(i,new Hyperlink(Main.courseArr.get(i).getContentName()));
 				int id = Main.courseArr.get(i).getContentId();
 				System.out.println(id);
-				course.get(i).setOnAction(e -> LoginApp.myStage.setScene(CoursePage.startScene(id)));
+				course.get(i).setOnAction(e -> LoginApp.myStage.setScene(CoursePage.startScene(id, role)));
 				course.get(i).setStyle("-fx-text-fill: white");
 				course.get(i).setFont(Font.font("Helvetica", 24));
 				course.get(i).setBorder(Border.EMPTY);
@@ -84,7 +87,10 @@ public class Offerings {
 
 			//  LEFT
 			VBox leftMenu = new VBox();
-			leftMenu.setStyle("-fx-background-color: #003366;");
+			if(role.equals("student"))
+				leftMenu.setStyle("-fx-background-color:  #003366");
+			else
+				leftMenu.setStyle("-fx-background-color: #990000;");
 			leftMenu.setPadding(new Insets(10));
 			leftMenu.setSpacing(8);
 
@@ -135,13 +141,14 @@ public class Offerings {
 
 			//navigator list
 
-		/*      Hyperlink link1 = new Hyperlink("All Courses");
-			link1.setStyle("-fx-text-fill: white");
-			//link1.setOnAction(e -> );*/
 
 			Hyperlink link2 = new Hyperlink("My Courses");
 			link2.setStyle("-fx-text-fill: white");
-			link2.setOnAction(e -> LoginApp.myStage.setScene(HomePage.startScene(userIndex)) );
+			if(role.equals("student"))
+				link2.setOnAction(e -> LoginApp.myStage.setScene(HomePage.startScene(userIndex)) );
+			else
+				link2.setOnAction(e -> LoginApp.myStage.setScene(InstructorHomePage.startScene(userIndex)) );
+				
 
 			Hyperlink link3 = new Hyperlink("Profile");
 			link3.setStyle("-fx-text-fill: white");
@@ -186,8 +193,8 @@ public class Offerings {
 
 		}
 
-		public static Scene startScene(int userIndex) {
-			start(userIndex);
+		public static Scene startScene(int userIndex, String role) {
+			start(userIndex, role);
 			return scene;
 		}
 	

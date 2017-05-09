@@ -92,7 +92,7 @@ public class LoginApp  extends Application {
                     	pwBox.setText("");
                     	userName.setTextFill(Color.BLACK);
                     	pw.setTextFill(Color.BLACK);
-                    	if(Main.arr.get(result).getUserRole().equals("an ApplicationLogic.Instructor"))
+                    	if(Main.arr.get(result).getUserRole().equals("an Instructor"))
                     		 primaryStage.setScene(InstructorHomePage.startScene(result));
                     	else
                     		primaryStage.setScene(HomePage.startScene(result));

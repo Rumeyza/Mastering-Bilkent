@@ -105,13 +105,9 @@ public class HomePage{
 
         Hyperlink link1 = new Hyperlink("All Courses");
         link1.setStyle("-fx-text-fill: white");
-        link1.setOnAction(e -> LoginApp.myStage.setScene(Offerings.startScene(userIndex))); 
+        link1.setOnAction(e -> LoginApp.myStage.setScene(Offerings.startScene(userIndex, "student"))); 
 
-        //link1.setOnAction(e -> );
-
-     /*   Hyperlink link2 = new Hyperlink("My Courses");
-        link2.setStyle("-fx-text-fill: white");
-        //link2.setOnAction(e -> );*/
+     
 
         Hyperlink link3 = new Hyperlink("Profile");
         link3.setStyle("-fx-text-fill: white");

@@ -24,7 +24,7 @@ public class CoursePage {
 
     static Scene scene;
 
-    public static void start(int courseIndex){
+    public static void start(int courseIndex, String role){
 
         //  BORDER PANE COMPONENTS
         //  CENTER
@@ -153,8 +153,8 @@ public class CoursePage {
 
     }
 
-    public static Scene startScene(int index) {
-        start(index);
+    public static Scene startScene(int index, String role) {
+        start(index, role);
         return scene;
     }
 }
