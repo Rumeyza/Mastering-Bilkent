@@ -95,7 +95,7 @@ public class DatabaseManager {
 		} catch(Exception e){System.out.println(e);}
 	}
 	
-	public boolean isExisting(String email, String password){
+	public boolean isExistingStudent(String email, String password){
     	try{
     		Connection con = getConnection();
     		PreparedStatement statement = con.prepareStatement("SELECT s_email, s_password FROM student");

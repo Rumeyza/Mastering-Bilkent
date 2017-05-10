@@ -21,14 +21,18 @@ import javafx.scene.text.TextFlow;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
-
+import Storage.DatabaseManager;
+import ApplicationLogic.Instructor;
+import ApplicationLogic.Student;
 public class LoginApp  extends Application {
 
     static Scene scene;
     static Stage myStage;
     
     @Override
-    public void start(Stage primaryStage) {
+    public void start(Stage primaryStage) throws Exception{
+    	
+    	DatabaseManager dbms = new DatabaseManager();
     	primaryStage.setTitle("Mastering Bilkent");
 
         GridPane grid = new GridPane();
@@ -86,7 +90,44 @@ public class LoginApp  extends Application {
         });
 
         btn.setOnAction(e -> {
-        	User result = Main.findUser( userTextField.getText(),pwBox.getText());
+        	
+        	
+        	try {
+				Student studentLogin;
+				studentLogin = dbms.getStudent(userTextField.getText(),pwBox.getText());
+				Instructor instructorLogin;
+				instructorLogin = dbms.getInstructor(userTextField.getText(),pwBox.getText());
+				
+				if(studentLogin != null && instructorLogin == null){
+					System.out.println(studentLogin.getUserSurname());
+					userTextField.setStyle("-fx-text-inner-color: black;");     
+                    //	userTextField.setText("");
+                    pwBox.setText("");
+                    userName.setTextFill(Color.BLACK);
+                    pw.setTextFill(Color.BLACK);
+                    primaryStage.setScene(HomePage.startScene(studentLogin));
+                    primaryStage.setTitle("Homepage");
+				}
+				else if( studentLogin == null && instructorLogin != null){
+					userTextField.setStyle("-fx-text-inner-color: black;");     
+                    //	userTextField.setText("");
+                    pwBox.setText("");
+                    userName.setTextFill(Color.BLACK);
+                    pw.setTextFill(Color.BLACK);
+                    primaryStage.setScene(InstructorHomePage.startScene(instructorLogin));
+                    primaryStage.setTitle("Homepage");
+				}
+				else{
+                	userName.setTextFill(Color.RED);
+                	pw.setTextFill(Color.RED);
+				}
+
+			} catch (Exception e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+        	
+        	/*User result = Main.findUser( userTextField.getText(),pwBox.getText());
                     if(result!= null){
                     	userTextField.setStyle("-fx-text-inner-color: black;");     
                     //	userTextField.setText("");
@@ -103,9 +144,9 @@ public class LoginApp  extends Application {
                     else{
                     	userName.setTextFill(Color.RED);
                     	pw.setTextFill(Color.RED);
-                    }
+                    }*/
 
-                }
+           }
         );
         
         Screen screen1 = Screen.getPrimary();

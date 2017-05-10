@@ -61,7 +61,7 @@ public class Main {
     }
 
 
-    public static int findCourse(int contId){
+    /*public static int findCourse(int contId){
         int result = -1;
         for(int i = 0; i < Main.courseArr.size() ; i++){
             if(Main.courseArr.get(i).getContentId() == contId)
@@ -78,5 +78,5 @@ public class Main {
                 result = Main.arr.get(i);
         }
         return result;
-    }
+    }*/
 }
