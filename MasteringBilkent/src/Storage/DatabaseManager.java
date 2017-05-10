@@ -70,7 +70,7 @@ public class DatabaseManager {
 	public void insertToCourse(String contentName, String instr, String key, boolean v) throws Exception{
 		try{
 			Connection con = getConnection();
-			PreparedStatement insert  = con.prepareStatement("INSERT INTO Course (courseName, instr, courseKey, visibility) VALUES ('" +contentName+ "', '" +instr+ "', '" +key+ "' , '"+v+"')");
+			PreparedStatement insert  = con.prepareStatement("INSERT INTO Course (courseName, instr, courseKey, visibility) VALUES ('" +contentName+ "', '" +instr+ "', '" +key+ "' , "+v+")");
 															
 			
 			insert.executeUpdate();
@@ -81,7 +81,7 @@ public class DatabaseManager {
 		
 		try {
 			Connection con = getConnection();
-			PreparedStatement insert  = con.prepareStatement("INSERT INTO Course (courseName, instr,visibility) VALUES ('" +contentName+ "','" +instr+ "','"+v+"')");
+			PreparedStatement insert  = con.prepareStatement("INSERT INTO Course (courseName, instr,visibility) VALUES ('" +contentName+ "','" +instr+ "',"+v+")");
 			
 			insert.executeUpdate();
 		} catch (Exception e) {System.out.println(e);}

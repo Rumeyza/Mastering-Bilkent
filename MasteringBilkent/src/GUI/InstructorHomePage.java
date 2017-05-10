@@ -28,114 +28,113 @@ public class InstructorHomePage{
 
         //  BORDER PANE COMPONENTS
         //  CENTER
-        ScrollPane sp = new ScrollPane();
+         ScrollPane sp = new ScrollPane();
 
-        VBox centerMenu = new VBox();
-        centerMenu.setPadding(new Insets(10));
-        centerMenu.setSpacing(8);
-        centerMenu.setAlignment(Pos.TOP_CENTER);
+         VBox centerMenu = new VBox();
+         centerMenu.setPadding(new Insets(10));
+         centerMenu.setSpacing(8);
+         centerMenu.setAlignment(Pos.TOP_CENTER);
 
         //Mastering Bilkent Title
-        String fontFamily = "Helvetica";
-        double titleFontSize = 36;
+         String fontFamily = "Helvetica";
+         double titleFontSize = 36;
         
-        Text scenetitle1 = new Text("Mastering Bilkent Instructor Home Page");
-        scenetitle1.setFill(Color.rgb(153, 0, 76));
-        scenetitle1.setFont(Font.font(fontFamily, FontWeight.EXTRA_BOLD, titleFontSize));
+         Text scenetitle1 = new Text("Mastering Bilkent Instructor Home Page");
+         scenetitle1.setFill(Color.rgb(153, 0, 76));
+         scenetitle1.setFont(Font.font(fontFamily, FontWeight.EXTRA_BOLD, titleFontSize));
 
-        HBox logo = new HBox();
-        logo.setPadding(new Insets(10));
-        logo.setSpacing(8);
-        logo.setAlignment(Pos.TOP_CENTER);
-        logo.getChildren().addAll(scenetitle1);
+         HBox logo = new HBox();
+         logo.setPadding(new Insets(10));
+         logo.setSpacing(8);
+         logo.setAlignment(Pos.TOP_CENTER);
+         logo.getChildren().addAll(scenetitle1);
 
         //Line
-        Line line = new Line(0, 20, 750, 20);
+         Line line = new Line(0, 20, 750, 20);
 
-        centerMenu.getChildren().addAll(logo, line);
+         centerMenu.getChildren().addAll(logo, line);
 
         //Mastering Bilkent Title End
-        ArrayList<Course> list = instructor.getCourseList();
+         ArrayList<Course> list = instructor.getCourseList();
 
-        for(int i = 0 ; i < list.size();i++){
-            Course course = list.get(i);
+         for(int i = 0 ; i < list.size();i++){
+             Course course = list.get(i);
 
-            VBox courseBox = new VBox();
-            courseBox.setPadding(new Insets(15));
-            courseBox.setSpacing(10);
-            courseBox.setAlignment(Pos.TOP_CENTER);
-            courseBox.setStyle("-fx-background-color:  #003366");
+             VBox courseBox = new VBox();
+             courseBox.setPadding(new Insets(15));
+             courseBox.setSpacing(10);
+             courseBox.setAlignment(Pos.TOP_CENTER);
+             courseBox.setStyle("-fx-background-color:  #003366");
 
-            Hyperlink courseLink = new Hyperlink(course.getContentName());
-            int id = list.get(i).getContentId();
-            courseLink.setOnAction(e -> LoginApp.myStage.setScene(CoursePage.startScene(course, instructor)));
-            courseLink.setStyle("-fx-text-fill: white");
-            courseLink.setFont(Font.font("Helvetica", 24));
-            courseLink.setBorder(Border.EMPTY);
+             Hyperlink courseLink = new Hyperlink(course.getContentName());
+             int id = list.get(i).getContentId();
+             courseLink.setOnAction(e -> LoginApp.myStage.setScene(CoursePage.startScene(course, instructor)));
+             courseLink.setStyle("-fx-text-fill: white");
+             courseLink.setFont(Font.font("Helvetica", 24));
+             courseLink.setBorder(Border.EMPTY);
 
-            Text ins = new Text(course.getInstructor()+" / Spring 2017");
-            ins.setFill(Color.WHITE);
-            ins.setFont(Font.font("Helvetica",18));
-            courseBox.getChildren().addAll(courseLink, ins);
+             Text ins = new Text(course.getInstructor()+" / Spring 2017");
+             ins.setFill(Color.WHITE);
+             ins.setFont(Font.font("Helvetica",18));
+             courseBox.getChildren().addAll(courseLink, ins);
 
-            //courseList.getChildren().addAll(courseBox);
-            centerMenu.getChildren().addAll(courseBox);
+             //courseList.getChildren().addAll(courseBox);
+             centerMenu.getChildren().addAll(courseBox);
 
-        }
+         }
 
-        sp.setFitToHeight(true);
-        sp.setVmax(1000);
-        sp.setPrefSize(115, 150);
-        sp.setContent(centerMenu);
+         sp.setFitToHeight(true);
+         sp.setVmax(1000);
+         sp.setPrefSize(115, 150);
+         sp.setContent(centerMenu);
 
-        //Instructor Course List End
+         //Instructor Course List End
 
 
-        //Course Creation Link
-        Hyperlink newCourseLink = new Hyperlink("Create Another Course");
-        newCourseLink.setOnAction(e-> NewCourseBox.display(instructor));
-        //Course Creation Link End
+         //Course Creation Link
+         Hyperlink newCourseLink = new Hyperlink("Create Another Course");
+         newCourseLink.setOnAction(e-> NewCourseBox.display(instructor));
+         //Course Creation Link End
+         centerMenu.getChildren().addAll( sp , newCourseLink);
+         //  CENTER END
 
-        centerMenu.getChildren().addAll( sp , newCourseLink);
-        //  CENTER END
+         //  LEFT
+         VBox leftMenu = new VBox();
+         leftMenu.setStyle("-fx-background-color: #990000;");
+         leftMenu.setPadding(new Insets(10));
+         leftMenu.setSpacing(8);
 
-        //  LEFT
-        VBox leftMenu = new VBox();
-        leftMenu.setStyle("-fx-background-color: #990000;");
-        leftMenu.setPadding(new Insets(10));
-        leftMenu.setSpacing(8);
+         //profile image
+         GridPane imagegrid = new GridPane();
+         Image avatar = new Image("file:avatar.png");
+         ImageView iv1 = new ImageView();
+         iv1.setFitWidth(240);
+         iv1.setFitHeight(240);
+         iv1.setImage(avatar);
+         imagegrid.add(iv1,0,0);
+         imagegrid.setAlignment(Pos.CENTER);
 
-        //profile image
-        GridPane imagegrid = new GridPane();
-        Image avatar = new Image("file:avatar.png");
-        ImageView iv1 = new ImageView();
-        iv1.setFitWidth(240);
-        iv1.setFitHeight(240);
-        iv1.setImage(avatar);
-        imagegrid.add(iv1,0,0);
-        imagegrid.setAlignment(Pos.CENTER);
+         //user information grid
+         GridPane infogrid = new GridPane();
+         infogrid.setPadding(new Insets(10,10,10,10));
+         infogrid.setVgap(8);
+         infogrid.setHgap(10);
 
-        //user information grid
-        GridPane infogrid = new GridPane();
-        infogrid.setPadding(new Insets(10,10,10,10));
-        infogrid.setVgap(8);
-        infogrid.setHgap(10);
+         String fontFamily1 = "Helvetica";
+         double titleFontSize1 = 16;
 
-        String fontFamily1 = "Helvetica";
-        double titleFontSize1 = 16;
+         Text userName = new Text(10, 20, instructor.getUserName() + " " + instructor.getUserSurname());
+         userName.setFont(Font.font(fontFamily1, titleFontSize1));
+         userName.setFill(Color.WHITE);
 
-        Text userName = new Text(10, 20, instructor.getUserName() + " " + instructor.getUserSurname());
-        userName.setFont(Font.font(fontFamily1, titleFontSize1));
-        userName.setFill(Color.WHITE);
+         Text userInst = new Text(10, 20, instructor.getUserInstitution());
+         userInst.setFont(Font.font(fontFamily1, titleFontSize1));
+         userInst.setFill(Color.WHITE);
+         GridPane.setConstraints(userInst, 0,1,2,1);
 
-        Text userInst = new Text(10, 20, instructor.getUserInstitution());
-        userInst.setFont(Font.font(fontFamily1, titleFontSize1));
-        userInst.setFill(Color.WHITE);
-        GridPane.setConstraints(userInst, 0,1,2,1);
-
-        Text userDep = new Text(10, 20,  instructor.getUserDepartment()+ " / " + instructor.getUserTitle());
-        userDep.setFont(Font.font(fontFamily1, titleFontSize1));
-        userDep.setFill(Color.WHITE);
+         Text userDep = new Text(10, 20,  instructor.getUserDepartment()+ " / " + instructor.getUserTitle());
+         userDep.setFont(Font.font(fontFamily1, titleFontSize1));
+         userDep.setFill(Color.WHITE);
         GridPane.setConstraints(userDep, 0,2);
 
         Text userEmail = new Text(10, 20, instructor.getUserEmail());

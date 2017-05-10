@@ -3,7 +3,7 @@ package ApplicationLogic;
 import GUI.Main;
 
 import java.util.ArrayList;
-
+import Storage.DatabaseManager;
 /**
  * Created by Asus on 3.5.2017.
  */
@@ -42,6 +42,14 @@ public class Instructor extends User {
         Course MyCourse = new Course( coursename,  super.getUserName(),  key,  v);
         courseList.add(MyCourse);
         Main.courseArr.add(MyCourse);
+        
+        DatabaseManager dbms = new DatabaseManager();
+        try {
+			dbms.insertToCourse(coursename, super.getUserName(), key, v);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
         return true;
     }
 
