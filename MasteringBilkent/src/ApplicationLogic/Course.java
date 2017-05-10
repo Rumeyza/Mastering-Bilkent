@@ -6,7 +6,7 @@ import java.util.ArrayList;
  * Created by Asus on 3.5.2017.
  */
 public class Course extends Content {
-
+//comment
     private String instructor;
     private String courseKey;
     private boolean visibility;
