@@ -9,7 +9,7 @@ public class Student extends User{
 
     public String schoolYear;
     public String semester;
-    public ArrayList<Integer> courseEnrolmentList;
+    public static ArrayList<Integer> courseEnrolmentList;
 
     public Student(){
         super();

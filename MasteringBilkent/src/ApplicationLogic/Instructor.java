@@ -1,5 +1,7 @@
 package ApplicationLogic;
 
+import GUI.Main;
+
 import java.util.ArrayList;
 
 /**
@@ -7,27 +9,40 @@ import java.util.ArrayList;
  */
 public class Instructor extends User {
 
+    public static ArrayList<Course> courseList;
 
-    public ArrayList<Content> courseList;
-
+    //Constructors
     public Instructor(){
         super();
-        this.courseList = new ArrayList<Content>();
+        this.courseList = new ArrayList<Course>();
     }
 
     public Instructor(String name, String surname, String pass, String email, String inst, String dept, String role, String title) {
         super(name, surname, pass, email, inst, dept, role, title);
+        this.courseList = new ArrayList<Course>();
     }
 
-    public boolean createCourse(String contentname, String key, boolean v){
+    //getter setter
+    public ArrayList<Course> getCourseList() {
+        return courseList;
+    }
+
+    public void setCourseList(ArrayList<Course> courseList) {
+        this.courseList = courseList;
+    }
+
+    //Other methods
+    public boolean createCourse(String coursename, String key, boolean v){
+        //if course exists ignore
         for(int i = 0; i < courseList.size() ; i++){
-            if(courseList.get(i).getContentName().equals(contentname))
+            if(courseList.get(i).getContentName().equals(coursename))
                 return false;
         }
-        Content course = new Course( contentname,  super.getUserName(),  key,  v);
-        courseList.add(course);
+        //add
+        Course MyCourse = new Course( coursename,  super.getUserName(),  key,  v);
+        courseList.add(MyCourse);
+        Main.courseArr.add(MyCourse);
         return true;
-
     }
 
     public boolean deleteCourse(int courseId){
@@ -38,4 +53,9 @@ public class Instructor extends User {
         }
         return false;
     }
+
+    public Content returnLastCourse(){
+        return courseList.get(courseList.size());
+    }
+
 }

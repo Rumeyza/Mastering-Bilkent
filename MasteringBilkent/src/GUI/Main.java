@@ -8,8 +8,8 @@ import java.util.ArrayList;
 
 public class Main {
     
-    static ArrayList<User> arr;
-    static ArrayList<Course> courseArr;
+    public static ArrayList<User> arr;
+    public static ArrayList<Course> courseArr;
     
     public static void main(String[] args) {
         
@@ -40,7 +40,6 @@ public class Main {
         courseArr.add(7, CS102);
         courseArr.add(8, MATH101);
         courseArr.add(9, MATH102);
-        
 
         
         Application.launch(LoginApp.class, args);

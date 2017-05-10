@@ -48,6 +48,7 @@ public class Offerings {
 
 			centerMenu.getChildren().addAll(logo, line);
 
+			//Scroll Pane Filler
 			int courseSize = Main.courseArr.size();
 			ArrayList<Hyperlink> course = new ArrayList<Hyperlink>();
 			Text ins;
@@ -63,8 +64,8 @@ public class Offerings {
 					courseBox.setStyle("-fx-background-color:  #003366");
 				course.add(i,new Hyperlink(Main.courseArr.get(i).getContentName()));
 				int id = Main.courseArr.get(i).getContentId();
-				System.out.println(id);
-				course.get(i).setOnAction(e -> LoginApp.myStage.setScene(CoursePage.startScene(id, userIndex)));
+				//System.out.println(id);
+				course.get(i).setOnAction(e -> LoginApp.myStage.setScene(CoursePage.startScene(id, Main.courseArr, userIndex)));
 				course.get(i).setStyle("-fx-text-fill: white");
 				course.get(i).setFont(Font.font("Helvetica", 24));
 				course.get(i).setBorder(Border.EMPTY);

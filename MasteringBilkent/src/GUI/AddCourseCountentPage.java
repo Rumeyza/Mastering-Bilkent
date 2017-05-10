@@ -1,7 +1,5 @@
 package GUI;
 
-import ApplicationLogic.Content;
-import ApplicationLogic.Course;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -18,32 +16,30 @@ import javafx.scene.shape.Line;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
-import ApplicationLogic.User;
-
-import java.util.ArrayList;
 
 /**
- * Created by Asus on 1.5.2017.
+ * Created by Asus on 10.5.2017.
  */
-public class CoursePage {
+public class AddCourseCountentPage {
 
     static Scene scene;
 
-    public static void start(int courseIndex, ArrayList<Course> list, int userIndex){
+    public static void start(int userIndex) {
 
         //  BORDER PANE COMPONENTS
         //  CENTER
+
+        //Header
         VBox centerMenu = new VBox();
         centerMenu.setPadding(new Insets(10));
         centerMenu.setSpacing(8);
         centerMenu.setAlignment(Pos.TOP_CENTER);
 
-        //Mastering Bilkent Title
         String fontFamily = "Helvetica";
         double titleFontSize = 36;
 
-        Text scenetitle1 = new Text("Mastering Bilkent Course Page");
-        scenetitle1.setFill(Color.rgb(46, 113, 129));
+        Text scenetitle1 = new Text("Mastering Bilkent Student Home Page");
+        scenetitle1.setFill(Color.rgb(0, 51, 102));
         scenetitle1.setFont(Font.font(fontFamily, FontWeight.EXTRA_BOLD, titleFontSize));
 
         HBox logo = new HBox();
@@ -54,10 +50,15 @@ public class CoursePage {
 
         //Line
         Line line = new Line(0, 20, 750, 20);
+        //header end
 
-      
+        //Create course grid
 
-        centerMenu.getChildren().addAll(logo,line);
+
+
+        //Create course grid end
+        centerMenu.getChildren().addAll(logo, line);
+
         //  CENTER END
 
         //  LEFT
@@ -68,66 +69,71 @@ public class CoursePage {
 
         //profile image
         GridPane imagegrid = new GridPane();
-        Image avatar = new Image("file:bilkent.png");
+        Image avatar = new Image("file:avatar.png");
         ImageView iv1 = new ImageView();
         iv1.setFitWidth(240);
         iv1.setFitHeight(240);
         iv1.setImage(avatar);
-        imagegrid.add(iv1,0,0);
+        imagegrid.add(iv1, 0, 0);
         imagegrid.setAlignment(Pos.CENTER);
 
         //user information grid
         GridPane infogrid = new GridPane();
-        infogrid.setPadding(new Insets(10,10,10,10));
+        infogrid.setPadding(new Insets(10, 10, 10, 10));
         infogrid.setVgap(8);
         infogrid.setHgap(10);
 
         String fontFamily1 = "Helvetica";
         double titleFontSize1 = 16;
 
-        Text courseName = new Text(10, 20, list.get(courseIndex).getInstructor());
-        courseName.setFont(Font.font(fontFamily1, titleFontSize1));
-        courseName.setFill(Color.WHITE);
-        GridPane.setConstraints(courseName, 0,3,2,1);
+        Text userName = new Text(10, 20, Main.arr.get(userIndex).getUserName() + " " + Main.arr.get(userIndex).getUserSurname());
+        userName.setFont(Font.font(fontFamily1, titleFontSize1));
+        userName.setFill(Color.WHITE);
 
-        Text courseInst = new Text(10, 20, list.get(courseIndex).getContentName());
-        courseInst.setFont(Font.font(fontFamily1, titleFontSize1));
-        courseInst.setFill(Color.WHITE);
-        GridPane.setConstraints(courseInst, 0,1,2,1);
+        Text userInst = new Text(10, 20, Main.arr.get(userIndex).getUserInstitution());
+        userInst.setFont(Font.font(fontFamily1, titleFontSize1));
+        userInst.setFill(Color.WHITE);
+        GridPane.setConstraints(userInst, 0, 1, 2, 1);
 
-        infogrid.getChildren().addAll(courseName, courseInst);
+        Text userDep = new Text(10, 20, Main.arr.get(userIndex).getUserDepartment() + " / " + Main.arr.get(userIndex).getUserTitle());
+        userDep.setFont(Font.font(fontFamily1, titleFontSize1));
+        userDep.setFill(Color.WHITE);
+        GridPane.setConstraints(userDep, 0, 2);
 
-        //NAVİGATOR LİST
-        //comment
+        Text userEmail = new Text(10, 20, Main.arr.get(userIndex).getUserEmail());
+        userEmail.setFont(Font.font(fontFamily1, titleFontSize1));
+        userEmail.setFill(Color.WHITE);
+        GridPane.setConstraints(userEmail, 0, 3, 3, 3);
 
-        Hyperlink link1 = new Hyperlink("Return");
+        Line line2 = new Line(0, 0, 200, 0);
+        line2.setStyle("-fx-stroke: #FFFFFF;");
+        GridPane.setConstraints(line2, 0, 6);
+
+        infogrid.getChildren().addAll(userName, userInst, userDep, userEmail, line2);
+
+
+        //navigator list
+
+        Hyperlink link1 = new Hyperlink("All Courses");
         link1.setStyle("-fx-text-fill: white");
-        link1.setOnAction(e -> {
-        	if(Main.arr.get(userIndex).getUserRole().equals("an Instructor"))
-        		LoginApp.myStage.setScene(Offerings.startScene(userIndex,"instructor"));
-        	else
-        		 LoginApp.myStage.setScene(Offerings.startScene(userIndex,"student"));
-            LoginApp.myStage.setTitle("Mastering Bilkent");//---------------------------------> her classın başına koyalım
-        });
+        link1.setOnAction(e -> LoginApp.myStage.setScene(Offerings.startScene(userIndex, "student")));
 
-        Hyperlink link2 = new Hyperlink("My Courses");
-        link2.setStyle("-fx-text-fill: white");
-        //link2.setOnAction(e -> );
 
         Hyperlink link3 = new Hyperlink("Profile");
         link3.setStyle("-fx-text-fill: white");
         link3.setOnAction(e -> {
-            LoginApp.myStage.setScene(ProfilePage.startScene(courseIndex));
+            LoginApp.myStage.setScene(ProfilePage.startScene(userIndex));
             LoginApp.myStage.setTitle("Your Profile");
         });
 
         Hyperlink link4 = new Hyperlink("Send Feedback");
         link4.setStyle("-fx-text-fill: white");
-        link4.setOnAction(e -> AlertBox.display("contact","mastering@bilkent.edu.tr"));
+        link4.setOnAction(e -> AlertBox.display("contact", "mastering@bilkent.edu.tr"));
 
         Hyperlink link5 = new Hyperlink("Settings");
         link5.setStyle("-fx-text-fill: white");
         //link5.setOnAction(e -> );
+
 
         Hyperlink logoutlink = new Hyperlink("Logout");
         logoutlink.setStyle("-fx-text-fill: white");
@@ -142,10 +148,11 @@ public class CoursePage {
         searchfield.setPrefColumnCount(10);
         searchfield.getText();
 
-        leftMenu.getChildren().addAll(imagegrid, infogrid, link1, link2, link3, link4, link5,logoutlink, searchfield);
+        leftMenu.getChildren().addAll(imagegrid, infogrid, link1, link3, link4, link5, logoutlink, searchfield);
         leftMenu.setAlignment(Pos.TOP_LEFT);
 
         //  LEFT END
+
         //  BORDER PANE
         BorderPane layout1 = new BorderPane();
         layout1.setCenter(centerMenu);
@@ -153,11 +160,10 @@ public class CoursePage {
         layout1.setStyle("-fx-background: #FFFFFF;");
 
         scene = new Scene(layout1);
-
     }
 
-    public static Scene startScene(int index, ArrayList<Course> list, int userIndex) {
-        start(index, list, userIndex);
+    public static Scene startScene(int index) {
+        start(index);
         return scene;
     }
 }

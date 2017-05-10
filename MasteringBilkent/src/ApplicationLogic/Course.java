@@ -6,15 +6,15 @@ import java.util.ArrayList;
  * Created by Asus on 3.5.2017.
  */
 public class Course extends Content {
-//comment
+
     private String instructor;
     private String courseKey;
     private boolean visibility;
     public ArrayList<Content> contentList;
 
     public Course() {
-        super("Default ApplicationLogic.Course");
-        this.instructor = "Default ApplicationLogic.Instructor";
+        super("Default Course");
+        this.instructor = "Default Instructor";
         this.courseKey = null;
         this.visibility = true;
     }
@@ -70,5 +70,15 @@ public class Course extends Content {
 
     public void addContent(){
 
+    }
+
+    @Override
+    public String toString() {
+        return "Course{" +
+                "instructor='" + instructor + '\'' +
+                ", courseKey='" + courseKey + '\'' +
+                ", visibility=" + visibility +
+                ", contentList=" + contentList +
+                '}';
     }
 }

@@ -1,9 +1,14 @@
 package GUI;
 
+import ApplicationLogic.Content;
+import ApplicationLogic.Course;
+import ApplicationLogic.Instructor;
+import ApplicationLogic.User;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Hyperlink;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -12,6 +17,8 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.*;
 import javafx.scene.shape.*;
 
+import java.util.ArrayList;
+
 
 public class InstructorHomePage{
 
@@ -19,8 +26,12 @@ public class InstructorHomePage{
 
     public static void start(int userIndex){
 
+        Instructor instructor = (Instructor) Main.arr.get(userIndex);
+
         //  BORDER PANE COMPONENTS
         //  CENTER
+        ScrollPane sp = new ScrollPane();
+
         VBox centerMenu = new VBox();
         centerMenu.setPadding(new Insets(10));
         centerMenu.setSpacing(8);
@@ -41,13 +52,53 @@ public class InstructorHomePage{
         logo.getChildren().addAll(scenetitle1);
 
         //Line
-        Line line = new Line(0, 20, 750, 20);
+        Line line = new Line(0, 20, 1200, 20);
 
-     
+        centerMenu.getChildren().addAll(logo, line);
+        //Mastering Bilkent Title End
 
-        Hyperlink buttonA = new Hyperlink("Create Another Course");
+        //Instructor Course List
+        //VBox courseList = new VBox();
+        ArrayList<Course> list = instructor.getCourseList();
+        for(int i = 0 ; i < list.size();i++){
 
-        centerMenu.getChildren().addAll(logo, line, buttonA);
+            VBox courseBox = new VBox();
+            courseBox.setPadding(new Insets(15));
+            courseBox.setSpacing(10);
+            courseBox.setAlignment(Pos.TOP_CENTER);
+            courseBox.setStyle("-fx-background-color:  #003366");
+
+            Hyperlink course = new Hyperlink(list.get(i).getContentName());
+            int id = list.get(i).getContentId();
+            course.setOnAction(e -> LoginApp.myStage.setScene(CoursePage.startScene(id, list, userIndex)));
+            course.setStyle("-fx-text-fill: white");
+            course.setFont(Font.font("Helvetica", 24));
+            course.setBorder(Border.EMPTY);
+
+            Text ins = new Text(list.get(i).getInstructor()+" / Spring 2017");
+            ins.setFill(Color.WHITE);
+            ins.setFont(Font.font("Helvetica",18));
+            courseBox.getChildren().addAll(course, ins);
+
+            //courseList.getChildren().addAll(courseBox);
+            centerMenu.getChildren().addAll(courseBox);
+
+        }
+
+        sp.setFitToHeight(true);
+        sp.setVmax(1000);
+        sp.setPrefSize(115, 150);
+        sp.setContent(centerMenu);
+
+        //Instructor Course List End
+
+
+        //Course Creation Link
+        Hyperlink newCourseLink = new Hyperlink("Create Another Course");
+        newCourseLink.setOnAction(e->{NewCourseBox.display(instructor, userIndex);});
+        //Course Creation Link End
+
+        centerMenu.getChildren().addAll( sp , newCourseLink);
         //  CENTER END
 
         //  LEFT
@@ -75,21 +126,21 @@ public class InstructorHomePage{
         String fontFamily1 = "Helvetica";
         double titleFontSize1 = 16;
 
-        Text userName = new Text(10, 20, Main.arr.get(userIndex).getUserName() + " " + Main.arr.get(userIndex).getUserSurname());
+        Text userName = new Text(10, 20, instructor.getUserName() + " " + instructor.getUserSurname());
         userName.setFont(Font.font(fontFamily1, titleFontSize1));
         userName.setFill(Color.WHITE);
 
-        Text userInst = new Text(10, 20, Main.arr.get(userIndex).getUserInstitution());
+        Text userInst = new Text(10, 20, instructor.getUserInstitution());
         userInst.setFont(Font.font(fontFamily1, titleFontSize1));
         userInst.setFill(Color.WHITE);
         GridPane.setConstraints(userInst, 0,1,2,1);
 
-        Text userDep = new Text(10, 20,  Main.arr.get(userIndex).getUserDepartment()+ " / " + Main.arr.get(userIndex).getUserTitle());
+        Text userDep = new Text(10, 20,  instructor.getUserDepartment()+ " / " + instructor.getUserTitle());
         userDep.setFont(Font.font(fontFamily1, titleFontSize1));
         userDep.setFill(Color.WHITE);
         GridPane.setConstraints(userDep, 0,2);
 
-        Text userEmail = new Text(10, 20, Main.arr.get(userIndex).getUserEmail());
+        Text userEmail = new Text(10, 20, instructor.getUserEmail());
         userEmail.setFont(Font.font(fontFamily1, titleFontSize1));
         userEmail.setFill(Color.WHITE);
         GridPane.setConstraints(userEmail, 0,3,3,3);
@@ -143,7 +194,7 @@ public class InstructorHomePage{
 
         //  BORDER PANE
         BorderPane layout1 = new BorderPane();
-        layout1.setCenter(centerMenu);
+        layout1.setCenter(sp);
         layout1.setLeft(leftMenu);
         layout1.setStyle("-fx-background: #FFFFFF;");
 
