@@ -50,7 +50,7 @@ public class InstructorHomePage{
         logo.getChildren().addAll(scenetitle1);
 
         //Line
-        Line line = new Line(0, 20, 1200, 20);
+        Line line = new Line(0, 20, 750, 20);
 
         centerMenu.getChildren().addAll(logo, line);
 

@@ -3,23 +3,30 @@ package GUI;
 import ApplicationLogic.Content;
 import ApplicationLogic.Course;
 import ApplicationLogic.Instructor;
+import ApplicationLogic.Student;
 import ApplicationLogic.User;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-
+/**
+ * Created by Asus on 10.5.2017.
+ */
 public class NewCourseBox {
 
-    public static void display( Instructor inst ){
+    public static void display( Instructor inst){
         Stage window = new Stage();
 
         window.initModality(Modality.APPLICATION_MODAL);
@@ -36,23 +43,54 @@ public class NewCourseBox {
         grid.setStyle("-fx-background: #FFFFFF;");
 
         //Course Name
-        Label userName = new Label("Enter Course Name:");
-        grid.add(userName, 0, 1);
+        Label courseName = new Label("Enter Course Name:");
+        grid.add(courseName, 0, 1);
+        TextField courseNameTextField = new TextField();
+        courseNameTextField.setPrefWidth(10);
+        grid.add(courseNameTextField, 1, 1, 8, 1);
 
-        TextField name = new TextField();
-        name.setPrefWidth(10);
-        grid.add(name, 1, 1);
 
+        Label courseKey = new Label("Enter Course Key:");
+        grid.add(courseKey, 0, 2);
+        TextField courseKeyTextField = new TextField();
+        grid.add(courseKeyTextField, 1, 2 ,8 ,1);
+     
+        
+        CheckBox checkbox = new CheckBox("Activate course key.");
+        checkbox.setSelected(false);
+        grid.add(checkbox, 0,3);
+    
         Button create = new Button("Add Course");
-        grid.add( create, 1,2);
+        grid.add(create, 4,4);
 
-        create.setOnAction(e -> {
-            inst.createCourse(name.getText(),"1234", true);
-            //System.out.print("Instructor{" + "courseList=" + Instructor.courseList + '}');
-            LoginApp.myStage.setScene(InstructorHomePage.startScene(inst));
-            window.close();
+        create.setOnAction((event)->{
+            
+        	String cName, cKey;
+        	int error = 1;
+        	cName = courseNameTextField.getText();
+			if(cName.equals("")){
+				courseName.setTextFill(Color.RED);
+				courseNameTextField.setPromptText("Please Enter a Name");
+				error = -1;
+        	}
+        	cKey = courseKeyTextField.getText();
+        	if(cKey.equals("")){
+				courseKey.setTextFill(Color.RED);
+				courseKeyTextField.setPromptText("Please Enter a Course Key");
+				error = -1;
+			}
+        	if(error==-1)
+        		return;
+  
+        	else{
+        		boolean check = checkbox.isSelected();
+        		inst.createCourse(cName,cKey, check);
+        		LoginApp.myStage.setScene(InstructorHomePage.startScene(inst));
+        		window.close();
+        		return;
+        	}
+     	
         });
-
         grid.setAlignment(Pos.TOP_LEFT);
 
         Scene scene = new Scene(grid);
