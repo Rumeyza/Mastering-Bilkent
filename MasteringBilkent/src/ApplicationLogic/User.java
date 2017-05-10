@@ -2,9 +2,9 @@ package ApplicationLogic;
 
 public class User {
 
-    private static int ID = 0;
+    //private static int ID = 0;
 
-    private int userId = 0;
+    //private int userId = 0;
     private String userName = "";
     private String userSurname = "";
     private String userPassword = "";
@@ -15,7 +15,7 @@ public class User {
     private String userTitle = "";
 
     public User() {
-        userId = ID++;
+       // userId = ID++;
         userName = "";
         userSurname = "";
         userPassword = "";
@@ -27,7 +27,7 @@ public class User {
     }
 
     public User(String name, String surname, String pass, String email, String inst, String dept, String role, String title) {
-        this.userId = ID++;
+      //  this.userId = ID++;
         this.userName = name;
         this.userSurname = surname;
         this.userPassword = pass;
@@ -38,21 +38,21 @@ public class User {
         this.userTitle = title;
     }
 
-    public static int getID() {
+   /* public static int getID() {
         return ID;
-    }
+    }*/
 
-    public static void setID(int ID) {
+    /*public static void setID(int ID) {
         User.ID = ID;
-    }
+    }*/
 
-    public int getUserId() {
+   /* public int getUserId() {
         return userId;
-    }
+    }*/
 
-    public void setUserId(int userId) {
+    /*public void setUserId(int userId) {
         this.userId = userId;
-    }
+    }*/
 
     public String getUserName() {
         return userName;

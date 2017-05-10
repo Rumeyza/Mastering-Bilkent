@@ -3,21 +3,33 @@ package GUI;
 import ApplicationLogic.Course;
 import ApplicationLogic.Instructor;
 import ApplicationLogic.User;
+import ApplicationLogic.Student;
 import javafx.application.Application;
 import java.util.ArrayList;
+
+import Storage.DatabaseManager;
+
 
 public class Main {
     
     public static ArrayList<User> arr;
     public static ArrayList<Course> courseArr;
     
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception{
         
+    	DatabaseManager dbms = new DatabaseManager();
+    	
         User user1 = new User("Root","Mastering Bilkent","a","a","","","",""); //root@mastering.bilkent
         User user2 = new Instructor("b","b","b","b","b","b","an Instructor","b");
         arr = new ArrayList<User>();
         arr.add(0,user1);
         arr.add(1,user2);
+        
+        dbms.insertToStudent("gulden", "aday", "123", "guldenaday@gmail.com", "bilk", "cs", "grad", "3", "spring 2017");
+        Student newStudent = new Student();
+        newStudent = dbms.getStudent("guldenaday@gmail.com", "123");
+        
+        System.out.println(newStudent.getUserEmail());
         
         Course OOD = new Course("CS319 - Object Oriented Software Engineering " , "Bora Güngören");
         Course PL = new Course("CS315 - Programming Languages " , "Buğra Gedik");
