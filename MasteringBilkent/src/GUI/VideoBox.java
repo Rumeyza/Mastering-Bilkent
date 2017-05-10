@@ -14,21 +14,21 @@ import javafx.stage.Stage;
  */
 public class VideoBox {
 
-    public static void display(Video video){
-        Stage window = new Stage();
-        window.initModality(Modality.APPLICATION_MODAL);
+     public static void display(Video video){
+         Stage window = new Stage();
+         window.initModality(Modality.APPLICATION_MODAL);
 
-        WebView webview = new WebView();
-        webview.getEngine().load(video.getVideoUrl());
-        webview.setPrefSize(1080, 720);
+         WebView webview = new WebView();
+         webview.getEngine().load(video.getVideoUrl());
+         webview.setPrefSize(1080, 720);
 
-        window.setOnCloseRequest(e -> {
-            webview.getEngine().load("");
-        });
+         window.setOnCloseRequest(e -> {
+             webview.getEngine().load("");
+         });
 
-        window.setScene(new Scene(webview));
-        window.showAndWait();
+         window.setScene(new Scene(webview));
+         window.showAndWait();
 
-    }
+     }
 
 }

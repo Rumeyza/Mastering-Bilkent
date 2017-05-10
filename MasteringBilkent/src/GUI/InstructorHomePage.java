@@ -135,72 +135,72 @@ public class InstructorHomePage{
          Text userDep = new Text(10, 20,  instructor.getUserDepartment()+ " / " + instructor.getUserTitle());
          userDep.setFont(Font.font(fontFamily1, titleFontSize1));
          userDep.setFill(Color.WHITE);
-        GridPane.setConstraints(userDep, 0,2);
+         GridPane.setConstraints(userDep, 0,2);
 
-        Text userEmail = new Text(10, 20, instructor.getUserEmail());
-        userEmail.setFont(Font.font(fontFamily1, titleFontSize1));
-        userEmail.setFill(Color.WHITE);
-        GridPane.setConstraints(userEmail, 0,3,3,3);
+         Text userEmail = new Text(10, 20, instructor.getUserEmail());
+         userEmail.setFont(Font.font(fontFamily1, titleFontSize1));
+         userEmail.setFill(Color.WHITE);
+         GridPane.setConstraints(userEmail, 0,3,3,3);
         
-        Line line2 = new Line(0,0, 200, 0);
-        line2.setStyle("-fx-stroke: #FFFFFF;");
-        GridPane.setConstraints(line2, 0,6);
+         Line line2 = new Line(0,0, 200, 0);
+         line2.setStyle("-fx-stroke: #FFFFFF;");
+         GridPane.setConstraints(line2, 0,6);
         
-        infogrid.getChildren().addAll(userName, userInst, userDep, userEmail,line2);
+         infogrid.getChildren().addAll(userName, userInst, userDep, userEmail,line2);
        
 
         //navigator list
 
-        Hyperlink link1 = new Hyperlink("All Courses");
-        link1.setStyle("-fx-text-fill: white");
-        link1.setOnAction(e -> LoginApp.myStage.setScene(Offerings.startScene(instructor)));
+         Hyperlink link1 = new Hyperlink("All Courses");
+         link1.setStyle("-fx-text-fill: white");
+         link1.setOnAction(e -> LoginApp.myStage.setScene(Offerings.startScene(instructor)));
 
 
-        Hyperlink link3 = new Hyperlink("Profile");
-        link3.setStyle("-fx-text-fill: white");
-        link3.setOnAction(e -> {
-            LoginApp.myStage.setScene(ProfilePage.startScene(instructor));
-            LoginApp.myStage.setTitle("Your Profile");
-        });
+         Hyperlink link3 = new Hyperlink("Profile");
+         link3.setStyle("-fx-text-fill: white");
+         link3.setOnAction(e -> {
+             LoginApp.myStage.setScene(ProfilePage.startScene(instructor));
+             LoginApp.myStage.setTitle("Your Profile");
+         });
 
-        Hyperlink link4 = new Hyperlink("Send Feedback");
-        link4.setStyle("-fx-text-fill: white");
-        link4.setOnAction(e -> AlertBox.display("contact","mastering@bilkent.edu.tr"));
+         Hyperlink link4 = new Hyperlink("Send Feedback");
+         link4.setStyle("-fx-text-fill: white");
+         link4.setOnAction(e -> AlertBox.display("contact","mastering@bilkent.edu.tr"));
 
-        Hyperlink link5 = new Hyperlink("Settings");
-        link5.setStyle("-fx-text-fill: white");
-        //link5.setOnAction(e -> );
+         Hyperlink link5 = new Hyperlink("Settings");
+         link5.setStyle("-fx-text-fill: white");
+         //link5.setOnAction(e -> );
 
-        Hyperlink logoutlink = new Hyperlink("Logout");
-        logoutlink.setStyle("-fx-text-fill: white");
-        logoutlink.setOnAction(e -> {
-            LoginApp.myStage.setScene(LoginApp.scene);
-            LoginApp.myStage.setTitle("Mastering Bilkent");
-        });
+         Hyperlink logoutlink = new Hyperlink("Logout");
+         logoutlink.setStyle("-fx-text-fill: white");
+         logoutlink.setOnAction(e -> {
+             LoginApp.myStage.setScene(LoginApp.scene);
+             LoginApp.myStage.setTitle("Mastering Bilkent");
+         });
 
-        //search bar
-        final TextField searchfield = new TextField();
-        searchfield.setPromptText("Find Course");
-        searchfield.setPrefColumnCount(10);
-        searchfield.getText();
+         //search bar
+         final TextField searchfield = new TextField();
+         searchfield.setPromptText("Find Course");
+         searchfield.setPrefColumnCount(10);
+         searchfield.getText();
 
-        leftMenu.getChildren().addAll(imagegrid, infogrid, link1, link3, link4, link5,logoutlink, searchfield);
-        leftMenu.setAlignment(Pos.TOP_LEFT);
+         leftMenu.getChildren().addAll(imagegrid, infogrid, link1, link3, link4, link5,logoutlink, searchfield);
+         leftMenu.setAlignment(Pos.TOP_LEFT);
 
-        //  LEFT END
+         //  LEFT END
 
-        //  BORDER PANE
-        BorderPane layout1 = new BorderPane();
-        layout1.setCenter(sp);
-        layout1.setLeft(leftMenu);
-        layout1.setStyle("-fx-background: #FFFFFF;");
+         //  BORDER PANE
+         BorderPane layout1 = new BorderPane();
+         layout1.setCenter(sp);
+         layout1.setLeft(leftMenu);
+         layout1.setStyle("-fx-background: #FFFFFF;");
 
-        scene = new Scene(layout1);
+         scene = new Scene(layout1);
 
-    }
+     }
 
-    public static Scene startScene(User user) {
-        start((Instructor) user);
-        return scene;
-    }
+     public static Scene startScene(User user) {
+         start((Instructor) user);
+         return scene;
+     }
 }
