@@ -152,9 +152,22 @@ public class DatabaseManager {
 				return instructor;
 
 		}
-		
-		
 		return null;
+	}
+	
+	public Course getCourse(String courseName, String key) throws Exception{
+		Course course;
+		Connection con = getConnection();
+		
+		PreparedStatement statement = con.prepareStatement("SELECT * FROM course WHERE courseName = '"+courseName+"' AND courseKey = '"+key+"'" );
+		ResultSet result = statement.executeQuery();
+		
+		if(result.next()){
+			course = new Course(result.getString("courseName"), result.getString("instr"), result.getString("courseKey"), result.getBoolean("visibility"));
+			return course;
+		}
+		return null;
+		
 	}
 
 }
