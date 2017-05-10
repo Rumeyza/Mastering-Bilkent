@@ -57,6 +57,7 @@ public class DatabaseManager {
 	public void createTableCourse() throws Exception{
 		try{
 			Connection con = getConnection();
+			
 			PreparedStatement create = con.prepareStatement("CREATE TABLE Course(course_id int NOT NULL AUTO_INCREMENT, courseName varchar(50) NOT NULL, instr varchar(128), courseKey varchar(64), visibility NOT NULL boolean DEFAULT '0', PRIMARY KEY(course_id))");
 																														
 
@@ -95,7 +96,7 @@ public class DatabaseManager {
 		} catch(Exception e){System.out.println(e);}
 	}
 	
-	public boolean isExistingStudent(String email, String password){
+	public boolean isExisting(String email, String password){
     	try{
     		Connection con = getConnection();
     		PreparedStatement statement = con.prepareStatement("SELECT s_email, s_password FROM student");
@@ -169,6 +170,26 @@ public class DatabaseManager {
 		return null;
 		
 	}
+	
+	
+	public static ArrayList<String> getAllCourses() throws Exception{
+		try{
+		Connection con = getConnection();
+		PreparedStatement statement = con.prepareStatement(“SELECT courseName, instr FROM course”);
+
+		ResultSet result = statement.executeQuery();
+
+		ArrayList<String> array = new ArrayList<String>();
+		while(result.next()){
+			String str = result.getString(“courseName”) + " "+ result.getString(“instr”)
+
+			array.add(str);
+		}
+		return array;
+	}catch(Exception e){System.out.println(e);}
+	return null;
+	}
+
 
 }
 
