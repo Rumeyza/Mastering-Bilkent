@@ -22,12 +22,14 @@ import javafx.collections.*;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Hyperlink;
 
-
+import Storage.DatabaseManager;
 public class RegisterPage {
 
     static Scene scene;
 
-    public static void start() {
+    public static void start(){
+    	
+    	DatabaseManager dbms = new DatabaseManager();
 
         BorderPane border = new BorderPane();
         border.setStyle("-fx-background: #FFFFFF;");
@@ -201,10 +203,24 @@ public class RegisterPage {
         	if(uRole.equals("a Student")){
         		User newUser = new Student(uName, uSurname, uPassword, uEmail, uInst, uDept, uRole, uTitle, uYear, "Spring 2017");
         		Main.arr.add(newUser);
+        		
+        		try {
+					dbms.insertToStudent(uName, uSurname, uPassword, uEmail, uInst, uDept, uTitle, uYear, "Spring 2017");
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
         	} 
         	else if(uRole.equals("an Instructor")){
         		User newUser = new Instructor(uName, uSurname, uPassword, uEmail, uInst, uDept, uRole, uTitle);
         		Main.arr.add(newUser);
+        		
+        		try {
+					dbms.insertToInstructor(uName, uSurname, uPassword, uEmail, uInst, uDept, uTitle);
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
         	}
         	
         	else{

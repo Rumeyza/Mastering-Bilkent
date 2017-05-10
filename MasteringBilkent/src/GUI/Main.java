@@ -18,6 +18,9 @@ public class Main {
     public static void main(String[] args) throws Exception{
         
     	DatabaseManager dbms = new DatabaseManager();
+    	dbms.createTableInstructor();
+    	dbms.createTableStudent();
+    	dbms.createTableCourse();
     	
         User user1 = new User("Root","Mastering Bilkent","a","a","","","",""); //root@mastering.bilkent
         User user2 = new Instructor("b","b","b","b","b","b","an Instructor","b");
