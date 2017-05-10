@@ -1,5 +1,6 @@
 package GUI;
 
+import ApplicationLogic.User;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -19,7 +20,7 @@ public class ProfilePage {
 
     static Scene scene;
 
-    public static void start(int userIndex) {
+    public static void start(User user) {
 
         VBox layout = new VBox();
         layout.setAlignment(Pos.CENTER);
@@ -41,18 +42,18 @@ public class ProfilePage {
         String fontFamily1 = "Helvetica";
         double titleFontSize1 = 19;
 
-        Text text1 = new Text(10, 20, Main.arr.get(userIndex).getUserName() + " " + Main.arr.get(userIndex).getUserSurname());
+        Text text1 = new Text(10, 20, user.getUserName() + " " + user.getUserSurname());
         text1.setFont(Font.font(fontFamily1, titleFontSize1));
 
-        Text text2 = new Text(10, 20, Main.arr.get(userIndex).getUserInstitution());
+        Text text2 = new Text(10, 20, user.getUserInstitution());
         text2.setFont(Font.font(fontFamily1, titleFontSize1));
         GridPane.setConstraints(text2, 0,1,2,1);
 
-        Text text3 = new Text(10, 20,  Main.arr.get(userIndex).getUserDepartment()+ " / " + Main.arr.get(userIndex).getUserTitle());
+        Text text3 = new Text(10, 20,  user.getUserDepartment()+ " / " + user.getUserTitle());
         text3.setFont(Font.font(fontFamily1, titleFontSize1));
         GridPane.setConstraints(text3, 0,2);
 
-        Text text4 = new Text(10, 20, Main.arr.get(userIndex).getUserEmail());
+        Text text4 = new Text(10, 20, user.getUserEmail());
         text4.setFont(Font.font(fontFamily1, titleFontSize1));
         GridPane.setConstraints(text4, 0,3,3,3);
 
@@ -70,7 +71,7 @@ public class ProfilePage {
         Hyperlink link1 = new Hyperlink("Home Page");
         link1.setStyle("-fx-text-fill: white");
         link1.setOnAction(e -> {
-            LoginApp.myStage.setScene(HomePage.startScene(userIndex));
+            LoginApp.myStage.setScene(HomePage.startScene(user));
             LoginApp.myStage.setTitle("Home Page");
         });
 
@@ -81,7 +82,7 @@ public class ProfilePage {
         Hyperlink link3 = new Hyperlink("Profile");
         link3.setStyle("-fx-text-fill: white");
         link3.setOnAction(e -> {
-            LoginApp.myStage.setScene(ProfilePage.startScene(userIndex));
+            LoginApp.myStage.setScene(ProfilePage.startScene(user));
             LoginApp.myStage.setTitle("Your Profile");
         });
 
@@ -107,7 +108,7 @@ public class ProfilePage {
         searchfield.getText();
 
         VBox leftMenu = new VBox();
-        if(Main.arr.get(userIndex).getUserRole().equals("an Instructor"))
+        if(user.getUserRole().equals("an Instructor"))
         	   leftMenu.setStyle("-fx-background-color: #99004C;");
         else
         	leftMenu.setStyle("-fx-background-color: #4198AE;");
@@ -127,8 +128,8 @@ public class ProfilePage {
         scene = new Scene(layout1);
     }
 
-    public static Scene startScene(int index) {
-        start(index);
+    public static Scene startScene(User user) {
+        start(user);
         return scene;
     }
 }

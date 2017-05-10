@@ -2,6 +2,7 @@ package GUI;
 
 import java.util.ArrayList;
 
+import ApplicationLogic.Course;
 import ApplicationLogic.User;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -18,7 +19,7 @@ import javafx.scene.shape.*;
 
 public class Offerings {
 	static Scene scene;
-		public static void start(int userIndex, String role){
+		public static void start(User user){
 
 			//  BORDER PANE COMPONENTS
 			//  CENTER
@@ -50,29 +51,31 @@ public class Offerings {
 
 			//Scroll Pane Filler
 			int courseSize = Main.courseArr.size();
-			ArrayList<Hyperlink> course = new ArrayList<Hyperlink>();
+			ArrayList<Hyperlink> courseHyperlinkList = new ArrayList<Hyperlink>();
 			Text ins;
 			VBox courseBox;
+
 			for(int i = 0 ; i < courseSize;i++){
+				Course course = Main.courseArr.get(i);
+
 				courseBox = new VBox();
 				courseBox.setPadding(new Insets(15));
 				courseBox.setSpacing(10);
 				courseBox.setAlignment(Pos.TOP_CENTER);
-				if(role.equals("student"))
+				if(user.getUserRole().equals("student"))
 					courseBox.setStyle("-fx-background-color:  #990000");
 				else
 					courseBox.setStyle("-fx-background-color:  #003366");
-				course.add(i,new Hyperlink(Main.courseArr.get(i).getContentName()));
-				int id = Main.courseArr.get(i).getContentId();
-				//System.out.println(id);
-				course.get(i).setOnAction(e -> LoginApp.myStage.setScene(CoursePage.startScene(id, Main.courseArr, userIndex)));
-				course.get(i).setStyle("-fx-text-fill: white");
-				course.get(i).setFont(Font.font("Helvetica", 24));
-				course.get(i).setBorder(Border.EMPTY);
-				ins =  new Text(Main.courseArr.get(i).getInstructor()+" / Spring 2017");
+				courseHyperlinkList.add(i,new Hyperlink(course.getContentName()));
+
+				courseHyperlinkList.get(i).setOnAction(e -> LoginApp.myStage.setScene(CoursePage.startScene(course, user)));
+				courseHyperlinkList.get(i).setStyle("-fx-text-fill: white");
+				courseHyperlinkList.get(i).setFont(Font.font("Helvetica", 24));
+				courseHyperlinkList.get(i).setBorder(Border.EMPTY);
+				ins =  new Text(course.getInstructor()+" / Spring 2017");
 				ins.setFill(Color.WHITE);
 				ins.setFont(Font.font("Helvetica",18));
-				courseBox.getChildren().addAll(course.get(i), ins);
+				courseBox.getChildren().addAll(courseHyperlinkList.get(i), ins);
 				centerMenu.getChildren().add(courseBox);
 
 			}
@@ -88,7 +91,7 @@ public class Offerings {
 
 			//  LEFT
 			VBox leftMenu = new VBox();
-			if(role.equals("student"))
+			if(user.getUserRole().equals("student"))
 				leftMenu.setStyle("-fx-background-color:  #003366");
 			else
 				leftMenu.setStyle("-fx-background-color: #990000;");
@@ -114,21 +117,21 @@ public class Offerings {
 			String fontFamily1 = "Helvetica";
 			double titleFontSize1 = 16;
 
-			Text userName = new Text(10, 20, Main.arr.get(userIndex).getUserName() + " " + Main.arr.get(userIndex).getUserSurname());
+			Text userName = new Text(10, 20, user.getUserName() + " " + user.getUserSurname());
 			userName.setFont(Font.font(fontFamily1, titleFontSize1));
 			userName.setFill(Color.WHITE);
 
-			Text userInst = new Text(10, 20, Main.arr.get(userIndex).getUserInstitution());
+			Text userInst = new Text(10, 20, user.getUserInstitution());
 			userInst.setFont(Font.font(fontFamily1, titleFontSize1));
 			userInst.setFill(Color.WHITE);
 			GridPane.setConstraints(userInst, 0,1,2,1);
 
-			Text userDep = new Text(10, 20,  Main.arr.get(userIndex).getUserDepartment()+ " / " + Main.arr.get(userIndex).getUserTitle());
+			Text userDep = new Text(10, 20,  user.getUserDepartment()+ " / " + user.getUserTitle());
 			userDep.setFont(Font.font(fontFamily1, titleFontSize1));
 			userDep.setFill(Color.WHITE);
 			GridPane.setConstraints(userDep, 0,2);
 
-			Text userEmail = new Text(10, 20, Main.arr.get(userIndex).getUserEmail());
+			Text userEmail = new Text(10, 20, user.getUserEmail());
 			userEmail.setFont(Font.font(fontFamily1, titleFontSize1));
 			userEmail.setFill(Color.WHITE);
 			GridPane.setConstraints(userEmail, 0,3,3,3);
@@ -145,16 +148,16 @@ public class Offerings {
 
 			Hyperlink link2 = new Hyperlink("My Courses");
 			link2.setStyle("-fx-text-fill: white");
-			if(role.equals("student"))
-				link2.setOnAction(e -> LoginApp.myStage.setScene(HomePage.startScene(userIndex)) );
+			if(user.getUserRole().equals("student"))
+				link2.setOnAction(e -> LoginApp.myStage.setScene(HomePage.startScene(user)) );
 			else
-				link2.setOnAction(e -> LoginApp.myStage.setScene(InstructorHomePage.startScene(userIndex)) );
+				link2.setOnAction(e -> LoginApp.myStage.setScene(InstructorHomePage.startScene(user)) );
 				
 
 			Hyperlink link3 = new Hyperlink("Profile");
 			link3.setStyle("-fx-text-fill: white");
 			link3.setOnAction(e -> {
-				LoginApp.myStage.setScene(ProfilePage.startScene(userIndex));
+				LoginApp.myStage.setScene(ProfilePage.startScene(user));
 				LoginApp.myStage.setTitle("Your Profile");
 			});
 
@@ -194,8 +197,8 @@ public class Offerings {
 
 		}
 
-		public static Scene startScene(int userIndex, String role) {
-			start(userIndex, role);
+		public static Scene startScene(User user ) {
+			start(user);
 			return scene;
 		}
 	

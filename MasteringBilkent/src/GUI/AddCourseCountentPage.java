@@ -1,5 +1,6 @@
 package GUI;
 
+import ApplicationLogic.User;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -24,7 +25,7 @@ public class AddCourseCountentPage {
 
     static Scene scene;
 
-    public static void start(int userIndex) {
+    public static void start(User user) {
 
         //  BORDER PANE COMPONENTS
         //  CENTER
@@ -86,21 +87,21 @@ public class AddCourseCountentPage {
         String fontFamily1 = "Helvetica";
         double titleFontSize1 = 16;
 
-        Text userName = new Text(10, 20, Main.arr.get(userIndex).getUserName() + " " + Main.arr.get(userIndex).getUserSurname());
+        Text userName = new Text(10, 20, user.getUserName() + " " + user.getUserSurname());
         userName.setFont(Font.font(fontFamily1, titleFontSize1));
         userName.setFill(Color.WHITE);
 
-        Text userInst = new Text(10, 20, Main.arr.get(userIndex).getUserInstitution());
+        Text userInst = new Text(10, 20, user.getUserInstitution());
         userInst.setFont(Font.font(fontFamily1, titleFontSize1));
         userInst.setFill(Color.WHITE);
         GridPane.setConstraints(userInst, 0, 1, 2, 1);
 
-        Text userDep = new Text(10, 20, Main.arr.get(userIndex).getUserDepartment() + " / " + Main.arr.get(userIndex).getUserTitle());
+        Text userDep = new Text(10, 20, user.getUserDepartment() + " / " + user.getUserTitle());
         userDep.setFont(Font.font(fontFamily1, titleFontSize1));
         userDep.setFill(Color.WHITE);
         GridPane.setConstraints(userDep, 0, 2);
 
-        Text userEmail = new Text(10, 20, Main.arr.get(userIndex).getUserEmail());
+        Text userEmail = new Text(10, 20, user.getUserEmail());
         userEmail.setFont(Font.font(fontFamily1, titleFontSize1));
         userEmail.setFill(Color.WHITE);
         GridPane.setConstraints(userEmail, 0, 3, 3, 3);
@@ -116,13 +117,13 @@ public class AddCourseCountentPage {
 
         Hyperlink link1 = new Hyperlink("All Courses");
         link1.setStyle("-fx-text-fill: white");
-        link1.setOnAction(e -> LoginApp.myStage.setScene(Offerings.startScene(userIndex, "student")));
+        link1.setOnAction(e -> LoginApp.myStage.setScene(Offerings.startScene(user)));
 
 
         Hyperlink link3 = new Hyperlink("Profile");
         link3.setStyle("-fx-text-fill: white");
         link3.setOnAction(e -> {
-            LoginApp.myStage.setScene(ProfilePage.startScene(userIndex));
+            LoginApp.myStage.setScene(ProfilePage.startScene(user));
             LoginApp.myStage.setTitle("Your Profile");
         });
 
@@ -162,8 +163,8 @@ public class AddCourseCountentPage {
         scene = new Scene(layout1);
     }
 
-    public static Scene startScene(int index) {
-        start(index);
+    public static Scene startScene(User user) {
+        start(user);
         return scene;
     }
 }

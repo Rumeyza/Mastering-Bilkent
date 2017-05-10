@@ -1,5 +1,6 @@
 package GUI;
 
+import ApplicationLogic.User;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
@@ -85,14 +86,14 @@ public class LoginApp  extends Application {
         });
 
         btn.setOnAction(e -> {
-        	int result = Main.findUser( userTextField.getText(),pwBox.getText());
-                    if(result!=-1){
+        	User result = Main.findUser( userTextField.getText(),pwBox.getText());
+                    if(result!= null){
                     	userTextField.setStyle("-fx-text-inner-color: black;");     
                     //	userTextField.setText("");
                     	pwBox.setText("");
                     	userName.setTextFill(Color.BLACK);
                     	pw.setTextFill(Color.BLACK);
-                    	if(Main.arr.get(result).getUserRole().equals("an Instructor"))
+                    	if(result.getUserRole().equals("an Instructor"))
                     		 primaryStage.setScene(InstructorHomePage.startScene(result));
                     	else
                     		primaryStage.setScene(HomePage.startScene(result));

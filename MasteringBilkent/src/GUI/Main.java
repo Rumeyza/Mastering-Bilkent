@@ -56,11 +56,11 @@ public class Main {
     }
 
     //Logic check logic
-    public static int findUser(String userName, String password){
-        int result = -1;
+    public static User findUser(String userName, String password){
+        User result = null;
         for(int i = 0; i < Main.arr.size() ; i++){
             if(Main.arr.get(i).getUserEmail().equals(userName)&& Main.arr.get(i).getUserPassword().equals(password))
-                result = i;
+                result = Main.arr.get(i);
         }
         return result;
     }

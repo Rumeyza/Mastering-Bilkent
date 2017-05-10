@@ -1,6 +1,5 @@
 package GUI;
 
-import ApplicationLogic.Content;
 import ApplicationLogic.Course;
 import ApplicationLogic.Instructor;
 import ApplicationLogic.User;
@@ -24,9 +23,8 @@ public class InstructorHomePage{
 
     static Scene scene;
 
-    public static void start(int userIndex){
+    public static void start(Instructor instructor){
 
-        Instructor instructor = (Instructor) Main.arr.get(userIndex);
 
         //  BORDER PANE COMPONENTS
         //  CENTER
@@ -55,12 +53,12 @@ public class InstructorHomePage{
         Line line = new Line(0, 20, 1200, 20);
 
         centerMenu.getChildren().addAll(logo, line);
-        //Mastering Bilkent Title End
 
-        //Instructor Course List
-        //VBox courseList = new VBox();
+        //Mastering Bilkent Title End
         ArrayList<Course> list = instructor.getCourseList();
+
         for(int i = 0 ; i < list.size();i++){
+            Course course = list.get(i);
 
             VBox courseBox = new VBox();
             courseBox.setPadding(new Insets(15));
@@ -68,17 +66,17 @@ public class InstructorHomePage{
             courseBox.setAlignment(Pos.TOP_CENTER);
             courseBox.setStyle("-fx-background-color:  #003366");
 
-            Hyperlink course = new Hyperlink(list.get(i).getContentName());
+            Hyperlink courseLink = new Hyperlink(course.getContentName());
             int id = list.get(i).getContentId();
-            course.setOnAction(e -> LoginApp.myStage.setScene(CoursePage.startScene(id, list, userIndex)));
-            course.setStyle("-fx-text-fill: white");
-            course.setFont(Font.font("Helvetica", 24));
-            course.setBorder(Border.EMPTY);
+            courseLink.setOnAction(e -> LoginApp.myStage.setScene(CoursePage.startScene(course, instructor)));
+            courseLink.setStyle("-fx-text-fill: white");
+            courseLink.setFont(Font.font("Helvetica", 24));
+            courseLink.setBorder(Border.EMPTY);
 
-            Text ins = new Text(list.get(i).getInstructor()+" / Spring 2017");
+            Text ins = new Text(course.getInstructor()+" / Spring 2017");
             ins.setFill(Color.WHITE);
             ins.setFont(Font.font("Helvetica",18));
-            courseBox.getChildren().addAll(course, ins);
+            courseBox.getChildren().addAll(courseLink, ins);
 
             //courseList.getChildren().addAll(courseBox);
             centerMenu.getChildren().addAll(courseBox);
@@ -95,7 +93,7 @@ public class InstructorHomePage{
 
         //Course Creation Link
         Hyperlink newCourseLink = new Hyperlink("Create Another Course");
-        newCourseLink.setOnAction(e->{NewCourseBox.display(instructor, userIndex);});
+        newCourseLink.setOnAction(e-> NewCourseBox.display(instructor));
         //Course Creation Link End
 
         centerMenu.getChildren().addAll( sp , newCourseLink);
@@ -156,13 +154,13 @@ public class InstructorHomePage{
 
         Hyperlink link1 = new Hyperlink("All Courses");
         link1.setStyle("-fx-text-fill: white");
-        link1.setOnAction(e -> LoginApp.myStage.setScene(Offerings.startScene(userIndex, "instructor"))); 
+        link1.setOnAction(e -> LoginApp.myStage.setScene(Offerings.startScene(instructor)));
 
 
         Hyperlink link3 = new Hyperlink("Profile");
         link3.setStyle("-fx-text-fill: white");
         link3.setOnAction(e -> {
-            LoginApp.myStage.setScene(ProfilePage.startScene(userIndex));
+            LoginApp.myStage.setScene(ProfilePage.startScene(instructor));
             LoginApp.myStage.setTitle("Your Profile");
         });
 
@@ -202,8 +200,8 @@ public class InstructorHomePage{
 
     }
 
-    public static Scene startScene(int index) {
-        start(index);
+    public static Scene startScene(User user) {
+        start((Instructor) user);
         return scene;
     }
 }

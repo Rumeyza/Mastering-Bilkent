@@ -16,12 +16,10 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-/**
- * Created by Asus on 10.5.2017.
- */
+
 public class NewCourseBox {
 
-    public static void display( Instructor inst , int userIndex){
+    public static void display( Instructor inst ){
         Stage window = new Stage();
 
         window.initModality(Modality.APPLICATION_MODAL);
@@ -51,7 +49,7 @@ public class NewCourseBox {
         create.setOnAction(e -> {
             inst.createCourse(name.getText(),"1234", true);
             //System.out.print("Instructor{" + "courseList=" + Instructor.courseList + '}');
-            LoginApp.myStage.setScene(InstructorHomePage.startScene(userIndex));
+            LoginApp.myStage.setScene(InstructorHomePage.startScene(inst));
             window.close();
         });
 

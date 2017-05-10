@@ -1,6 +1,5 @@
 package GUI;
 
-import ApplicationLogic.Content;
 import ApplicationLogic.Course;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -20,16 +19,11 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import ApplicationLogic.User;
 
-import java.util.ArrayList;
-
-/**
- * Created by Asus on 1.5.2017.
- */
 public class CoursePage {
 
     static Scene scene;
 
-    public static void start(int courseIndex, ArrayList<Course> list, int userIndex){
+    public static void start(Course course, User user){
 
         //  BORDER PANE COMPONENTS
         //  CENTER
@@ -85,12 +79,12 @@ public class CoursePage {
         String fontFamily1 = "Helvetica";
         double titleFontSize1 = 16;
 
-        Text courseName = new Text(10, 20, list.get(courseIndex).getInstructor());
+        Text courseName = new Text(10, 20, course.getInstructor());
         courseName.setFont(Font.font(fontFamily1, titleFontSize1));
         courseName.setFill(Color.WHITE);
         GridPane.setConstraints(courseName, 0,3,2,1);
 
-        Text courseInst = new Text(10, 20, list.get(courseIndex).getContentName());
+        Text courseInst = new Text(10, 20, course.getContentName());
         courseInst.setFont(Font.font(fontFamily1, titleFontSize1));
         courseInst.setFill(Color.WHITE);
         GridPane.setConstraints(courseInst, 0,1,2,1);
@@ -103,10 +97,10 @@ public class CoursePage {
         Hyperlink link1 = new Hyperlink("Return");
         link1.setStyle("-fx-text-fill: white");
         link1.setOnAction(e -> {
-        	if(Main.arr.get(userIndex).getUserRole().equals("an Instructor"))
-        		LoginApp.myStage.setScene(Offerings.startScene(userIndex,"instructor"));
+        	if(user.getUserRole().equals("an Instructor"))
+        		LoginApp.myStage.setScene(Offerings.startScene(user));
         	else
-        		 LoginApp.myStage.setScene(Offerings.startScene(userIndex,"student"));
+        		 LoginApp.myStage.setScene(Offerings.startScene(user));
             LoginApp.myStage.setTitle("Mastering Bilkent");//---------------------------------> her classın başına koyalım
         });
 
@@ -117,7 +111,7 @@ public class CoursePage {
         Hyperlink link3 = new Hyperlink("Profile");
         link3.setStyle("-fx-text-fill: white");
         link3.setOnAction(e -> {
-            LoginApp.myStage.setScene(ProfilePage.startScene(courseIndex));
+            LoginApp.myStage.setScene(ProfilePage.startScene(user));
             LoginApp.myStage.setTitle("Your Profile");
         });
 
@@ -156,8 +150,8 @@ public class CoursePage {
 
     }
 
-    public static Scene startScene(int index, ArrayList<Course> list, int userIndex) {
-        start(index, list, userIndex);
+    public static Scene startScene(Course course, User user) {
+        start(course, user);
         return scene;
     }
 }
