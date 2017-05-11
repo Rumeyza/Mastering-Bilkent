@@ -302,7 +302,6 @@ public class DatabaseManager {
 		
 		int id;
 		try{
-			//noldu?
 			Connection con = getConnection();
 			PreparedStatement statement = con.prepareStatement("SELECT s_id FROM Student WHERE s_email = '"+email+"' AND s_password = '"+pass+"'");
 			ResultSet result = statement.executeQuery();
@@ -313,6 +312,7 @@ public class DatabaseManager {
 				
 		} catch(Exception e){System.out.println(e);}
 		return -1;
+		
 	}
 
 	public Student getStudent(String email, String password) throws Exception{
