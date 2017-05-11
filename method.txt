@@ -1,0 +1,17 @@
+public Instructor getInstructor(int instructor_id) throws Exception{
+		Instructor instructor;
+		try{
+			Connection con = getConnection();
+			PreparedStatement statement = con.prepareStatement("SELECT i_name, i_surname, i_password, i_email, i_institution, i_department, i_role, i_title FROM Instructor WHERE i_id = "+instructor_id+"");
+	
+			ResultSet result = statement.executeQuery();
+	
+			while(result.next()){
+				
+				instructor = new Instructor(result.getString("i_name"), result.getString("i_surname"), result.getString("i_password"), result.getString("i_email"), result.getString("i_institution"), result.getString("i_department"), result.getString("i_role"), result.getString("i_title"));
+				return instructor;
+			}
+			
+		}catch(Exception e){System.out.println(e);}
+		return null;
+	}
