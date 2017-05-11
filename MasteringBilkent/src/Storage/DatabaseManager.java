@@ -482,10 +482,12 @@ public class DatabaseManager {
 				
 					if(result == null)
 						return false;
+					else 
+						return true;
 					
 					
 			} catch(Exception e){System.out.println(e);}
-			return true;
+			return false;
 		}
 	public boolean isExistingStudent( String email, String password) throws Exception{
 		Student candidateStudent;
