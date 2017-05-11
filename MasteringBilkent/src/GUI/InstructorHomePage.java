@@ -24,7 +24,7 @@ public class InstructorHomePage{
 	
     static Scene scene;
 
-    public static void start(Instructor instructor){
+    public static void start(Instructor instructor, int instructorId){
 
     	 DatabaseManager dbms = new DatabaseManager();
         //  BORDER PANE COMPONENTS
@@ -54,11 +54,17 @@ public class InstructorHomePage{
          Line line = new Line(0, 20, 750, 20);
 
          centerMenu.getChildren().addAll(logo, line);
-
         //Mastering Bilkent Title End
-         ArrayList<Course> list = instructor.getCourseList();
 
-         for(int i = 0 ; i < list.size();i++){
+        //Intructor Course List
+        ArrayList<Course> list = null;
+        try {
+            list = dbms.getGivenCourses(instructorId);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        for(int i = 0 ; i < list.size();i++){
              Course course = list.get(i);
 
              VBox courseBox = new VBox();
@@ -207,7 +213,20 @@ public class InstructorHomePage{
      }
 
      public static Scene startScene(User user) {
-         start((Instructor) user);
+         DatabaseManager dbms = new DatabaseManager();
+         int instructorId = 0;
+         try {
+             instructorId = dbms.getInstructorId(user.getUserEmail(),user.getUserPassword());
+         } catch (Exception e) {
+             e.printStackTrace();
+         }
+         ArrayList<Course> list = null;
+         try {
+             list = dbms.getGivenCourses(instructorId);
+         } catch (Exception e) {
+             e.printStackTrace();
+         }
+         start((Instructor) user, instructorId);
          return scene;
      }
 }

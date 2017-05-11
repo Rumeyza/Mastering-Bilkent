@@ -1,6 +1,6 @@
 package ApplicationLogic;
 
-import java.util.ArrayList;
+
 
 /**
  * Created by Asus on 7.5.2017.
@@ -8,7 +8,6 @@ import java.util.ArrayList;
 public class Quiz extends Content{
 
     private int size;
-    private ArrayList<Question> questionsList;
     private String description;
     private boolean graded;
 
@@ -51,6 +50,7 @@ public class Quiz extends Content{
         this.graded = graded;
     }
 
+/*
     public void addQuestion(String questionText, String[] choiceList, String answer){
         Question q = new Question(questionText, choiceList, answer);
         questionsList.add(q);
@@ -64,5 +64,5 @@ public class Quiz extends Content{
         questionsList.get(questionNum);
     }
 
-
+*/
 }

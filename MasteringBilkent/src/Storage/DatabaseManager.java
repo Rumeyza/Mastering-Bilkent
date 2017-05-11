@@ -333,7 +333,6 @@ public class DatabaseManager {
 		
 	}
 	
-	
 	/*public ArrayList<String> getAllCourses() throws Exception{
 		try{
 		Connection con = getConnection();
@@ -351,6 +350,7 @@ public class DatabaseManager {
 	}catch(Exception e){System.out.println(e);}
 	return null;
 	}*/
+
 	public ArrayList<Course> getAllCourses() throws Exception{
 		try{
 			Connection con = getConnection();
