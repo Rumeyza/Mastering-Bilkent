@@ -34,7 +34,7 @@ public class Main {
         
         System.out.println(newStudent.getUserEmail());
         
-       /* dbms.insertToCourse("MATH101 - Calculus 1" , "Okan Tekman", "15", true);
+        dbms.insertToCourse("MATH101 - Calculus 1" , "Okan Tekman", "15", true);
         dbms.insertToCourse("CS101 - Algorithms and Programming 1" , "David Davenport", "22", false);
         dbms.insertToCourse("CS353 - Database Systems" , "Ozgur Ulusoy");
         dbms.insertToCourse("CS223 - Digital Design" , "William Sawyer", false);
@@ -43,9 +43,9 @@ public class Main {
         
         for(int i = 0; i < courseArr.size(); i++)
         	if( courseArr.get(i) != null)
-        		System.out.println( courseArr.get(i).getContentName());*/
+        		System.out.println( courseArr.get(i).getContentName());
         
-        Course OOD = new Course("CS319 - Object Oriented Software Engineering " , "Bora Güngören");
+        /*Course OOD = new Course("CS319 - Object Oriented Software Engineering " , "Bora Güngören");
         Course PL = new Course("CS315 - Programming Languages " , "Buğra Gedik");
         Course OS = new Course("CS342 - Operating Systems " , "Özcan Öztürk");
         Course DB = new Course("CS353 - Database Systems" , "Özgür Ulusoy");
@@ -65,7 +65,7 @@ public class Main {
         courseArr.add(6, CS224);
         courseArr.add(7, CS102);
         courseArr.add(8, MATH101);
-        courseArr.add(9, MATH102);
+        courseArr.add(9, MATH102);*/
 
         
         Application.launch(LoginApp.class, args);
