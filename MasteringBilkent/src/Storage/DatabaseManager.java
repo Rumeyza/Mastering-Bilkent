@@ -298,6 +298,22 @@ public class DatabaseManager {
 		} catch(Exception e){System.out.println(e);}
 		return -1;
 	}
+	public int getStudentId(String email, String pass)throws Exception{
+		
+		int id;
+		try{
+			//noldu?
+			Connection con = getConnection();
+			PreparedStatement statement = con.prepareStatement("SELECT s_id FROM Student WHERE s_email = '"+email+"' AND s_password = '"+pass+"'");
+			ResultSet result = statement.executeQuery();
+			if(result.next()){
+				id = result.getInt("s_id");
+					return id;
+			}
+				
+		} catch(Exception e){System.out.println(e);}
+		return -1;
+	}
 
 	public Student getStudent(String email, String password) throws Exception{
 		Student student;
@@ -458,7 +474,7 @@ public class DatabaseManager {
 		Student student;
 		try{
 			Connection con = getConnection();
-			PreparedStatement statement = con.prepareStatement("SELECT s_name, s_surname, s_password, s_email, s_institution, s_department, s_role, s_title,s_schoolYear, s_semester, FROM Instructor WHERE s_id = "+student_id+"");
+			PreparedStatement statement = con.prepareStatement("SELECT s_name, s_surname, s_password, s_email, s_institution, s_department, s_role, s_title,s_schoolYear, s_semester, FROM Student WHERE s_id = "+student_id+"");
 	
 			ResultSet result = statement.executeQuery();
 	
