@@ -53,13 +53,20 @@ public class Offerings {
 			centerMenu.getChildren().addAll(logo, line);
 
 			//Scroll Pane Filler
-			int courseSize = Main.courseArr.size();
+			ArrayList<Course> myCourseList = null;
+			try {
+				myCourseList =  dbms.getAllCourses();
+			} catch (Exception e2) {
+				// TODO Auto-generated catch block
+				e2.printStackTrace();
+			}
+			int courseSize = myCourseList.size();
 			ArrayList<Hyperlink> courseHyperlinkList = new ArrayList<Hyperlink>();
 			Text ins;
 			VBox courseBox;
 
 			for(int i = 0 ; i < courseSize;i++){
-				Course course = Main.courseArr.get(i);
+				Course course = myCourseList.get(i);
 
 				courseBox = new VBox();
 				courseBox.setPadding(new Insets(15));

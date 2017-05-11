@@ -36,6 +36,7 @@ public class Instructor extends User {
         
         try {
 			dbms.insertToCourse(coursename, id, key, v);
+			dbms.insertToGives(coursename, super.getUserName());
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

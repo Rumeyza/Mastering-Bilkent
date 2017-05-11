@@ -90,8 +90,6 @@ public class InstructorHomePage{
              ins.setFill(Color.WHITE);
              ins.setFont(Font.font("Helvetica",18));
              courseBox.getChildren().addAll(courseLink, ins);
-
-             //courseList.getChildren().addAll(courseBox);
              centerMenu.getChildren().addAll(courseBox);
 
          }
