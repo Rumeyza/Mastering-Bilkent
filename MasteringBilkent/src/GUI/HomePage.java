@@ -54,7 +54,6 @@ public class HomePage{
 
 
         Hyperlink buttonA = new Hyperlink("Register Another Course");
-        buttonA.setStyle("-fx-text-fill: white");
         buttonA.setOnAction(e -> LoginApp.myStage.setScene(Offerings.startScene(user)));
         centerMenu.getChildren().addAll(logo, line, buttonA);
         ArrayList<Course> list = null;
