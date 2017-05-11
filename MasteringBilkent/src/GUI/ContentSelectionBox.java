@@ -27,7 +27,7 @@ public class ContentSelectionBox {
 
         window.initModality(Modality.APPLICATION_MODAL);
         window.setTitle("Course Key");
-        window.setWidth(600);
+        window.setWidth(300);
         window.setHeight(300);
 
         //New Course Grid
@@ -41,42 +41,17 @@ public class ContentSelectionBox {
        
 
 
-        Label courseKey = new Label("Enter Course Key:");
-        grid.add(courseKey, 0, 2);
-        TextField courseKeyTextField = new TextField();
-        grid.add(courseKeyTextField, 1, 2 ,8 ,1);
+        Hyperlink quizContent = new Hyperlink("Create Quiz");
+        grid.add(quizContent, 0, 1);
+        Hyperlink videoContent = new Hyperlink("Upload Video");
+        grid.add(videoContent, 0, 2);
+        Hyperlink pdfBox = new Hyperlink("Upload Text Document");
+        grid.add(pdfBox, 0, 3);
      
-       
-        Button create = new Button("OK");
-        grid.add(create, 4,4);
+      
+   
 
-        create.setOnAction((event)->{
-            
-        	String cKey;
-        	int error = 1;
-        	
-        	cKey = courseKeyTextField.getText();
-        	if(cKey.equals("")){
-				courseKey.setTextFill(Color.RED);
-				courseKeyTextField.setPromptText("Please Enter a Course Key");
-				error = -1;
-			}
-        	else if(cKey.equals(course.getCourseKey())){
-        		LoginApp.myStage.setScene(CoursePage.startScene(course, user));	
-        	}
-        	else{
-        		error = -1;
-        	}
-        	
-        	if(error==-1)
-        		return;
-  
-        	else{
-        		window.close();
-        		return;
-        	}
-     	
-        });
+        
         grid.setAlignment(Pos.TOP_LEFT);
 
         Scene scene = new Scene(grid);
