@@ -59,7 +59,7 @@ public class DatabaseManager {
 		try{
 			Connection con = getConnection();
 			
-			PreparedStatement create = con.prepareStatement("CREATE TABLE Course(course_id int NOT NULL AUTO_INCREMENT, courseName varchar(255) NOT NULL, instr varchar(128), courseKey varchar(64), visibility boolean, PRIMARY KEY(course_id))");
+			PreparedStatement create = con.prepareStatement("CREATE TABLE Course(course_id int NOT NULL AUTO_INCREMENT, courseName varchar(255) NOT NULL, instr varchar(128), courseKey varchar(64), visibility boolean NOT NULL DEFAULT TRUE, PRIMARY KEY(course_id))");
 																														
 
 			create.executeUpdate();
@@ -177,11 +177,26 @@ public class DatabaseManager {
 		return null;
 	}
 	
-	public Course getCourse(String courseName, String key) throws Exception{
+	/*public Course getCourse(String courseName, String key) throws Exception{
 		Course course;
 		Connection con = getConnection();
 		
 		PreparedStatement statement = con.prepareStatement("SELECT * FROM course WHERE courseName = '"+courseName+"' AND courseKey = '"+key+"'" );
+		ResultSet result = statement.executeQuery();
+		
+		if(result.next()){
+			course = new Course(result.getString("courseName"), result.getString("instr"), result.getString("courseKey"), result.getBoolean("visibility"));
+			return course;
+		}
+		return null;
+		
+	}*/
+	
+	public Course getCourse(String courseName) throws Exception{
+		Course course;
+		Connection con = getConnection();
+		
+		PreparedStatement statement = con.prepareStatement("SELECT * FROM course WHERE courseName = '"+courseName+"'" );
 		ResultSet result = statement.executeQuery();
 		
 		if(result.next()){
@@ -213,16 +228,16 @@ public class DatabaseManager {
 	public ArrayList<Course> getAllCourses() throws Exception{
 		try{
 			Connection con = getConnection();
-			PreparedStatement statement = con.prepareStatement("SELECT courseName, courseKey FROM course");
+			PreparedStatement statement = con.prepareStatement("SELECT courseName FROM course");
 	
 			ResultSet result = statement.executeQuery();
 	
 			ArrayList<Course> courseList = new ArrayList<Course>();
 			while(result.next()){
 				String crsName = result.getString("courseName");
-				String crsKey = result.getString("courseKey");
+				//String crsKey = result.getString("courseKey");
 				
-				Course course = getCourse(crsName, crsKey);
+				Course course = getCourse(crsName);
 				courseList.add(course);
 			}
 			return courseList;

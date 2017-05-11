@@ -28,11 +28,22 @@ public class Main {
         arr.add(0,user1);
         arr.add(1,user2);
         
-        dbms.insertToStudent("gulden", "aday", "123", "guldenaday@gmail.com", "bilk", "cs", "grad", "3", "spring 2017");
+        dbms.insertToStudent("ertan", "aday", "123", "ertanaday@gmail.com", "bilk", "cs", "grad", "3", "spring 2017");
         Student newStudent = new Student();
-        newStudent = dbms.getStudent("guldenaday@gmail.com", "123");
+        newStudent = dbms.getStudent("ertanaday@gmail.com", "123");
         
         System.out.println(newStudent.getUserEmail());
+        
+       /* dbms.insertToCourse("MATH101 - Calculus 1" , "Okan Tekman", "15", true);
+        dbms.insertToCourse("CS101 - Algorithms and Programming 1" , "David Davenport", "22", false);
+        dbms.insertToCourse("CS353 - Database Systems" , "Ozgur Ulusoy");
+        dbms.insertToCourse("CS223 - Digital Design" , "William Sawyer", false);
+        
+        courseArr = dbms.getAllCourses();
+        
+        for(int i = 0; i < courseArr.size(); i++)
+        	if( courseArr.get(i) != null)
+        		System.out.println( courseArr.get(i).getContentName());*/
         
         Course OOD = new Course("CS319 - Object Oriented Software Engineering " , "Bora Güngören");
         Course PL = new Course("CS315 - Programming Languages " , "Buğra Gedik");
