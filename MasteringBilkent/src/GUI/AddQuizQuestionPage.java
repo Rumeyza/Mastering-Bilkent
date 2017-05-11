@@ -142,28 +142,28 @@ public class AddQuizQuestionPage {
                     c2TextField.setPromptText("Enter Second Choice");
                     error = -1;
                 }
-                c33 = c2TextField.getText();
+                c33 = c3TextField.getText();
                 if(c33.equals("")){
-                    c2.setTextFill(Color.RED);
-                    c2TextField.setPromptText("Enter Third Choice");
+                    c3.setTextFill(Color.RED);
+                    c3TextField.setPromptText("Enter Third Choice");
                     error = -1;
                 }
-                c44 = c2TextField.getText();
+                c44 = c4TextField.getText();
                 if(c44.equals("")){
-                    c2.setTextFill(Color.RED);
-                    c2TextField.setPromptText("Enter Fourth Choice");
+                    c4.setTextFill(Color.RED);
+                    c4TextField.setPromptText("Enter Fourth Choice");
                     error = -1;
                 }
-                c55 = c2TextField.getText();
+                c55 = c5TextField.getText();
                 if(c55.equals("")){
-                    c2.setTextFill(Color.RED);
-                    c2TextField.setPromptText("Enter Fifth Choice");
+                    c5.setTextFill(Color.RED);
+                    c5TextField.setPromptText("Enter Fifth Choice");
                     error = -1;
                 }
-                ansans = c2TextField.getText();
+                ansans = answerTextField.getText();
                 if(ansans.equals("")){
-                    c2.setTextFill(Color.RED);
-                    c2TextField.setPromptText("Enter Answer");
+                    answer.setTextFill(Color.RED);
+                    answerTextField.setPromptText("Enter Answer");
                     error = -1;
                 }
                 if(error==-1)
@@ -208,28 +208,28 @@ public class AddQuizQuestionPage {
                     c2TextField.setPromptText("Enter Second Choice");
                     error = -1;
                 }
-                c33 = c2TextField.getText();
+                c33 = c3TextField.getText();
                 if(c33.equals("")){
-                    c2.setTextFill(Color.RED);
-                    c2TextField.setPromptText("Enter Third Choice");
+                    c3.setTextFill(Color.RED);
+                    c3TextField.setPromptText("Enter Third Choice");
                     error = -1;
                 }
-                c44 = c2TextField.getText();
+                c44 = c4TextField.getText();
                 if(c44.equals("")){
-                    c2.setTextFill(Color.RED);
-                    c2TextField.setPromptText("Enter Fourth Choice");
+                    c4.setTextFill(Color.RED);
+                    c4TextField.setPromptText("Enter Fourth Choice");
                     error = -1;
                 }
-                c55 = c2TextField.getText();
+                c55 = c5TextField.getText();
                 if(c55.equals("")){
-                    c2.setTextFill(Color.RED);
-                    c2TextField.setPromptText("Enter Fifth Choice");
+                    c5.setTextFill(Color.RED);
+                    c5TextField.setPromptText("Enter Fifth Choice");
                     error = -1;
                 }
-                ansans = c2TextField.getText();
+                ansans = answerTextField.getText();
                 if(ansans.equals("")){
-                    c2.setTextFill(Color.RED);
-                    c2TextField.setPromptText("Enter Answer");
+                    answer.setTextFill(Color.RED);
+                    answerTextField.setPromptText("Enter Answer");
                     error = -1;
                 }
                 if(error==-1)

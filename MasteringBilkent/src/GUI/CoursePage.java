@@ -1,31 +1,32 @@
 package GUI;
 
-import ApplicationLogic.Course;
-import ApplicationLogic.Instructor;
-import ApplicationLogic.Student;
+import ApplicationLogic.*;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Hyperlink;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
-import ApplicationLogic.User;
 import Storage.DatabaseManager;
+
+import java.util.ArrayList;
+
 public class CoursePage {
 
     static Scene scene;
 
     public static void start(Course course, User user){
+
+        ScrollPane sp = new ScrollPane();
+
     	Instructor courseCreator = new Instructor();
     	int userId = -1;
     	DatabaseManager dbms = new DatabaseManager();
@@ -65,6 +66,49 @@ public class CoursePage {
 
         //Line
         Line line = new Line(0, 20, 750, 20);
+        //Line ends
+
+        //Intructor Course List
+        /*
+        ArrayList<Content> list = null;
+
+        for(int i = 0 ; i < list.size();i++){
+            Course course = list.get(i);
+
+            VBox courseBox = new VBox();
+            courseBox.setPadding(new Insets(15));
+            courseBox.setSpacing(10);
+            courseBox.setAlignment(Pos.TOP_CENTER);
+            courseBox.setStyle("-fx-background-color:  #003366");
+
+            Hyperlink courseLink = new Hyperlink(c.getContentName());
+            int id = list.get(i).getContentId();
+            courseLink.setOnAction(e -> LoginApp.myStage.setScene(CoursePage.startScene(course, instructor)));
+            courseLink.setStyle("-fx-text-fill: white");
+            courseLink.setFont(Font.font("Helvetica", 24));
+            courseLink.setBorder(Border.EMPTY);
+            Instructor courseCreator = new Instructor();
+            try {
+                courseCreator = dbms.getInstructor(course.getInstructorId());
+            } catch (Exception e1) {
+                // TODO Auto-generated catch block
+                e1.printStackTrace();
+            }
+            Text ins = new Text(courseCreator.getUserName()+" / Spring 2017");
+            ins.setFill(Color.WHITE);
+            ins.setFont(Font.font("Helvetica",18));
+            courseBox.getChildren().addAll(courseLink, ins);
+            centerMenu.getChildren().addAll(courseBox);
+
+        }
+
+        sp.setFitToHeight(true);
+        sp.setVmax(1000);
+        sp.setPrefSize(115, 150);
+        sp.setContent(centerMenu);
+*/
+        //Instructor Course List End
+
         if(userId == course.getInstructorId()){
         	Hyperlink selection = new Hyperlink("Add Content");
         	selection.setOnAction(e-> ContentSelectionBox.display(course, user));
@@ -94,9 +138,8 @@ public class CoursePage {
         		centerMenu.getChildren().addAll(logo,line);
         	}
         	
-      }
-        else
-        	centerMenu.getChildren().addAll(logo,line);
+        } else centerMenu.getChildren().addAll(logo,line);
+
         //  CENTER END
 
         //  LEFT
@@ -123,8 +166,8 @@ public class CoursePage {
 
         String fontFamily1 = "Helvetica";
         double titleFontSize1 = 16;
-        
-        
+
+
         Text courseName = new Text(10, 20, courseCreator.getUserName());
         courseName.setFont(Font.font(fontFamily1, titleFontSize1));
         courseName.setFill(Color.WHITE);
@@ -143,19 +186,19 @@ public class CoursePage {
         Hyperlink link1 = new Hyperlink("Return");
         link1.setStyle("-fx-text-fill: white");
         link1.setOnAction(e -> {
-        	if(user.getUserRole().equals("instructor"))
-        		LoginApp.myStage.setScene(Offerings.startScene(user));
-        	else if(user.getUserRole().equals("student"))
-        		 LoginApp.myStage.setScene(Offerings.startScene(user));
+            if(user.getUserRole().equals("instructor"))
+                LoginApp.myStage.setScene(Offerings.startScene(user));
+            else if(user.getUserRole().equals("student"))
+                 LoginApp.myStage.setScene(Offerings.startScene(user));
             LoginApp.myStage.setTitle("Mastering Bilkent");//---------------------------------> her classın başına koyalım
         });
 
         Hyperlink link2 = new Hyperlink("My Courses");
         link2.setStyle("-fx-text-fill: white");
         if(user.getUserRole().equals("student"))
-			link2.setOnAction(e -> LoginApp.myStage.setScene(HomePage.startScene(user)) );
-		else if(user.getUserRole().equals("instructor"))
-			link2.setOnAction(e -> LoginApp.myStage.setScene(InstructorHomePage.startScene(user)) );
+            link2.setOnAction(e -> LoginApp.myStage.setScene(HomePage.startScene(user)) );
+        else if(user.getUserRole().equals("instructor"))
+            link2.setOnAction(e -> LoginApp.myStage.setScene(InstructorHomePage.startScene(user)) );
 
         Hyperlink link3 = new Hyperlink("Profile");
         link3.setStyle("-fx-text-fill: white");
