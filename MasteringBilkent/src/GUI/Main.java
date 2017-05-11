@@ -23,22 +23,23 @@ public class Main {
     	dbms.createTableCourse();
     	dbms.createTableGives();
     	dbms.createTableTakes();
-    	
+
+    	/*
         User user1 = new User("Root","Mastering Bilkent","a","a","","","",""); //root@mastering.bilkent
         User user2 = new Instructor("b","b","b","b","b","b","an Instructor","b");
         arr = new ArrayList<User>();
         arr.add(0,user1);
         arr.add(1,user2);
-        
+
         dbms.insertToStudent("ertan", "aday", "123", "ertanaday@gmail.com", "bilk", "cs","student", "grad", "3", "spring 2017");
         Student newStudent = new Student();
         newStudent = dbms.getStudent("ertanaday@gmail.com", "123");
         System.out.println(newStudent.getUserEmail());
         
-     /*   dbms.insertToCourse("MATH101 - Calculus 1" , "Okan Tekman", "15", true);
+        dbms.insertToCourse("MATH101 - Calculus 1" , "Okan Tekman", "15", true);
         dbms.insertToCourse("CS101 - Algorithms and Programming 1" , "David Davenport", "22", false);
         dbms.insertToCourse("CS353 - Database Systems" , "Ozgur Ulusoy");
-        dbms.insertToCourse("CS223 - Digital Design" , "William Sawyer","dgtl123", false);*/
+        dbms.insertToCourse("CS223 - Digital Design" , "William Sawyer","dgtl123", false);
         
         courseArr = dbms.getAllCourses();
         
@@ -46,7 +47,7 @@ public class Main {
         	if( courseArr.get(i) != null)
         		System.out.println( courseArr.get(i).getContentName());
         
-        /*Course OOD = new Course("CS319 - Object Oriented Software Engineering " , "Bora Güngören");
+        Course OOD = new Course("CS319 - Object Oriented Software Engineering " , "Bora Güngören");
         Course PL = new Course("CS315 - Programming Languages " , "Buğra Gedik");
         Course OS = new Course("CS342 - Operating Systems " , "Özcan Öztürk");
         Course DB = new Course("CS353 - Database Systems" , "Özgür Ulusoy");
@@ -66,12 +67,11 @@ public class Main {
         courseArr.add(6, CS224);
         courseArr.add(7, CS102);
         courseArr.add(8, MATH101);
-        courseArr.add(9, MATH102);*/
+        courseArr.add(9, MATH102);
+        */
 
-        
         Application.launch(LoginApp.class, args);
     }
-
 
     /*public static int findCourse(int contId){
         int result = -1;
