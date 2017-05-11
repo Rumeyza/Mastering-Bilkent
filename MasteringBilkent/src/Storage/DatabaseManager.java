@@ -81,6 +81,28 @@ public class DatabaseManager {
 			create.executeUpdate();
 		}catch(Exception e){System.out.println(e);}
 	}
+	
+	public void createTableQuiz() throws Exception{
+		try{
+			Connection con = getConnection();
+			
+			PreparedStatement create = con.prepareStatement("CREATE TABLE Quiz(quiz_id int NOT NULL AUTO_INCREMENT, quizName varchar(255) NOT NULL, nofQuestions int NOT NULL, quizTxt varchar(10000) NOT NULL, isGraded boolean NOT NULL DEFAULT TRUE, PRIMARY KEY(quizName))");
+																														
+
+			create.executeUpdate();
+		} catch(Exception e){System.out.println(e);}
+	}
+	
+	public void createTableQuestion() throws Exception{
+		try{
+			Connection con = getConnection();
+			
+			PreparedStatement create = con.prepareStatement("CREATE TABLE Question(question_id int NOT NULL AUTO_INCREMENT, quiz_id int NOT NULL, questionTxt varchar(10000) NOT NULL, choice1 varchar(255) NOT NULL, choice2 varchar(255) NOT NULL, choice3 varchar(255) NOT NULL, choice4 varchar(255) NOT NULL, choice5 varchar(255) NOT NULL, answer varchar(255) NOT NULL, PRIMARY KEY(question_id), FOREIGN KEY(quiz_id) REFERENCES Quiz(quiz_id))");
+																														
+
+			create.executeUpdate();
+		} catch(Exception e){System.out.println(e);}
+	}
 	//insertions
 	public void insertToCourse(String contentName, int instrId, String key, boolean v) throws Exception{
 		try{
@@ -146,6 +168,31 @@ public class DatabaseManager {
 
 			insert.executeUpdate();
 		} catch(Exception e){System.out.println(e);}
+	}
+	
+		public void insertToQuiz(String contentName, int size, String description, boolean graded)throws Exception{
+			
+			try {
+				Connection con = getConnection();
+				PreparedStatement insert  = con.prepareStatement("INSERT INTO Quiz (quizName, nofQuestions, quizTxt, isGraded) VALUES ('" +contentName+ "', "+size+", '" +description+ "', "+graded+")");
+				
+				insert.executeUpdate();
+			} catch (Exception e) {System.out.println(e);}
+			
+		}
+	
+	
+	public void insertToQuestion(String quizName, String quizTXT, String qTxt, String c1, String c2, String c3, String c4, String c5, String cAnswer)throws Exception{
+		
+		int quiz = getQuizId(quizName, quizTXT);
+		
+		try {
+			Connection con = getConnection();
+			PreparedStatement insert  = con.prepareStatement("INSERT INTO Question (quiz_id, questionTxt, choice1, choice2, choice3, choice4, choice5, answer) VALUES ("+quiz+", '" +qTxt+ "', '" +c1+ "', '" +c2+ "', '" +c3+ "', '" +c4+ "', '" +c5+ "', '" +cAnswer+ "')");
+			
+			insert.executeUpdate();
+		} catch (Exception e) {System.out.println(e);}
+		
 	}
 	
 	public boolean isExisting(String email, String password){
@@ -382,72 +429,22 @@ public class DatabaseManager {
 		return null;
 	}
 	
-	public void insertToQuiz(String contentName, int size, String description, boolean graded)throws Exception{
-			
-			try {
-				Connection con = getConnection();
-				PreparedStatement insert  = con.prepareStatement("INSERT INTO Quiz (quizName, nofQuestions, quizTxt, isGraded) VALUES ('" +contentName+ "', "+size+", '" +description+ "', "+graded+")");
-				
-				insert.executeUpdate();
-			} catch (Exception e) {System.out.println(e);}
-			
-	}
-	
 	public int getQuizId(String name, String qTxt)throws Exception{
-		
-		int id;
-		try{
-			Connection con = getConnection();
-			PreparedStatement gives = con.prepareStatement("SELECT quiz_id FROM Quiz WHERE quizName = '"+name+"' AND quizTxt= '"+qTxt+"'");
-			ResultSet result = gives.executeQuery();
-			if(result.next()){
-				id = result.getInt("quiz_id");
-			return id;
-			}
-				
-		} catch(Exception e){System.out.println(e);}
-		return 0;
-	}
-
-	
-	public void insertToQuestion(String quizName, String quizTXT, String qTxt, String c1, String c2, String c3, String c4, String c5, String cAnswer)throws Exception{
-		
-		int quiz = getQuizId(quizName, quizTXT);
-		
-		try {
-			Connection con = getConnection();
-			PreparedStatement insert  = con.prepareStatement("INSERT INTO Question (quiz_id, questionTxt, choice1, choice2, choice3, choice4, choice5, answer) VALUES ("+quiz+", '" +qTxt+ "', '" +c1+ "', '" +c2+ "', '" +c3+ "', '" +c4+ "', '" +c5+ "', '" +cAnswer+ "')");
 			
-			insert.executeUpdate();
-		} catch (Exception e) {System.out.println(e);}
-		
-	}
+			int id;
+			try{
+				Connection con = getConnection();
+				PreparedStatement gives = con.prepareStatement("SELECT quiz_id FROM Quiz WHERE quizName = '"+name+"' AND quizTxt= '"+qTxt+"'");
+				ResultSet result = gives.executeQuery();
+				if(result.next()){
+					id = result.getInt("quiz_id");
+				return id;
+				}
+					
+			} catch(Exception e){System.out.println(e);}
+			return 0;
+		}
 	
-	public void createTableQuiz() throws Exception{
-		try{
-			Connection con = getConnection();
-			
-			PreparedStatement create = con.prepareStatement("CREATE TABLE Quiz(quiz_id int NOT NULL AUTO_INCREMENT, quizName varchar(255) NOT NULL, nofQuestions int NOT NULL, quizTxt varchar(10000) NOT NULL, isGraded boolean NOT NULL DEFAULT TRUE, PRIMARY KEY(quizName))");
-																														
-
-			create.executeUpdate();
-		} catch(Exception e){System.out.println(e);}
-	}
-	
-	public void createTableQuestion() throws Exception{
-		try{
-			Connection con = getConnection();
-			
-			PreparedStatement create = con.prepareStatement("CREATE TABLE Question(question_id int NOT NULL AUTO_INCREMENT, quiz_id int NOT NULL, questionTxt varchar(10000) NOT NULL, choice1 varchar(255) NOT NULL, choice2 varchar(255) NOT NULL, choice3 varchar(255) NOT NULL, choice4 varchar(255) NOT NULL, choice5 varchar(255) NOT NULL, answer varchar(255) NOT NULL, PRIMARY KEY(question_id), FOREIGN KEY(quiz_id) REFERENCES Quiz(quiz_id))");
-																														
-
-			create.executeUpdate();
-		} catch(Exception e){System.out.println(e);}
-	}
-	
-	
-
-
 
 }
 
