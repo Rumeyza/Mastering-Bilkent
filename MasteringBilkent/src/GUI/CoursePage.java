@@ -26,7 +26,14 @@ public class CoursePage {
 
     public static void start(Course course, User user){
     	Instructor courseCreator = new Instructor();
+    	int userId = -1;
     	DatabaseManager dbms = new DatabaseManager();
+    	try {
+			 userId = dbms.getInstructorId(user.getUserEmail(), user.getUserPassword());
+		} catch (Exception e2) {
+			// TODO Auto-generated catch block
+			e2.printStackTrace();
+		}
     	try {
     		courseCreator = dbms.getInstructor(course.getInstructorId());
 		} catch (Exception e1) {
@@ -57,10 +64,13 @@ public class CoursePage {
 
         //Line
         Line line = new Line(0, 20, 750, 20);
-
-      
-
-        centerMenu.getChildren().addAll(logo,line);
+        if(userId == course.getInstructorId()){
+        	Hyperlink selection = new Hyperlink("Add Content");
+        	  selection.setOnAction(e-> ContentSelectionBox.display(course, user));
+        	  centerMenu.getChildren().addAll(logo,line, selection);
+        }
+        else
+        	centerMenu.getChildren().addAll(logo,line);
         //  CENTER END
 
         //  LEFT
