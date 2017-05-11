@@ -448,6 +448,7 @@ public class DatabaseManager {
 			return quizList;
 		}catch(Exception e){System.out.println(e);}
 		return null;
+		//
 				//quiz_id int NOT NULL AUTO_INCREMENT, quizName varchar(255) NOT NULL, nofQuestions int NOT NULL, quizTxt varchar(255) NOT NULL, isGraded boolean NOT NULL DEFAULT TRUE, PRIMARY KEY(quiz_id, quizName))
 				//String contentName, int size, String description, boolean graded
 	}
