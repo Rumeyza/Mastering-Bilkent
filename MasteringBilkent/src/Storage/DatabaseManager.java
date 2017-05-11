@@ -374,16 +374,14 @@ public class DatabaseManager {
 	public ArrayList<Course> getRegisteredCourses(int student_id) throws Exception{
 		try{
 			Connection con = getConnection();
-			PreparedStatement statement = con.prepareStatement("SELECT * FROM Course WHERE course_id IN (SELECT course_id FROM Takes WHERE s_id = "+student_id+")");
+			PreparedStatement statement = con.prepareStatement("SELECT courseName, instrId, courseKey, visibility FROM Course WHERE course_id IN (SELECT course_id FROM Takes WHERE s_id = "+student_id+")");
 	
 			ResultSet result = statement.executeQuery();
 	
 			ArrayList<Course> courseList = new ArrayList<Course>();
 			while(result.next()){
-				String crsName = result.getString("courseName");
-				//String crsKey = result.getString("courseKey");
 				
-				Course course = getCourse(crsName);
+				Course course = new Course(result.getString("courseName"), result.getInt("instrId"), result.getString("courseKey"), result.getBoolean("visibility"));
 				courseList.add(course);
 			}
 			return courseList;
