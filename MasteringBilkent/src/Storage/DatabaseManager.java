@@ -86,22 +86,71 @@ public class DatabaseManager {
 		try{
 			Connection con = getConnection();
 			PreparedStatement insert  = con.prepareStatement("INSERT INTO Course (courseName, instr, courseKey, visibility) VALUES ('" +contentName+ "', '" +instr+ "', '" +key+ "' , "+v+")");
-															
+			//PreparedStatement insert2  = con.prepareStatement("INSERT INTO Gives (courseName, instr, courseKey, visibility) VALUES ('" +contentName+ "', '" +instr+ "', '" +key+ "' , "+v+")");												
 			
 			insert.executeUpdate();
+			insert2.executeUpdate();
 		} catch(Exception e){System.out.println(e);}
 	}
 	
-	public void insertToCourse(String contentName, String instr, boolean v){
+	public int givesCourseId(String contentName)throws Exception{
 		
-		try {
+		int id;
+		try{
 			Connection con = getConnection();
-			PreparedStatement insert  = con.prepareStatement("INSERT INTO Course (courseName, instr,visibility) VALUES ('" +contentName+ "','" +instr+ "',"+v+")");
-			
-			insert.executeUpdate();
-		} catch (Exception e) {System.out.println(e);}
-		
+			PreparedStatement gives = con.prepareStatement("SELECT course_id FROM Course WHERE courseName = '"+contentName+"'");
+			ResultSet result = gives.executeQuery();
+			if(result.next()){
+				id = result.getInt("course_id");
+				return id;
+			}
+				
+		} catch(Exception e){System.out.println(e);}
+		return 0;
 	}
+	
+	public int givesInstructorId(String name)throws Exception{
+			
+			int id;
+			try{
+				Connection con = getConnection();
+				PreparedStatement gives = con.prepareStatement("SELECT i_id FROM Instructor WHERE i_name = '"+name+"'");
+				ResultSet result = gives.executeQuery();
+				if(result.next()){
+					id = result.getInt("i_id");
+					return id;
+				}
+					
+			} catch(Exception e){System.out.println(e);}
+			return 0;
+		}
+	
+	public int givesInstructorId(String email, String pass)throws Exception{
+		
+		int id;
+		try{
+			Connection con = getConnection();
+			PreparedStatement gives = con.prepareStatement("SELECT i_id FROM Instructor WHERE i_email = '"+email+"' AND i_password = '"+pass+"'");
+			ResultSet result = gives.executeQuery();
+			if(result.next()){
+				id = result.getInt("i_id");
+				return id;
+			}
+				
+		} catch(Exception e){System.out.println(e);}
+		return -1;
+	}
+		
+		public void insertToCourse(String contentName, String instr, boolean v){
+			
+			try {
+				Connection con = getConnection();
+				PreparedStatement insert  = con.prepareStatement("INSERT INTO Course (courseName, instr,visibility) VALUES ('" +contentName+ "','" +instr+ "',"+v+")");
+				
+				insert.executeUpdate();
+			} catch (Exception e) {System.out.println(e);}
+			
+		}
 	public void insertToCourse(String contentName, String instr){
 		
 		try {
