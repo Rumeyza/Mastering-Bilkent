@@ -1,10 +1,6 @@
 package GUI;
 
-import ApplicationLogic.Content;
-import ApplicationLogic.Course;
-import ApplicationLogic.Instructor;
-import ApplicationLogic.Student;
-import ApplicationLogic.User;
+import ApplicationLogic.*;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -38,7 +34,7 @@ public class NewQuizBox {
         return true;
     }
 
-    public static void display( Instructor inst ){
+    public static void display( Instructor inst, Course course ){
         Stage window = new Stage();
 
         window.initModality(Modality.APPLICATION_MODAL);
@@ -69,7 +65,7 @@ public class NewQuizBox {
 
         //Quiz description
         Label quizDesc = new Label("Enter Quiz Description:");
-        grid.add(quizDesc, 0, 2);
+        grid.add(quizDesc, 0, 3);
         TextField quizDescTextField = new TextField();
         grid.add(quizDescTextField, 1, 3 ,8 ,1);
 
@@ -110,8 +106,13 @@ public class NewQuizBox {
             else{
                 boolean check = checkbox.isSelected();
                 int qSizeInt = Integer.parseInt(qSize);
-                inst.createQuiz( qName, qSizeInt, qDesc,!check);
-                LoginApp.myStage.setScene(InstructorHomePage.startScene(inst));
+                try {
+                    inst.createQuiz( qName, qSizeInt, qDesc,!check);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                Quiz quiz = new Quiz(qName,qSizeInt,qDesc,!check);
+                LoginApp.myStage.setScene(AddQuizQuestionPage.startScene(quiz, course, inst, 1));
                 window.close();
                 return;
             }
