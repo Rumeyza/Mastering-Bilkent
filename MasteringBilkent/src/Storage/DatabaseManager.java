@@ -432,7 +432,25 @@ public class DatabaseManager {
 		}catch(Exception e){System.out.println(e);}
 		return null;
 	}
-	
+	public ArrayList<Quiz> getAddedQuizzes( int course_id) throws Exception{
+		try{
+			Connection con = getConnection();
+			PreparedStatement statement = con.prepareStatement("SELECT quizName, nofQuestions, quizTxt, isGraded FROM Quiz WHERE quiz_id IN (SELECT quiz_id FROM QuizzesInCourse WHERE course_id = "+course_id+")");
+			
+			ResultSet result = statement.executeQuery();
+			
+			ArrayList<Quiz> quizList = new ArrayList<Quiz>();
+			while(result.next()){
+				Quiz quiz = new Quiz(result.getString("quizName"), result.getInt("nofQuestions"), result.getString("quizTxt"), result.getBoolean("isGraded"));
+				
+				quizList.add(quiz);
+			}
+			return quizList;
+		}catch(Exception e){System.out.println(e);}
+		return null;
+				//quiz_id int NOT NULL AUTO_INCREMENT, quizName varchar(255) NOT NULL, nofQuestions int NOT NULL, quizTxt varchar(255) NOT NULL, isGraded boolean NOT NULL DEFAULT TRUE, PRIMARY KEY(quiz_id, quizName))
+				//String contentName, int size, String description, boolean graded
+	}
 	public ArrayList<Course> getRegisteredCourses(int student_id) throws Exception{
 		try{
 			Connection con = getConnection();
