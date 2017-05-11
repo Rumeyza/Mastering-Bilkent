@@ -259,6 +259,46 @@ public class DatabaseManager {
 		}catch(Exception e){System.out.println(e);}
 		return null;
 	}
+	
+	public ArrayList<Course> getRegisteredCourses(int student_id) throws Exception{
+		try{
+			Connection con = getConnection();
+			PreparedStatement statement = con.prepareStatement("SELECT courseName FROM Course WHERE course_id IN (SELECT course_id FROM Takes WHERE s_id = "+student_id+")");
+	
+			ResultSet result = statement.executeQuery();
+	
+			ArrayList<Course> courseList = new ArrayList<Course>();
+			while(result.next()){
+				String crsName = result.getString("courseName");
+				//String crsKey = result.getString("courseKey");
+				
+				Course course = getCourse(crsName);
+				courseList.add(course);
+			}
+			return courseList;
+		}catch(Exception e){System.out.println(e);}
+		return null;
+	}
+	
+	public ArrayList<Course> getGivenCourses(int instructor_id) throws Exception{
+		try{
+			Connection con = getConnection();
+			PreparedStatement statement = con.prepareStatement("SELECT courseName FROM Course WHERE course_id IN (SELECT course_id FROM Gives WHERE i_id = "+instructor_id+")");
+	
+			ResultSet result = statement.executeQuery();
+	
+			ArrayList<Course> courseList = new ArrayList<Course>();
+			while(result.next()){
+				String crsName = result.getString("courseName");
+				//String crsKey = result.getString("courseKey");
+				
+				Course course = getCourse(crsName);
+				courseList.add(course);
+			}
+			return courseList;
+		}catch(Exception e){System.out.println(e);}
+		return null;
+	}
 
 
 }
