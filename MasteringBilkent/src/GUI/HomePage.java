@@ -54,7 +54,7 @@ public class HomePage{
 
 
         Hyperlink buttonA = new Hyperlink("Register Another Course");
-
+        buttonA.setOnAction(e -> LoginApp.myStage.setScene(Offerings.startScene(user)));
         centerMenu.getChildren().addAll(logo, line, buttonA);
         ArrayList<Course> list = null;
         int studentId = 0;
