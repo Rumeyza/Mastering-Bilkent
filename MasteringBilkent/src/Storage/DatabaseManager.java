@@ -49,7 +49,7 @@ public class DatabaseManager {
 	public void createTableStudent() throws Exception{
 		try{
 			Connection con = getConnection();
-			PreparedStatement create = con.prepareStatement("CREATE TABLE Student(s_id int NOT NULL AUTO_INCREMENT, s_name varchar(64) NOT NULL, s_surname varchar(64) NOT NULL, s_password varchar(64) NOT NULL, s_email varchar(64) NOT NULL, s_institution varchar(128), s_department varchar(64), s_dept varchar(64), s_title varchar(64), s_schoolYear varchar(64), s_semester varchar(64), PRIMARY KEY(s_id))");
+			PreparedStatement create = con.prepareStatement("CREATE TABLE Student(s_id int NOT NULL AUTO_INCREMENT, s_name varchar(64) NOT NULL, s_surname varchar(64) NOT NULL, s_password varchar(64) NOT NULL, s_email varchar(64) NOT NULL, s_institution varchar(128), s_department varchar(64), s_role varchar(64), s_title varchar(64), s_schoolYear varchar(64), s_semester varchar(64), PRIMARY KEY(s_id))");
 																					
 			create.executeUpdate();
 	} catch(Exception e){System.out.println(e);}
