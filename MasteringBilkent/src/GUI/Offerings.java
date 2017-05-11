@@ -68,7 +68,13 @@ public class Offerings {
 					courseBox.setStyle("-fx-background-color:  #003366");
 				courseHyperlinkList.add(i,new Hyperlink(course.getContentName()));
 
-				courseHyperlinkList.get(i).setOnAction(e -> LoginApp.myStage.setScene(CoursePage.startScene(course, user)));
+				courseHyperlinkList.get(i).setOnAction(e -> 
+				{
+					if(course.isVisibility())
+						LoginApp.myStage.setScene(CoursePage.startScene(course, user));
+					else
+						CourseKeyBox.display(course, user);					
+				});
 				courseHyperlinkList.get(i).setStyle("-fx-text-fill: white");
 				courseHyperlinkList.get(i).setFont(Font.font("Helvetica", 24));
 				courseHyperlinkList.get(i).setBorder(Border.EMPTY);
