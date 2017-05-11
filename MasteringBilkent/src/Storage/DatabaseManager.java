@@ -256,7 +256,7 @@ public class DatabaseManager {
 			int id;
 			try{
 				Connection con = getConnection();
-				PreparedStatement statement = con.prepareStatement("SELECT s_id FROM Student WHERE courseName = '"+sName+"'");
+				PreparedStatement statement = con.prepareStatement("SELECT s_id FROM Student WHERE s_name = '"+sName+"'");
 				ResultSet result = statement.executeQuery();
 				if(result.next()){
 					id = result.getInt("s_id");
