@@ -59,7 +59,7 @@ public class DatabaseManager {
 		try{
 			Connection con = getConnection();
 			
-			PreparedStatement create = con.prepareStatement("CREATE TABLE Course(course_id int NOT NULL AUTO_INCREMENT, courseName varchar(50) NOT NULL, instr varchar(128), courseKey varchar(64), visibility boolean DEFAULT TRUE, PRIMARY KEY(course_id))");
+			PreparedStatement create = con.prepareStatement("CREATE TABLE Course(course_id int NOT NULL AUTO_INCREMENT, courseName varchar(255) NOT NULL, instr varchar(128), courseKey varchar(64), visibility boolean, PRIMARY KEY(course_id))");
 																														
 
 			create.executeUpdate();
@@ -91,7 +91,7 @@ public class DatabaseManager {
 		
 		try {
 			Connection con = getConnection();
-			PreparedStatement insert  = con.prepareStatement("INSERT INTO Course (courseName, instr,visibilit) VALUES ('" +contentName+ "','" +instr+ "'");
+			PreparedStatement insert  = con.prepareStatement("INSERT INTO Course (courseName, instr) VALUES ('" +contentName+ "','" +instr+ "'");
 			
 			insert.executeUpdate();
 		} catch (Exception e) {System.out.println(e);}
@@ -193,7 +193,7 @@ public class DatabaseManager {
 	}
 	
 	
-	public ArrayList<String> getAllCourses() throws Exception{
+	/*public ArrayList<String> getAllCourses() throws Exception{
 		try{
 		Connection con = getConnection();
 		PreparedStatement statement = con.prepareStatement("SELECT courseName, instr FROM course");
@@ -209,6 +209,25 @@ public class DatabaseManager {
 		return array;
 	}catch(Exception e){System.out.println(e);}
 	return null;
+	}*/
+	public ArrayList<Course> getAllCourses() throws Exception{
+		try{
+			Connection con = getConnection();
+			PreparedStatement statement = con.prepareStatement("SELECT courseName, courseKey FROM course");
+	
+			ResultSet result = statement.executeQuery();
+	
+			ArrayList<Course> courseList = new ArrayList<Course>();
+			while(result.next()){
+				String crsName = result.getString("courseName");
+				String crsKey = result.getString("courseKey");
+				
+				Course course = getCourse(crsName, crsKey);
+				courseList.add(course);
+			}
+			return courseList;
+		}catch(Exception e){System.out.println(e);}
+		return null;
 	}
 
 
