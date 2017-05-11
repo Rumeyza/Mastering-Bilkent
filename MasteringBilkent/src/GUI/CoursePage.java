@@ -2,6 +2,7 @@ package GUI;
 
 import ApplicationLogic.Course;
 import ApplicationLogic.Instructor;
+import ApplicationLogic.Student;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -66,9 +67,34 @@ public class CoursePage {
         Line line = new Line(0, 20, 750, 20);
         if(userId == course.getInstructorId()){
         	Hyperlink selection = new Hyperlink("Add Content");
-        	  selection.setOnAction(e-> ContentSelectionBox.display(course, user));
-        	  centerMenu.getChildren().addAll(logo,line, selection);
+        	selection.setOnAction(e-> ContentSelectionBox.display(course, user));
+        	centerMenu.getChildren().addAll(logo,line, selection);
         }
+        else if(user.getUserRole().equals("student")){
+        	boolean isExist = false; 
+        	try {
+				isExist = dbms.isEnrolled(course.getContentName(), user.getUserName());
+			} catch (Exception e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+        	if(isExist){
+        		Hyperlink register = new Hyperlink("Register This Course");
+            	register.setOnAction(e-> {
+    				try {
+    					user.enrollCourse(course.getContentName());
+    				} catch (Exception e1) {
+    					// TODO Auto-generated catch block
+    					e1.printStackTrace();
+    				}
+    			});
+            	centerMenu.getChildren().addAll(logo,line, register);
+        	}
+        	else{
+        		centerMenu.getChildren().addAll(logo,line);
+        	}
+        	
+      }
         else
         	centerMenu.getChildren().addAll(logo,line);
         //  CENTER END
