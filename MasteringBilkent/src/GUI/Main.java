@@ -25,6 +25,8 @@ public class Main {
     	dbms.createTableTakes();
     	dbms.createTableQuiz();
     	dbms.createTableQuestion();
+    	dbms.createTableQuizzesInCourse();
+    	dbms.createTableQuestionsInQuiz();
 
     	/*
         User user1 = new User("Root","Mastering Bilkent","a","a","","","",""); //root@mastering.bilkent
