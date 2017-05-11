@@ -469,6 +469,24 @@ public class DatabaseManager {
 			return 0;
 		}
 	
+	public boolean isEnrolled(String contentName, String sName)throws Exception{
+			
+			int student = getStudentId(sName);
+			int course = getCourseId(contentName);
+			
+			try{
+				Connection con = getConnection();
+				PreparedStatement gives = con.prepareStatement("SELECT s_id FROM Takes WHERE c_id = "+course+" AND s_id= "+student+"");
+				ResultSet result = gives.executeQuery();
+				
+					if(result == null)
+						return false;
+					
+					
+			} catch(Exception e){System.out.println(e);}
+			return true;
+		}
+	
 
 }
 
