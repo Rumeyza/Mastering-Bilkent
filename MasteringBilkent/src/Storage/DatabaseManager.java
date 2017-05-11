@@ -89,7 +89,7 @@ public class DatabaseManager {
 			//PreparedStatement insert2  = con.prepareStatement("INSERT INTO Gives (courseName, instr, courseKey, visibility) VALUES ('" +contentName+ "', '" +instr+ "', '" +key+ "' , "+v+")");												
 			
 			insert.executeUpdate();
-			insert2.executeUpdate();
+			//insert2.executeUpdate();
 		} catch(Exception e){System.out.println(e);}
 	}
 	
@@ -118,12 +118,12 @@ public class DatabaseManager {
 				ResultSet result = gives.executeQuery();
 				if(result.next()){
 					id = result.getInt("i_id");
-					return id;
-				}
+				return id;
+			}
 					
-			} catch(Exception e){System.out.println(e);}
-			return 0;
-		}
+		} catch(Exception e){System.out.println(e);}
+		return 0;
+	}
 	
 	public int givesInstructorId(String email, String pass)throws Exception{
 		
@@ -134,23 +134,23 @@ public class DatabaseManager {
 			ResultSet result = gives.executeQuery();
 			if(result.next()){
 				id = result.getInt("i_id");
-				return id;
+					return id;
 			}
 				
 		} catch(Exception e){System.out.println(e);}
 		return -1;
 	}
 		
-		public void insertToCourse(String contentName, String instr, boolean v){
+	public void insertToCourse(String contentName, String instr, boolean v){
 			
-			try {
-				Connection con = getConnection();
-				PreparedStatement insert  = con.prepareStatement("INSERT INTO Course (courseName, instr,visibility) VALUES ('" +contentName+ "','" +instr+ "',"+v+")");
+		try {
+			Connection con = getConnection();
+			PreparedStatement insert  = con.prepareStatement("INSERT INTO Course (courseName, instr,visibility) VALUES ('" +contentName+ "','" +instr+ "',"+v+")");
 				
-				insert.executeUpdate();
-			} catch (Exception e) {System.out.println(e);}
+			insert.executeUpdate();
+		} catch (Exception e) {System.out.println(e);}
 			
-		}
+	}
 	public void insertToCourse(String contentName, String instr){
 		
 		try {
