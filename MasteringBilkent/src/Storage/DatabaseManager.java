@@ -286,6 +286,7 @@ public class DatabaseManager {
 		
 		int id;
 		try{
+			//noldu?
 			Connection con = getConnection();
 			PreparedStatement statement = con.prepareStatement("SELECT i_id FROM Instructor WHERE i_email = '"+email+"' AND i_password = '"+pass+"'");
 			ResultSet result = statement.executeQuery();

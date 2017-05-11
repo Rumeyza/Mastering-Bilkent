@@ -23,6 +23,8 @@ public class Main {
     	dbms.createTableCourse();
     	dbms.createTableGives();
     	dbms.createTableTakes();
+    	dbms.createTableQuiz();
+    	dbms.createTableQuestion();
 
     	/*
         User user1 = new User("Root","Mastering Bilkent","a","a","","","",""); //root@mastering.bilkent
