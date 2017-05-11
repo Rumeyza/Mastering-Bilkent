@@ -84,7 +84,7 @@ public class NewCourseBox {
   
         	else{
         		boolean check = checkbox.isSelected();
-        		inst.createCourse(cName,cKey, check);
+        		inst.createCourse(cName,cKey, !check);
         		LoginApp.myStage.setScene(InstructorHomePage.startScene(inst));
         		window.close();
         		return;
