@@ -65,7 +65,22 @@ public class DatabaseManager {
 			create.executeUpdate();
 		} catch(Exception e){System.out.println(e);}
 	}
-
+	public void createTableGives() throws Exception{
+		try{
+			Connection con = getConnection();
+			PreparedStatement create = con.prepareStatement("CREATE TABLE Gives(course_id int NOT NULL, i_id int NOT NULL, PRIMARY KEY(course_id, i_id), FOREIGN KEY(course_id) REFERENCES Course(course_id), FOREIGN KEY(i_id) REFERENCES Instructor(i_id))");
+			
+			create.executeUpdate();
+		}catch(Exception e){System.out.println(e);}
+	}
+	public void createTableTakes() throws Exception{
+		try{
+			Connection con = getConnection();
+			PreparedStatement create = con.prepareStatement("CREATE TABLE Takes(course_id int NOT NULL, s_id int NOT NULL, PRIMARY KEY(course_id, s_id), FOREIGN KEY(course_id) REFERENCES Course(course_id), FOREIGN KEY(s_id) REFERENCES Student(s_id))");
+			
+			create.executeUpdate();
+		}catch(Exception e){System.out.println(e);}
+	}
 //insertions
 	public void insertToCourse(String contentName, String instr, String key, boolean v) throws Exception{
 		try{

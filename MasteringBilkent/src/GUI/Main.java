@@ -21,6 +21,8 @@ public class Main {
     	dbms.createTableInstructor();
     	dbms.createTableStudent();
     	dbms.createTableCourse();
+    	dbms.createTableGives();
+    	dbms.createTableTakes();
     	
         User user1 = new User("Root","Mastering Bilkent","a","a","","","",""); //root@mastering.bilkent
         User user2 = new Instructor("b","b","b","b","b","b","an Instructor","b");
