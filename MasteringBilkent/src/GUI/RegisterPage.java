@@ -202,8 +202,8 @@ public class RegisterPage {
         	
 
         	 if(uRole.equals("a Student")){
-        		 User newUser = new Student(uName, uSurname, uPassword, uEmail, uInst, uDept, "student", uTitle, uYear, "Spring 2017");
-        		 Main.arr.add(newUser);
+        	//	 User newUser = new Student(uName, uSurname, uPassword, uEmail, uInst, uDept, "student", uTitle, uYear, "Spring 2017");
+        		// Main.arr.add(newUser);
         		
         		 try {
         			 if( !dbms.isExistingStudent(uEmail, uPassword))
@@ -216,8 +216,8 @@ public class RegisterPage {
 				 }
         	 } 
         	 else if(uRole.equals("an Instructor")){
-        		 User newUser = new Instructor(uName, uSurname, uPassword, uEmail, uInst, uDept, "instructor", uTitle);
-        		 Main.arr.add(newUser);
+        		// User newUser = new Instructor(uName, uSurname, uPassword, uEmail, uInst, uDept, "instructor", uTitle);
+        		// Main.arr.add(newUser);
         		
         		 try {
         			 if( !dbms.isExistingInstructor(uEmail, uPassword))
