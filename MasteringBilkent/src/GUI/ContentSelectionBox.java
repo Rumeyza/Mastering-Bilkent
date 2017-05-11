@@ -22,7 +22,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class ContentSelectionBox {
-  public static void display(Course course, User user){
+    public static void display(Course course, User user){
         Stage window = new Stage();
 
         window.initModality(Modality.APPLICATION_MODAL);
@@ -38,20 +38,18 @@ public class ContentSelectionBox {
         grid.setPadding(new Insets(25, 25, 25, 25));
         grid.setStyle("-fx-background: #FFFFFF;");
 
-       
-
-
         Hyperlink quizContent = new Hyperlink("Create Quiz");
         grid.add(quizContent, 0, 1);
+        quizContent.setOnAction(e->{
+            NewQuizBox.display((Instructor)user, course);
+            window.close();
+        });
         Hyperlink videoContent = new Hyperlink("Upload Video");
         grid.add(videoContent, 0, 2);
+
         Hyperlink pdfBox = new Hyperlink("Upload Text Document");
         grid.add(pdfBox, 0, 3);
-     
-      
-   
 
-        
         grid.setAlignment(Pos.TOP_LEFT);
 
         Scene scene = new Scene(grid);
