@@ -128,7 +128,19 @@ public class DatabaseManager {
 				insert.executeUpdate();
 			} catch(Exception e){System.out.println(e);}
 	}
+	
+	public void insertToTakes(String contentName, String sName) throws Exception{
 		
+		int id1 = getStudentId(sName);
+		int id2 = getCourseId(contentName);
+		
+		try{
+			Connection con = getConnection();
+			PreparedStatement insert  = con.prepareStatement("INSERT INTO Takes (course_id, s_id) VALUES (" +id2+ ", " +id1+ ")");
+
+			insert.executeUpdate();
+		} catch(Exception e){System.out.println(e);}
+}
 		
 	public void insertToCourse(String contentName, int instrId, boolean v){
 			
@@ -238,6 +250,22 @@ public class DatabaseManager {
 		} catch(Exception e){System.out.println(e);}
 		return 0;
 	}
+	
+	public int getStudentId(String sName)throws Exception{
+			
+			int id;
+			try{
+				Connection con = getConnection();
+				PreparedStatement statement = con.prepareStatement("SELECT s_id FROM Student WHERE courseName = '"+sName+"'");
+				ResultSet result = statement.executeQuery();
+				if(result.next()){
+					id = result.getInt("s_id");
+					return id;
+				}
+					
+			} catch(Exception e){System.out.println(e);}
+			return 0;
+		}
 	
 	public int getInstructorId(String name)throws Exception{
 			

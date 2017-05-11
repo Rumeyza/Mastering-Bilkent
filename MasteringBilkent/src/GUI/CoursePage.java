@@ -126,7 +126,10 @@ public class CoursePage {
 
         Hyperlink link2 = new Hyperlink("My Courses");
         link2.setStyle("-fx-text-fill: white");
-        //link2.setOnAction(e -> );
+        if(user.getUserRole().equals("student"))
+			link2.setOnAction(e -> LoginApp.myStage.setScene(HomePage.startScene(user)) );
+		else if(user.getUserRole().equals("instructor"))
+			link2.setOnAction(e -> LoginApp.myStage.setScene(InstructorHomePage.startScene(user)) );
 
         Hyperlink link3 = new Hyperlink("Profile");
         link3.setStyle("-fx-text-fill: white");
