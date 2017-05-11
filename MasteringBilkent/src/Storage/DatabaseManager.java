@@ -81,7 +81,7 @@ public class DatabaseManager {
 			create.executeUpdate();
 		}catch(Exception e){System.out.println(e);}
 	}
-//insertions
+	//insertions
 	public void insertToCourse(String contentName, String instr, String key, boolean v) throws Exception{
 		try{
 			Connection con = getConnection();
@@ -92,43 +92,12 @@ public class DatabaseManager {
 			//insert2.executeUpdate();
 		} catch(Exception e){System.out.println(e);}
 	}
-	
-	public int givesCourseId(String contentName)throws Exception{
-		
-		int id;
-		try{
-			Connection con = getConnection();
-			PreparedStatement gives = con.prepareStatement("SELECT course_id FROM Course WHERE courseName = '"+contentName+"'");
-			ResultSet result = gives.executeQuery();
-			if(result.next()){
-				id = result.getInt("course_id");
-				return id;
-			}
-				
-		} catch(Exception e){System.out.println(e);}
-		return 0;
-	}
-	
-	public int givesInstructorId(String name)throws Exception{
-			
-			int id;
-			try{
-				Connection con = getConnection();
-				PreparedStatement gives = con.prepareStatement("SELECT i_id FROM Instructor WHERE i_name = '"+name+"'");
-				ResultSet result = gives.executeQuery();
-				if(result.next()){
-					id = result.getInt("i_id");
-				return id;
-			}
-					
-		} catch(Exception e){System.out.println(e);}
-		return 0;
-	}
+
 	
 	public void insertToGives(String contentName, String instr) throws Exception{
 			
-			int id1 = givesInstructorId(instr);
-			int id2 = givesCourseId(contentName);
+			int id1 = getInstructorId(instr);
+			int id2 = getCourseId(contentName);
 			
 			try{
 				Connection con = getConnection();
@@ -138,21 +107,6 @@ public class DatabaseManager {
 			} catch(Exception e){System.out.println(e);}
 	}
 		
-	public int givesInstructorId(String email, String pass)throws Exception{
-		
-		int id;
-		try{
-			Connection con = getConnection();
-			PreparedStatement gives = con.prepareStatement("SELECT i_id FROM Instructor WHERE i_email = '"+email+"' AND i_password = '"+pass+"'");
-			ResultSet result = gives.executeQuery();
-			if(result.next()){
-				id = result.getInt("i_id");
-					return id;
-			}
-				
-		} catch(Exception e){System.out.println(e);}
-		return -1;
-	}
 		
 	public void insertToCourse(String contentName, String instr, boolean v){
 			
@@ -220,6 +174,54 @@ public class DatabaseManager {
     	}catch(Exception e){ System.out.println(e);}
     	return false;
     }
+	
+	//get:
+	public int getCourseId(String contentName)throws Exception{
+		
+		int id;
+		try{
+			Connection con = getConnection();
+			PreparedStatement gives = con.prepareStatement("SELECT course_id FROM Course WHERE courseName = '"+contentName+"'");
+			ResultSet result = gives.executeQuery();
+			if(result.next()){
+				id = result.getInt("course_id");
+				return id;
+			}
+				
+		} catch(Exception e){System.out.println(e);}
+		return 0;
+	}
+	
+	public int getInstructorId(String name)throws Exception{
+			
+			int id;
+			try{
+				Connection con = getConnection();
+				PreparedStatement gives = con.prepareStatement("SELECT i_id FROM Instructor WHERE i_name = '"+name+"'");
+				ResultSet result = gives.executeQuery();
+				if(result.next()){
+					id = result.getInt("i_id");
+				return id;
+			}
+					
+		} catch(Exception e){System.out.println(e);}
+		return 0;
+	}
+	public int getInstructorId(String email, String pass)throws Exception{
+		
+		int id;
+		try{
+			Connection con = getConnection();
+			PreparedStatement gives = con.prepareStatement("SELECT i_id FROM Instructor WHERE i_email = '"+email+"' AND i_password = '"+pass+"'");
+			ResultSet result = gives.executeQuery();
+			if(result.next()){
+				id = result.getInt("i_id");
+					return id;
+			}
+				
+		} catch(Exception e){System.out.println(e);}
+		return -1;
+	}
 	
 	public Student getStudent(String email, String password) throws Exception{
 		Student student;
