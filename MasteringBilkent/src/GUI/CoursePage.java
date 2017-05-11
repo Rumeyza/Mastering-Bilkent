@@ -97,9 +97,9 @@ public class CoursePage {
         Hyperlink link1 = new Hyperlink("Return");
         link1.setStyle("-fx-text-fill: white");
         link1.setOnAction(e -> {
-        	if(user.getUserRole().equals("an Instructor"))
+        	if(user.getUserRole().equals("instructor"))
         		LoginApp.myStage.setScene(Offerings.startScene(user));
-        	else
+        	else if(user.getUserRole().equals("student"))
         		 LoginApp.myStage.setScene(Offerings.startScene(user));
             LoginApp.myStage.setTitle("Mastering Bilkent");//---------------------------------> her classın başına koyalım
         });

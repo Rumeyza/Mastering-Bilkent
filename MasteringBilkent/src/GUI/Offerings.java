@@ -156,7 +156,7 @@ public class Offerings {
 			link2.setStyle("-fx-text-fill: white");
 			if(user.getUserRole().equals("student"))
 				link2.setOnAction(e -> LoginApp.myStage.setScene(HomePage.startScene(user)) );
-			else
+			else if(user.getUserRole().equals("instructor"))
 				link2.setOnAction(e -> LoginApp.myStage.setScene(InstructorHomePage.startScene(user)) );
 				
 

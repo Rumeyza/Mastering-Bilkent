@@ -201,22 +201,22 @@ public class RegisterPage {
         		 return;
         	
         	 if(uRole.equals("a Student")){
-        		 User newUser = new Student(uName, uSurname, uPassword, uEmail, uInst, uDept, uRole, uTitle, uYear, "Spring 2017");
+        		 User newUser = new Student(uName, uSurname, uPassword, uEmail, uInst, uDept, "student", uTitle, uYear, "Spring 2017");
         		 Main.arr.add(newUser);
         		
         		 try {
-					 dbms.insertToStudent(uName, uSurname, uPassword, uEmail, uInst, uDept, uTitle, uYear, "Spring 2017");
+					 dbms.insertToStudent(uName, uSurname, uPassword, uEmail, uInst, uDept,"student", uTitle, uYear, "Spring 2017");
 				 } catch (Exception e1) {
 					 // TODO Auto-generated catch block
 					 e1.printStackTrace();
 				 }
         	 } 
         	 else if(uRole.equals("an Instructor")){
-        		 User newUser = new Instructor(uName, uSurname, uPassword, uEmail, uInst, uDept, uRole, uTitle);
+        		 User newUser = new Instructor(uName, uSurname, uPassword, uEmail, uInst, uDept, "instructor", uTitle);
         		 Main.arr.add(newUser);
         		
         		 try {
-					 dbms.insertToInstructor(uName, uSurname, uPassword, uEmail, uInst, uDept, uTitle);
+					 dbms.insertToInstructor(uName, uSurname, uPassword, uEmail, uInst, uDept,"instructor", uTitle);
 				 } catch (Exception e1) {
 					 // TODO Auto-generated catch block
 					 e1.printStackTrace();
