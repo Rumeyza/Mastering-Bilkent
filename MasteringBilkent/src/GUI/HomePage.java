@@ -1,11 +1,17 @@
 package GUI;
 
+import java.util.ArrayList;
+
+import ApplicationLogic.Course;
+import ApplicationLogic.Instructor;
 import ApplicationLogic.User;
 import ApplicationLogic.Video;
+import Storage.DatabaseManager;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Hyperlink;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -20,9 +26,11 @@ public class HomePage{
     static Scene scene;
 
     public static void start(User user){
+   	 	DatabaseManager dbms = new DatabaseManager();
 
         //  BORDER PANE COMPONENTS
         //  CENTER
+   	 	ScrollPane sp = new ScrollPane();
         VBox centerMenu = new VBox();
         centerMenu.setPadding(new Insets(10));
         centerMenu.setSpacing(8);
@@ -48,6 +56,55 @@ public class HomePage{
         Hyperlink buttonA = new Hyperlink("Register Another Course");
 
         centerMenu.getChildren().addAll(logo, line, buttonA);
+        ArrayList<Course> list = null;
+        int studentId = 0;
+        try {
+			studentId = dbms.getStudentId(user.getUserEmail(), user.getUserPassword());
+		} catch (Exception e2) {
+			// TODO Auto-generated catch block
+			e2.printStackTrace();
+		}
+        try {
+            list = dbms.getRegisteredCourses(studentId);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        for(int i = 0 ; i < list.size();i++){
+             Course course = list.get(i);
+
+             VBox courseBox = new VBox();
+             courseBox.setPadding(new Insets(15));
+             courseBox.setSpacing(10);
+             courseBox.setAlignment(Pos.TOP_CENTER);
+             courseBox.setStyle("-fx-background-color:  #990000");
+
+             Hyperlink courseLink = new Hyperlink(course.getContentName());
+             int id = list.get(i).getContentId();
+             courseLink.setOnAction(e -> LoginApp.myStage.setScene(CoursePage.startScene(course, user)));
+             courseLink.setStyle("-fx-text-fill: white");
+             courseLink.setFont(Font.font("Helvetica", 24));
+             courseLink.setBorder(Border.EMPTY);
+             Instructor courseCreator = new Instructor();
+             try {
+            	 courseCreator = dbms.getInstructor(course.getInstructorId());
+             } catch (Exception e1) {
+     			// TODO Auto-generated catch block
+     			e1.printStackTrace();
+     		}
+             Text ins = new Text(courseCreator.getUserName()+" / Spring 2017");
+             ins.setFill(Color.WHITE);
+             ins.setFont(Font.font("Helvetica",18));
+             courseBox.getChildren().addAll(courseLink, ins);
+             centerMenu.getChildren().addAll(courseBox);
+
+         }
+
+         sp.setFitToHeight(true);
+         sp.setVmax(1000);
+         sp.setPrefSize(115, 150);
+         sp.setContent(centerMenu);
+
         
         //  CENTER END
 

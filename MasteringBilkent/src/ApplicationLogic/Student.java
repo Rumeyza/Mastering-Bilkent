@@ -44,7 +44,16 @@ public class Student extends User{
     public void setSemester(String semester) {
         this.semester = semester;
     }
+    public boolean enrollCourse(String contentName) throws Exception{
 
+        try {
+			dbms.insertToTakes(contentName, super.getUserName());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        return true;
+    }
     public int getEnrolment(int Index){return Index;}
 
     public void leaveCourse(int courseId){
