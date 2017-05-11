@@ -117,14 +117,5 @@ public class User {
     public void setUserTitle(String userTitle) {
         this.userTitle = userTitle;
     }
-    public boolean enrollCourse(String contentName) throws Exception{
-
-        try {
-			dbms.insertToTakes(contentName, userName);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-        return true;
-    }
+   
 }

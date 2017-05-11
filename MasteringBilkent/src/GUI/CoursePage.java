@@ -71,27 +71,28 @@ public class CoursePage {
         	centerMenu.getChildren().addAll(logo,line, selection);
         }
         else if(user.getUserRole().equals("student")){
-        	boolean isExist = false; 
+        	boolean isExist = true;
         	try {
 				isExist = dbms.isEnrolled(course.getContentName(), user.getUserName());
 			} catch (Exception e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
-        	if(isExist){
+        	if(isExist)
+        		centerMenu.getChildren().addAll(logo,line);
+        	else{
         		Hyperlink register = new Hyperlink("Register This Course");
+        		Student myStudent = (Student) user;
             	register.setOnAction(e-> {
     				try {
-    					user.enrollCourse(course.getContentName());
+    					myStudent.enrollCourse(course.getContentName());
     				} catch (Exception e1) {
     					// TODO Auto-generated catch block
     					e1.printStackTrace();
     				}
     			});
             	centerMenu.getChildren().addAll(logo,line, register);
-        	}
-        	else{
-        		centerMenu.getChildren().addAll(logo,line);
+            	
         	}
         	
       }

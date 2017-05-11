@@ -15,8 +15,8 @@ public class DatabaseManager {
   	try{
   		String driver = "com.mysql.jdbc.Driver";
   		String url = "jdbc:mysql://localhost:3306/masteringbilkentdb";
-  		String username = "root";
-  		String password = "599724667";
+  		String username = "ertanaday";
+  		String password = "ertanmbdpass";
   		
   		Class.forName(driver);
   		
