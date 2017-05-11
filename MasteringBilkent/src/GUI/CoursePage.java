@@ -69,77 +69,56 @@ public class CoursePage {
         //Line ends
 
         //Intructor Course List
-        /*
-        ArrayList<Content> list = null;
+        ArrayList<Quiz> quizList = null;
+        try {
+            quizList = dbms.getAddedQuizzes(dbms.getCourseId(course.getContentName()));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
-        for(int i = 0 ; i < list.size();i++){
-            Course course = list.get(i);
+        Quiz q = new Quiz("name", 4,"abim ya", true);
+        quizList.add(q);
 
-            VBox courseBox = new VBox();
+        VBox courseBox = new VBox();
+        for(int i = 0 ; i < quizList.size();i++){
+            Quiz quiz = quizList.get(i);
+
+            courseBox = new VBox();
             courseBox.setPadding(new Insets(15));
             courseBox.setSpacing(10);
             courseBox.setAlignment(Pos.TOP_CENTER);
             courseBox.setStyle("-fx-background-color:  #003366");
 
-            Hyperlink courseLink = new Hyperlink(c.getContentName());
-            int id = list.get(i).getContentId();
-            courseLink.setOnAction(e -> LoginApp.myStage.setScene(CoursePage.startScene(course, instructor)));
-            courseLink.setStyle("-fx-text-fill: white");
-            courseLink.setFont(Font.font("Helvetica", 24));
-            courseLink.setBorder(Border.EMPTY);
-            Instructor courseCreator = new Instructor();
-            try {
-                courseCreator = dbms.getInstructor(course.getInstructorId());
-            } catch (Exception e1) {
-                // TODO Auto-generated catch block
-                e1.printStackTrace();
-            }
-            Text ins = new Text(courseCreator.getUserName()+" / Spring 2017");
-            ins.setFill(Color.WHITE);
-            ins.setFont(Font.font("Helvetica",18));
-            courseBox.getChildren().addAll(courseLink, ins);
-            centerMenu.getChildren().addAll(courseBox);
+            Hyperlink quizName = new Hyperlink(quiz.getContentName());
+            int id = quizList.get(i).getContentId();
+            quizName.setOnAction(e -> {
+                //LoginApp.myStage.setScene(QuizPage.startScene(user));
+            });
+            quizName.setStyle("-fx-text-fill: white");
+            quizName.setFont(Font.font("Helvetica", 24));
+            quizName.setBorder(Border.EMPTY);
+
+
+            Text quizDesc = new Text(quiz.getDescription());
+            quizDesc.setFill(Color.WHITE);
+            quizDesc.setFont(Font.font("Helvetica",18));
+            courseBox.getChildren().addAll(quizName, quizDesc);
 
         }
+        if(userId == course.getInstructorId()){
+            Hyperlink selection = new Hyperlink("Add Content");
+            selection.setOnAction(e-> ContentSelectionBox.display(course, user));
+            centerMenu.getChildren().addAll(logo,line, courseBox, selection);
+        }
+        else centerMenu.getChildren().addAll(logo,line, courseBox);
 
         sp.setFitToHeight(true);
         sp.setVmax(1000);
         sp.setPrefSize(115, 150);
         sp.setContent(centerMenu);
-*/
         //Instructor Course List End
 
-        if(userId == course.getInstructorId()){
-        	Hyperlink selection = new Hyperlink("Add Content");
-        	selection.setOnAction(e-> ContentSelectionBox.display(course, user));
-        	centerMenu.getChildren().addAll(logo,line, selection);
-        }
-        else if(user.getUserRole().equals("student")){
-        	boolean isExist = true;
-        	try {
-				isExist = dbms.isEnrolled(course.getContentName(), user.getUserName());
-			} catch (Exception e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
-        	if(isExist)
-        		centerMenu.getChildren().addAll(logo,line);
-        	else{
-        		Hyperlink register = new Hyperlink("Register This Course");
-        		Student myStudent = (Student) user;
-            	register.setOnAction(e-> {
-    				try {
-    					myStudent.enrollCourse(course.getContentName());
-    				} catch (Exception e1) {
-    					// TODO Auto-generated catch block
-    					e1.printStackTrace();
-    				}
-    			});
-            	centerMenu.getChildren().addAll(logo,line, register);
-            	
-        	}
-        	
-        } else centerMenu.getChildren().addAll(logo,line);
+
 
         //  CENTER END
 
@@ -235,7 +214,7 @@ public class CoursePage {
         //  LEFT END
         //  BORDER PANE
         BorderPane layout1 = new BorderPane();
-        layout1.setCenter(centerMenu);
+        layout1.setCenter(sp);
         layout1.setLeft(leftMenu);
         layout1.setStyle("-fx-background: #FFFFFF;");
 
