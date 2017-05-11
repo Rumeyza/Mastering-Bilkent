@@ -78,7 +78,7 @@ public class Offerings {
 				courseHyperlinkList.get(i).setStyle("-fx-text-fill: white");
 				courseHyperlinkList.get(i).setFont(Font.font("Helvetica", 24));
 				courseHyperlinkList.get(i).setBorder(Border.EMPTY);
-				ins =  new Text(course.getInstructor()+" / Spring 2017");
+				ins =  new Text(course.getInstructorId()+" / Spring 2017");
 				ins.setFill(Color.WHITE);
 				ins.setFont(Font.font("Helvetica",18));
 				courseBox.getChildren().addAll(courseHyperlinkList.get(i), ins);

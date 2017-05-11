@@ -7,49 +7,49 @@ import java.util.ArrayList;
  */
 public class Course extends Content {
 
-    private String instructor;
+    private int instructorId;
     private String courseKey;
     private boolean visibility;
     public ArrayList<Content> contentList;
 
     public Course() {
         super("Default Course");
-        this.instructor = "Default Instructor";
+        this.instructorId = 0;;
         this.courseKey = null;
         this.visibility = true;
     }
 
-    public Course(String contentName, String instr, String key, boolean v)
+    public Course(String contentName, int instr, String key, boolean v)
     {
         super(contentName);
-        this.instructor = instr;
+        this.instructorId = instr;
         this.courseKey = key;
         this.visibility = v;
     }
 
-    public Course(String contentName, String instr, boolean v)
+    public Course(String contentName, int instr, boolean v)
     {
         super(contentName);
-        this.instructor = instr;
+        this.instructorId = instr;
         this.courseKey = null;
         this.visibility = v;
     }
 
-    public Course(String contentName, String instr)
+    public Course(String contentName, int instr)
     {
         super(contentName);
-        this.instructor = instr;
+        this.instructorId = instr;
         this.courseKey = null;
         this.visibility = true;
     }
 
     //getters and setters
-    public String getInstructor() {
-        return instructor;
+    public int getInstructorId() {
+        return instructorId;
     }
 
-    public void setInstructor(String instructor) {
-        this.instructor = instructor;
+    public void setInstructorId(int instructor) {
+        this.instructorId = instructor;
     }
 
     public String getCourseKey() {
@@ -75,7 +75,7 @@ public class Course extends Content {
     @Override
     public String toString() {
         return "Course{" +
-                "instructor='" + instructor + '\'' +
+                "instructor='" + instructorId + '\'' +
                 ", courseKey='" + courseKey + '\'' +
                 ", visibility=" + visibility +
                 ", contentList=" + contentList +

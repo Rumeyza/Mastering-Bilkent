@@ -78,8 +78,9 @@ public class CoursePage {
 
         String fontFamily1 = "Helvetica";
         double titleFontSize1 = 16;
-
-        Text courseName = new Text(10, 20, course.getInstructor());
+        
+        Integer strInstrId = course.getInstructorId();
+        Text courseName = new Text(10, 20, strInstrId.toString());
         courseName.setFont(Font.font(fontFamily1, titleFontSize1));
         courseName.setFill(Color.WHITE);
         GridPane.setConstraints(courseName, 0,3,2,1);

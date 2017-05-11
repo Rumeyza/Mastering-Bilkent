@@ -73,7 +73,7 @@ public class InstructorHomePage{
              courseLink.setFont(Font.font("Helvetica", 24));
              courseLink.setBorder(Border.EMPTY);
 
-             Text ins = new Text(course.getInstructor()+" / Spring 2017");
+             Text ins = new Text(course.getInstructorId()+" / Spring 2017");
              ins.setFill(Color.WHITE);
              ins.setFont(Font.font("Helvetica",18));
              courseBox.getChildren().addAll(courseLink, ins);

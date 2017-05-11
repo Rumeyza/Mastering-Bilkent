@@ -8,9 +8,8 @@ import Storage.DatabaseManager;
  * Created by Asus on 3.5.2017.
  */
 public class Instructor extends User {
-
+	DatabaseManager dbms = new DatabaseManager();
     public static ArrayList<Course> courseList;
-
     //Constructors
     public Instructor(){
         super();
@@ -32,20 +31,23 @@ public class Instructor extends User {
     }
 
     //Other methods
-    public boolean createCourse(String coursename, String key, boolean v){
+    public boolean createCourse(String coursename, String key, boolean v) throws Exception{
         //if course exists ignore
         for(int i = 0; i < courseList.size() ; i++){
             if(courseList.get(i).getContentName().equals(coursename))
                 return false;
         }
+        
         //add
-        Course MyCourse = new Course( coursename,  super.getUserName(),  key,  v);
+        
+        int id = dbms.getInstructorId(super.getUserEmail(), super.getUserPassword());
+        Course MyCourse = new Course( coursename,  id,  key,  v);
         courseList.add(MyCourse);
         Main.courseArr.add(MyCourse);
         
-        DatabaseManager dbms = new DatabaseManager();
+        
         try {
-			dbms.insertToCourse(coursename, super.getUserName(), key, v);
+			dbms.insertToCourse(coursename, id, key, v);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

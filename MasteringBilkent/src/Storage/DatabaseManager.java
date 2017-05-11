@@ -59,7 +59,7 @@ public class DatabaseManager {
 		try{
 			Connection con = getConnection();
 			
-			PreparedStatement create = con.prepareStatement("CREATE TABLE Course(course_id int NOT NULL AUTO_INCREMENT, courseName varchar(255) NOT NULL, instr varchar(128), courseKey varchar(64), visibility boolean NOT NULL DEFAULT TRUE, PRIMARY KEY(course_id))");
+			PreparedStatement create = con.prepareStatement("CREATE TABLE Course(course_id int NOT NULL AUTO_INCREMENT, courseName varchar(255) NOT NULL, instrId int NOT NULL, courseKey varchar(64), visibility boolean NOT NULL DEFAULT TRUE, PRIMARY KEY(course_id))");
 																														
 
 			create.executeUpdate();
@@ -82,10 +82,10 @@ public class DatabaseManager {
 		}catch(Exception e){System.out.println(e);}
 	}
 	//insertions
-	public void insertToCourse(String contentName, String instr, String key, boolean v) throws Exception{
+	public void insertToCourse(String contentName, int instrId, String key, boolean v) throws Exception{
 		try{
 			Connection con = getConnection();
-			PreparedStatement insert  = con.prepareStatement("INSERT INTO Course (courseName, instr, courseKey, visibility) VALUES ('" +contentName+ "', '" +instr+ "', '" +key+ "' , "+v+")");
+			PreparedStatement insert  = con.prepareStatement("INSERT INTO Course (courseName, instrId, courseKey, visibility) VALUES ('" +contentName+ "', '" +instrId+ "', '" +key+ "' , "+v+")");
 			//PreparedStatement insert2  = con.prepareStatement("INSERT INTO Gives (courseName, instr, courseKey, visibility) VALUES ('" +contentName+ "', '" +instr+ "', '" +key+ "' , "+v+")");												
 			
 			insert.executeUpdate();
@@ -108,21 +108,21 @@ public class DatabaseManager {
 	}
 		
 		
-	public void insertToCourse(String contentName, String instr, boolean v){
+	public void insertToCourse(String contentName, int instrId, boolean v){
 			
 		try {
 			Connection con = getConnection();
-			PreparedStatement insert  = con.prepareStatement("INSERT INTO Course (courseName, instr,visibility) VALUES ('" +contentName+ "','" +instr+ "',"+v+")");
+			PreparedStatement insert  = con.prepareStatement("INSERT INTO Course (courseName, instrId,visibility) VALUES ('" +contentName+ "','" +instrId+ "',"+v+")");
 				
 			insert.executeUpdate();
 		} catch (Exception e) {System.out.println(e);}
 			
 	}
-	public void insertToCourse(String contentName, String instr){
+	public void insertToCourse(String contentName,int instrId){
 		
 		try {
 			Connection con = getConnection();
-			PreparedStatement insert  = con.prepareStatement("INSERT INTO Course (courseName, instr) VALUES ('" +contentName+ "','" +instr+ "'");
+			PreparedStatement insert  = con.prepareStatement("INSERT INTO Course (courseName, instrId) VALUES ('" +contentName+ "','" +instrId+ "'");
 			
 			insert.executeUpdate();
 		} catch (Exception e) {System.out.println(e);}
@@ -279,7 +279,7 @@ public class DatabaseManager {
 		ResultSet result = statement.executeQuery();
 		
 		if(result.next()){
-			course = new Course(result.getString("courseName"), result.getString("instr"), result.getString("courseKey"), result.getBoolean("visibility"));
+			course = new Course(result.getString("courseName"), result.getInt("instrId"), result.getString("courseKey"), result.getBoolean("visibility"));
 			return course;
 		}
 		return null;

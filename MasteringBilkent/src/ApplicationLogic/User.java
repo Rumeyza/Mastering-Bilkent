@@ -1,5 +1,6 @@
 package ApplicationLogic;
 
+import Storage.DatabaseManager;
 public class User {
 
     //private static int ID = 0;

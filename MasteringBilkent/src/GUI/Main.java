@@ -35,10 +35,10 @@ public class Main {
         newStudent = dbms.getStudent("ertanaday@gmail.com", "123");
         System.out.println(newStudent.getUserEmail());
         
-        dbms.insertToCourse("MATH101 - Calculus 1" , "Okan Tekman", "15", true);
+     /*   dbms.insertToCourse("MATH101 - Calculus 1" , "Okan Tekman", "15", true);
         dbms.insertToCourse("CS101 - Algorithms and Programming 1" , "David Davenport", "22", false);
         dbms.insertToCourse("CS353 - Database Systems" , "Ozgur Ulusoy");
-        dbms.insertToCourse("CS223 - Digital Design" , "William Sawyer","dgtl123", false);
+        dbms.insertToCourse("CS223 - Digital Design" , "William Sawyer","dgtl123", false);*/
         
         courseArr = dbms.getAllCourses();
         

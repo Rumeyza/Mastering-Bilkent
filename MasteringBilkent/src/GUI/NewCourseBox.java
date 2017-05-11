@@ -84,7 +84,12 @@ public class NewCourseBox {
   
         	else{
         		boolean check = checkbox.isSelected();
-        		inst.createCourse(cName,cKey, !check);
+        		try {
+					inst.createCourse(cName,cKey, !check);
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
         		LoginApp.myStage.setScene(InstructorHomePage.startScene(inst));
         		window.close();
         		return;
