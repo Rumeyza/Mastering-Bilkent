@@ -54,7 +54,7 @@ public class Instructor extends User {
 		}
         return true;
     }
-
+//silin bunu:D
     public boolean deleteCourse(int courseId){
         for(int i = 0; i < courseList.size() ; i++){
             if(courseList.get(i).getContentId() == courseId)
