@@ -1,6 +1,7 @@
 package GUI;
 
 import ApplicationLogic.Course;
+import ApplicationLogic.Instructor;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -18,12 +19,20 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import ApplicationLogic.User;
-
+import Storage.DatabaseManager;
 public class CoursePage {
 
     static Scene scene;
 
     public static void start(Course course, User user){
+    	Instructor courseCreator = new Instructor();
+    	DatabaseManager dbms = new DatabaseManager();
+    	try {
+    		courseCreator = dbms.getInstructor(course.getInstructorId());
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 
         //  BORDER PANE COMPONENTS
         //  CENTER
@@ -79,8 +88,8 @@ public class CoursePage {
         String fontFamily1 = "Helvetica";
         double titleFontSize1 = 16;
         
-        Integer strInstrId = course.getInstructorId();
-        Text courseName = new Text(10, 20, strInstrId.toString());
+        
+        Text courseName = new Text(10, 20, courseCreator.getUserName());
         courseName.setFont(Font.font(fontFamily1, titleFontSize1));
         courseName.setFill(Color.WHITE);
         GridPane.setConstraints(courseName, 0,3,2,1);

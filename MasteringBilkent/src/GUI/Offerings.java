@@ -3,7 +3,9 @@ package GUI;
 import java.util.ArrayList;
 
 import ApplicationLogic.Course;
+import ApplicationLogic.Instructor;
 import ApplicationLogic.User;
+import Storage.DatabaseManager;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -20,6 +22,7 @@ import javafx.scene.shape.*;
 public class Offerings {
 	static Scene scene;
 		public static void start(User user){
+			DatabaseManager dbms = new DatabaseManager();
 
 			//  BORDER PANE COMPONENTS
 			//  CENTER
@@ -78,7 +81,14 @@ public class Offerings {
 				courseHyperlinkList.get(i).setStyle("-fx-text-fill: white");
 				courseHyperlinkList.get(i).setFont(Font.font("Helvetica", 24));
 				courseHyperlinkList.get(i).setBorder(Border.EMPTY);
-				ins =  new Text(course.getInstructorId()+" / Spring 2017");
+				Instructor courseCreator = new Instructor();
+	             try {
+	            	 courseCreator = dbms.getInstructor(course.getInstructorId());
+	             } catch (Exception e1) {
+	     			// TODO Auto-generated catch block
+	     			e1.printStackTrace();
+	     		}
+	            ins = new Text(courseCreator.getUserName()+" / Spring 2017");
 				ins.setFill(Color.WHITE);
 				ins.setFont(Font.font("Helvetica",18));
 				courseBox.getChildren().addAll(courseHyperlinkList.get(i), ins);
