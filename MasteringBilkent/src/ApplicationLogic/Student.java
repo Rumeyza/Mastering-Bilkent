@@ -9,13 +9,13 @@ public class Student extends User{
 
     public String schoolYear;
     public String semester;
-    public static ArrayList<Integer> courseEnrolmentList;
+    //public static ArrayList<Integer> courseEnrolmentList;
 
     public Student(){
         super();
         this.schoolYear = "third year";
         this.semester = "first semester";
-        this.courseEnrolmentList = new ArrayList<Integer>();
+        //this.courseEnrolmentList = new ArrayList<Integer>();
     }
 
     public Student(String name, String surname, String pass, String email, String inst, String dept, String role, String title,
@@ -23,7 +23,7 @@ public class Student extends User{
         super(name, surname, pass, email, inst, dept, role, title);
         this.schoolYear = schoolYear;
         this.semester = semester;
-        this.courseEnrolmentList = new ArrayList<Integer>();
+       //this.courseEnrolmentList = new ArrayList<Integer>();
     }
 
     public String getSchoolYear() {
@@ -42,25 +42,18 @@ public class Student extends User{
         this.semester = semester;
     }
 
-    public int getEnrolment(int Index){
-        return courseEnrolmentList.get(Index);
-    }
+    public int getEnrolment(int Index){return Index;}
 
     public void enrollCourse(int courseId){
         //---------------->course student list update logic
-        if(!courseEnrolmentList.contains(courseId))
-        courseEnrolmentList.add(courseId);
     }
 
     public void enrollCourse(int courseId, int courseKey){
         //---------------->course student list update logic with a key
-        if(!courseEnrolmentList.contains(courseId))
-            courseEnrolmentList.add(courseId);
     }
 
     public void leaveCourse(int courseId){
-        if(courseEnrolmentList.contains(courseId))
-            courseEnrolmentList.remove(courseId);
+        //---------------------->
     }
 
 }
