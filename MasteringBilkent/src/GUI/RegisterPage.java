@@ -200,12 +200,16 @@ public class RegisterPage {
         	 if(error==-1)
         		 return;
         	
+
         	 if(uRole.equals("a Student")){
         		 User newUser = new Student(uName, uSurname, uPassword, uEmail, uInst, uDept, "student", uTitle, uYear, "Spring 2017");
         		 Main.arr.add(newUser);
         		
         		 try {
-					 dbms.insertToStudent(uName, uSurname, uPassword, uEmail, uInst, uDept,"student", uTitle, uYear, "Spring 2017");
+        			 if( !dbms.isExistingStudent(uEmail, uPassword))
+        				 dbms.insertToStudent(uName, uSurname, uPassword, uEmail, uInst, uDept,"student", uTitle, uYear, "Spring 2017");
+        			 else
+        				 System.out.println("Existing Student!");
 				 } catch (Exception e1) {
 					 // TODO Auto-generated catch block
 					 e1.printStackTrace();
@@ -216,7 +220,10 @@ public class RegisterPage {
         		 Main.arr.add(newUser);
         		
         		 try {
-					 dbms.insertToInstructor(uName, uSurname, uPassword, uEmail, uInst, uDept,"instructor", uTitle);
+        			 if( !dbms.isExistingInstructor(uEmail, uPassword))
+        				 dbms.insertToInstructor(uName, uSurname, uPassword, uEmail, uInst, uDept,"instructor", uTitle);
+        			 else
+        				 System.out.println("Existing Instructor!");
 				 } catch (Exception e1) {
 					 // TODO Auto-generated catch block
 					 e1.printStackTrace();

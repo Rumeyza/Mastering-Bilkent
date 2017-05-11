@@ -486,6 +486,25 @@ public class DatabaseManager {
 			} catch(Exception e){System.out.println(e);}
 			return true;
 		}
+	public boolean isExistingStudent( String email, String password) throws Exception{
+		Student candidateStudent;
+		candidateStudent = getStudent(email, password);
+		
+		if(candidateStudent != null)
+			return true;
+		else 
+			return false;
+		
+	}
+	public boolean isExistingInstructor( String email, String password) throws Exception{
+		Instructor candidateInstructor;
+		candidateInstructor = getInstructor(email, password);
+		
+		if(candidateInstructor != null)
+			return true;
+		else
+			return false;
+	}
 	
 
 }
