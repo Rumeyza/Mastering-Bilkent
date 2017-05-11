@@ -4,7 +4,7 @@ import Storage.DatabaseManager;
 public class User {
 
     //private static int ID = 0;
-
+	DatabaseManager dbms = new DatabaseManager();
     //private int userId = 0;
     private String userName = "";
     private String userSurname = "";
@@ -116,5 +116,15 @@ public class User {
 
     public void setUserTitle(String userTitle) {
         this.userTitle = userTitle;
+    }
+    public boolean enrollCourse(String contentName) throws Exception{
+
+        try {
+			dbms.insertToTakes(contentName, userName);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        return true;
     }
 }

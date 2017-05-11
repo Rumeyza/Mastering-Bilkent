@@ -2,13 +2,16 @@ package ApplicationLogic;
 
 import java.util.ArrayList;
 
+import Storage.DatabaseManager;
+
 /**
  * Created by Asus on 3.5.2017.
  */
 public class Student extends User{
-
+	
     public String schoolYear;
     public String semester;
+    
     //public static ArrayList<Integer> courseEnrolmentList;
 
     public Student(){
@@ -43,14 +46,6 @@ public class Student extends User{
     }
 
     public int getEnrolment(int Index){return Index;}
-
-    public void enrollCourse(int courseId){
-        //---------------->course student list update logic
-    }
-
-    public void enrollCourse(int courseId, int courseKey){
-        //---------------->course student list update logic with a key
-    }
 
     public void leaveCourse(int courseId){
         //---------------------->
