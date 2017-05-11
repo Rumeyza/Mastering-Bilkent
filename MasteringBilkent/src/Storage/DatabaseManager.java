@@ -298,7 +298,7 @@ public class DatabaseManager {
 		} catch(Exception e){System.out.println(e);}
 		return -1;
 	}
-	
+
 	public Student getStudent(String email, String password) throws Exception{
 		Student student;
 		
@@ -454,6 +454,24 @@ public class DatabaseManager {
 		return null;
 	}
 	
+	public Student getStudent(int student_id) throws Exception{
+		Student student;
+		try{
+			Connection con = getConnection();
+			PreparedStatement statement = con.prepareStatement("SELECT s_name, s_surname, s_password, s_email, s_institution, s_department, s_role, s_title,s_schoolYear, s_semester, FROM Instructor WHERE s_id = "+student_id+"");
+	
+			ResultSet result = statement.executeQuery();
+	
+			while(result.next()){
+				
+				student = new Student(result.getString("s_name"), result.getString("s_surname"), result.getString("s_password"), result.getString("s_email"), result.getString("s_institution"), result.getString("s_department"), result.getString("s_role"), result.getString("s_title"), result.getString("s_schoolYear"), result.getString("s_semester"));
+				return student;
+			}
+			
+		}catch(Exception e){System.out.println(e);}
+		return null;
+	}
+	
 	public int getQuizId(String name, String qTxt)throws Exception{
 			
 			int id;
@@ -479,11 +497,12 @@ public class DatabaseManager {
 				Connection con = getConnection();
 				PreparedStatement gives = con.prepareStatement("SELECT s_id FROM Takes WHERE c_id = "+course+" AND s_id= "+student+"");
 				ResultSet result = gives.executeQuery();
-				
-					if(result.getString("s_id") != null)
-						return true;
-					else 
+				Student stdnt = getStudent(result.getInt("s_id"));
+				//getStudentresult.getInt("s_id");
+					if(stdnt == null)
 						return false;
+					else 
+						return true;
 					
 					
 			} catch(Exception e){System.out.println(e);}
