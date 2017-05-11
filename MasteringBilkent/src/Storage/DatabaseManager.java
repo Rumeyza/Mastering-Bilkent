@@ -228,8 +228,8 @@ public class DatabaseManager {
 		int id;
 		try{
 			Connection con = getConnection();
-			PreparedStatement gives = con.prepareStatement("SELECT course_id FROM Course WHERE courseName = '"+contentName+"'");
-			ResultSet result = gives.executeQuery();
+			PreparedStatement statement = con.prepareStatement("SELECT course_id FROM Course WHERE courseName = '"+contentName+"'");
+			ResultSet result = statement.executeQuery();
 			if(result.next()){
 				id = result.getInt("course_id");
 				return id;
@@ -244,8 +244,8 @@ public class DatabaseManager {
 			int id;
 			try{
 				Connection con = getConnection();
-				PreparedStatement gives = con.prepareStatement("SELECT i_id FROM Instructor WHERE i_name = '"+name+"'");
-				ResultSet result = gives.executeQuery();
+				PreparedStatement statement = con.prepareStatement("SELECT i_id FROM Instructor WHERE i_name = '"+name+"'");
+				ResultSet result = statement.executeQuery();
 				if(result.next()){
 					id = result.getInt("i_id");
 				return id;
@@ -259,8 +259,8 @@ public class DatabaseManager {
 		int id;
 		try{
 			Connection con = getConnection();
-			PreparedStatement gives = con.prepareStatement("SELECT i_id FROM Instructor WHERE i_email = '"+email+"' AND i_password = '"+pass+"'");
-			ResultSet result = gives.executeQuery();
+			PreparedStatement statement = con.prepareStatement("SELECT i_id FROM Instructor WHERE i_email = '"+email+"' AND i_password = '"+pass+"'");
+			ResultSet result = statement.executeQuery();
 			if(result.next()){
 				id = result.getInt("i_id");
 					return id;
