@@ -40,8 +40,8 @@ public class DatabaseManager {
 	public void createTableInstructor() throws Exception{
 		try{
 			Connection con = getConnection();
-			PreparedStatement create = con.prepareStatement("CREATE TABLE Instructor (i_id int NOT NULL AUTO_INCREMENT, i_name varchar(64) NOT NULL, i_surname varchar(64) NOT NULL, i_password varchar(64) NOT NULL, i_email varchar(64) NOT NULL, i_institution varchar(128), i_department varchar(64), i_title varchar(64), PRIMARY KEY(i_id))");
-
+			PreparedStatement create = con.prepareStatement("CREATE TABLE Instructor (i_id int NOT NULL AUTO_INCREMENT, i_name varchar(64) NOT NULL, i_surname varchar(64) NOT NULL, i_password varchar(64) NOT NULL, i_email varchar(64) NOT NULL, i_institution varchar(128), i_department varchar(64), i_role varchar(64), i_title varchar(64), PRIMARY KEY(i_id))");
+			//String name, String surname, String pass, String email, String inst, String dept, String role, String title
 			create.executeUpdate();
 	} catch(Exception e){System.out.println(e);}
 	}
@@ -49,7 +49,7 @@ public class DatabaseManager {
 	public void createTableStudent() throws Exception{
 		try{
 			Connection con = getConnection();
-			PreparedStatement create = con.prepareStatement("CREATE TABLE Student(s_id int NOT NULL AUTO_INCREMENT, s_name varchar(64) NOT NULL, s_surname varchar(64) NOT NULL, s_password varchar(64) NOT NULL, s_email varchar(64) NOT NULL, s_institution varchar(128), s_department varchar(64), s_title varchar(64), s_schoolYear varchar(64), s_semester varchar(64), PRIMARY KEY(s_id))");
+			PreparedStatement create = con.prepareStatement("CREATE TABLE Student(s_id int NOT NULL AUTO_INCREMENT, s_name varchar(64) NOT NULL, s_surname varchar(64) NOT NULL, s_password varchar(64) NOT NULL, s_email varchar(64) NOT NULL, s_institution varchar(128), s_department varchar(64), s_dept varchar(64), s_title varchar(64), s_schoolYear varchar(64), s_semester varchar(64), PRIMARY KEY(s_id))");
 																					
 			create.executeUpdate();
 	} catch(Exception e){System.out.println(e);}
@@ -114,19 +114,19 @@ public class DatabaseManager {
 	}
 
 
-	public void insertToInstructor(String name, String surname, String pass, String email, String inst, String dept, String title) throws Exception{
+	public void insertToInstructor(String name, String surname, String pass, String email, String inst, String dept, String role, String title) throws Exception{
 		try{
 			Connection con = getConnection();
-			PreparedStatement insert  = con.prepareStatement("INSERT INTO Instructor (i_name, i_surname, i_password, i_email, i_institution, i_department, i_title) VALUES ('"+name+"', '"+surname+"', '"+pass+"', '"+email+"', '"+inst+"', '"+dept+"', '"+title+"')");
+			PreparedStatement insert  = con.prepareStatement("INSERT INTO Instructor (i_name, i_surname, i_password, i_email, i_institution, i_department, i_role, i_title) VALUES ('"+name+"', '"+surname+"', '"+pass+"', '"+email+"', '"+inst+"', '"+dept+"','"+role+"' '"+title+"')");
 
 			insert.executeUpdate();
 		} catch(Exception e){System.out.println(e);}
 	}
 
-	public void insertToStudent(String name, String surname, String pass, String email, String inst, String dept, String title, String schoolYear, String semester) throws Exception{
+	public void insertToStudent(String name, String surname, String pass, String email, String inst, String dept, String role, String title, String schoolYear, String semester) throws Exception{
 		try{
 			Connection con = getConnection();
-			PreparedStatement insert  = con.prepareStatement("INSERT INTO Student (s_name, s_surname, s_password, s_email, s_institution, s_department, s_title, s_schoolYear, s_semester) VALUES ('"+name+"', '"+surname+"', '"+pass+"', '"+email+"', '"+inst+"', '"+dept+"', '"+title+"', '"+schoolYear+"', '"+semester+"')");
+			PreparedStatement insert  = con.prepareStatement("INSERT INTO Student (s_name, s_surname, s_password, s_email, s_institution, s_department, s_role, s_title, s_schoolYear, s_semester) VALUES ('"+name+"', '"+surname+"', '"+pass+"', '"+email+"', '"+inst+"', '"+dept+"', '"+role+"', '"+title+"', '"+schoolYear+"', '"+semester+"')");
 
 			insert.executeUpdate();
 		} catch(Exception e){System.out.println(e);}
@@ -168,7 +168,7 @@ public class DatabaseManager {
 		
 		if(result.next()){
 			
-				student = new Student(result.getString("s_name"), result.getString("s_surname"), result.getString("s_password"), result.getString("s_email"), result.getString("s_institution"), result.getString("s_department"), result.getString("s_title"), "Student", result.getString("s_schoolYear"), result.getString("s_semester"));
+				student = new Student(result.getString("s_name"), result.getString("s_surname"), result.getString("s_password"), result.getString("s_email"), result.getString("s_institution"), result.getString("s_department"), result.getString("s_role"), result.getString("s_title"), result.getString("s_schoolYear"), result.getString("s_semester"));
 				return student;
 
 		}
@@ -185,7 +185,7 @@ public class DatabaseManager {
 		
 		if(result.next()){
 			
-				instructor = new Instructor(result.getString("i_name"), result.getString("i_surname"), result.getString("i_password"), result.getString("i_email"), result.getString("i_institution"), result.getString("i_department"), result.getString("i_title"), "Instructor");
+				instructor = new Instructor(result.getString("i_name"), result.getString("i_surname"), result.getString("i_password"), result.getString("i_email"), result.getString("i_institution"), result.getString("i_department"), result.getString("i_role"), result.getString("i_title"));
 				return instructor;
 
 		}

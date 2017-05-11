@@ -30,7 +30,7 @@ public class Main {
         arr.add(0,user1);
         arr.add(1,user2);
         
-        dbms.insertToStudent("ertan", "aday", "123", "ertanaday@gmail.com", "bilk", "cs", "grad", "3", "spring 2017");
+        dbms.insertToStudent("ertan", "aday", "123", "ertanaday@gmail.com", "bilk", "cs","student", "grad", "3", "spring 2017");
         Student newStudent = new Student();
         newStudent = dbms.getStudent("ertanaday@gmail.com", "123");
         
