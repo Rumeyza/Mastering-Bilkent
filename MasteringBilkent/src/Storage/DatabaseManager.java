@@ -120,7 +120,29 @@ public class DatabaseManager {
 			create.executeUpdate();
 		}catch(Exception e){System.out.println(e);}
 	}
+
+	public void createTableVideo() throws Exception{
+		try{
+			Connection con = getConnection();
+			
+			PreparedStatement create = con.prepareStatement("CREATE TABLE Video(video_id int NOT NULL AUTO_INCREMENT, course_id int NOT NULL, videoContent varchar(255) NOT NULL, videoURL varchar(255) NOT NULL, PRIMARY KEY(videoURL))");
+																														
+
+			create.executeUpdate();
+		} catch(Exception e){System.out.println(e);}
+	}
 	//insertions
+
+	public void insertToVideo(int id, String contentName, String url)throws Exception{
+				
+				try {
+					Connection con = getConnection();
+					PreparedStatement insert  = con.prepareStatement("INSERT INTO Video (course_id, videoContent, videoURL) VALUES ("+id+", '" +contentName+ "', '" +url+ "')");
+					
+					insert.executeUpdate();
+				} catch (Exception e) {System.out.println(e);}
+				
+	}
 	public void insertToCourse(String contentName, int instrId, String key, boolean v) throws Exception{
 		try{
 			Connection con = getConnection();
@@ -221,6 +243,10 @@ public class DatabaseManager {
 			
 			insert.executeUpdate();
 		} catch (Exception e) {System.out.println(e);}
+		
+	}
+	
+	public void insertToQuizzesInCourse(int course_id, int quiz_id){
 		
 	}
 	
@@ -452,6 +478,17 @@ public class DatabaseManager {
 				//quiz_id int NOT NULL AUTO_INCREMENT, quizName varchar(255) NOT NULL, nofQuestions int NOT NULL, quizTxt varchar(255) NOT NULL, isGraded boolean NOT NULL DEFAULT TRUE, PRIMARY KEY(quiz_id, quizName))
 				//String contentName, int size, String description, boolean graded
 	}
+	/*public ArrayList<Question> getAddedQuestions( int quiz_id) throws Exception{
+		try{
+			Connection con = getConnection();
+			PreparedStatement statement = con.prepareStatement(sql)
+					
+					//String questionText, String[] choiseList, String answer
+					//CREATE TABLE Question(question_id int NOT NULL AUTO_INCREMENT, quiz_id int NOT NULL, questionTxt varchar(255) NOT NULL, choice1 varchar(255) NOT NULL, choice2 varchar(255) NOT NULL, choice3 varchar(255) NOT NULL, choice4 varchar(255) NOT NULL, choice5 varchar(255) NOT NULL, answer varchar(255) NOT NULL,  FOREIGN KEY(quiz_id) REFERENCES Quiz(quiz_id), PRIMARY KEY(question_id))
+			
+		}catch(Exception e){System.out.println(e);}
+		return null;
+	}*/
 	public ArrayList<Course> getRegisteredCourses(int student_id) throws Exception{
 		try{
 			Connection con = getConnection();
@@ -579,6 +616,56 @@ public class DatabaseManager {
 		else
 			return false;
 	}
+	
+public int getVideoId(String content)throws Exception{
+		
+		int id;
+		try{
+			Connection con = getConnection();
+			PreparedStatement statement = con.prepareStatement("SELECT video_id FROM Video WHERE videoContent = '"+content+"'");
+			ResultSet result = statement.executeQuery();
+			if(result.next()){
+				id = result.getInt("video_id");
+				return id;
+			}
+				
+		} catch(Exception e){System.out.println(e);}
+		return 0;
+	}
+	
+	public String getVideoURL(int id)throws Exception{
+			
+			String str;
+			try{
+				Connection con = getConnection();
+				PreparedStatement statement = con.prepareStatement("SELECT videoURL FROM Video WHERE video_id = '"+id+"'");
+				ResultSet result = statement.executeQuery();
+				if(result.next()){
+					str = result.getString("videoURL");
+					return str;
+				}
+					
+			} catch(Exception e){System.out.println(e);}
+			return null;
+	}
+
+	public ArrayList<Video> getVideos(int courseId) throws Exception{
+		try{
+			Connection con = getConnection();
+			PreparedStatement statement = con.prepareStatement("SELECT videoContent, videoURL FROM Video");
+	
+			ResultSet result = statement.executeQuery();
+	
+			ArrayList<Video> videoList = new ArrayList<Video>();
+			while(result.next()){
+				 Video video = new Video(result.getString("videoContent"), result.getString("videoURL"));
+				videoList.add(video);
+			}
+			return videoList;
+		}catch(Exception e){System.out.println(e);}
+		return null;
+	}
+
 	
 
 }
