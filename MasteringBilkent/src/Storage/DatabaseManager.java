@@ -125,6 +125,19 @@ public class DatabaseManager {
 		return 0;
 	}
 	
+	public void insertToGives(String contentName, String instr) throws Exception{
+			
+			int id1 = givesInstructorId(instr);
+			int id2 = givesCourseId(contentName);
+			
+			try{
+				Connection con = getConnection();
+				PreparedStatement insert  = con.prepareStatement("INSERT INTO Gives (course_id, i_id) VALUES (" +id2+ ", " +id1+ ")");
+	
+				insert.executeUpdate();
+			} catch(Exception e){System.out.println(e);}
+	}
+		
 	public int givesInstructorId(String email, String pass)throws Exception{
 		
 		int id;
