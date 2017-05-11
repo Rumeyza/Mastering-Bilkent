@@ -117,7 +117,7 @@ public class DatabaseManager {
 	public void insertToInstructor(String name, String surname, String pass, String email, String inst, String dept, String role, String title) throws Exception{
 		try{
 			Connection con = getConnection();
-			PreparedStatement insert  = con.prepareStatement("INSERT INTO Instructor (i_name, i_surname, i_password, i_email, i_institution, i_department, i_role, i_title) VALUES ('"+name+"', '"+surname+"', '"+pass+"', '"+email+"', '"+inst+"', '"+dept+"','"+role+"' '"+title+"')");
+			PreparedStatement insert  = con.prepareStatement("INSERT INTO Instructor (i_name, i_surname, i_password, i_email, i_institution, i_department, i_role, i_title) VALUES ('"+name+"', '"+surname+"', '"+pass+"', '"+email+"', '"+inst+"', '"+dept+"','"+role+"' ,'"+title+"')");
 
 			insert.executeUpdate();
 		} catch(Exception e){System.out.println(e);}
