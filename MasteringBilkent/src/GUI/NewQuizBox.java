@@ -112,7 +112,7 @@ public class NewQuizBox {
                     e.printStackTrace();
                 }
                 Quiz quiz = new Quiz(qName,qSizeInt,qDesc,!check);
-                LoginApp.myStage.setScene(AddQuizQuestionPage.startScene(quiz, course, inst));
+                LoginApp.myStage.setScene(AddQuizQuestionPage.startScene(quiz, course, inst, 1));
                 window.close();
                 return;
             }

@@ -7,6 +7,7 @@ import ApplicationLogic.User;
 import Storage.DatabaseManager;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -30,7 +31,7 @@ public class AddQuizQuestionPage {
 
     static Scene scene;
 
-    public static void start(Quiz quiz, Course course, User user, int asnNo){
+    public static void start(Quiz quiz, Course course, User user, int ansNo){
 
         DatabaseManager dbms = new DatabaseManager();
 
@@ -113,8 +114,8 @@ public class AddQuizQuestionPage {
         TextField answerTextField = new TextField();
         grid.add(answerTextField, 1, 7);
 
-
-        if( asnNo == quiz.getSize() ){
+        System.out.println(""+ansNo+ " " +quiz.getSize());
+        if( ansNo == quiz.getSize() ){
 
             Button addQuestionButton = new Button("Add Question");
             grid.add( addQuestionButton, 1,8);
@@ -181,11 +182,11 @@ public class AddQuizQuestionPage {
             });
         }
         else{
-            asnNo++;
+            final int x = ++ansNo;
             Button addQuestionButton = new Button("Add New Question");
             grid.add( addQuestionButton, 1,8);
 
-            addQuestionButton.setOnAction((event)->{
+            addQuestionButton.setOnAction((ActionEvent event) ->{
 
                 String qName, c11, c22, c33, c44, c55, ansans;
                 int error = 1;
@@ -243,7 +244,7 @@ public class AddQuizQuestionPage {
                     }
                 }
 
-                LoginApp.myStage.setScene(AddQuizQuestionPage.startScene(quiz, course, user));
+                LoginApp.myStage.setScene(AddQuizQuestionPage.startScene(quiz, course, user, x));
             });
 
 
@@ -260,8 +261,8 @@ public class AddQuizQuestionPage {
         scene = new Scene(border);
     }
 
-    public static Scene startScene(Quiz quiz, Course course, User user) {
-        start(quiz, course, user, 1);
+    public static Scene startScene(Quiz quiz, Course course, User user, int ansNo) {
+        start(quiz, course, user, ansNo);
         return scene;
     }
 }
