@@ -480,10 +480,10 @@ public class DatabaseManager {
 				PreparedStatement gives = con.prepareStatement("SELECT s_id FROM Takes WHERE c_id = "+course+" AND s_id= "+student+"");
 				ResultSet result = gives.executeQuery();
 				
-					if(result.getString("s_id") == null)
-						return false;
-					else 
+					if(result.getString("s_id") != null)
 						return true;
+					else 
+						return false;
 					
 					
 			} catch(Exception e){System.out.println(e);}
