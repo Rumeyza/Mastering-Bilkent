@@ -86,7 +86,7 @@ public class DatabaseManager {
 		try{
 			Connection con = getConnection();
 			
-			PreparedStatement create = con.prepareStatement("CREATE TABLE Quiz(quiz_id int NOT NULL AUTO_INCREMENT, quizName varchar(255) NOT NULL, nofQuestions int NOT NULL, quizTxt varchar(10000) NOT NULL, isGraded boolean NOT NULL DEFAULT TRUE, PRIMARY KEY(quizName))");
+			PreparedStatement create = con.prepareStatement("CREATE TABLE Quiz(quiz_id int NOT NULL AUTO_INCREMENT, quizName varchar(255) NOT NULL, nofQuestions int NOT NULL, quizTxt varchar(255) NOT NULL, isGraded boolean NOT NULL DEFAULT TRUE, PRIMARY KEY(quizName))");
 																														
 
 			create.executeUpdate();
@@ -97,7 +97,7 @@ public class DatabaseManager {
 		try{
 			Connection con = getConnection();
 			
-			PreparedStatement create = con.prepareStatement("CREATE TABLE Question(question_id int NOT NULL AUTO_INCREMENT, quiz_id int NOT NULL, questionTxt varchar(10000) NOT NULL, choice1 varchar(255) NOT NULL, choice2 varchar(255) NOT NULL, choice3 varchar(255) NOT NULL, choice4 varchar(255) NOT NULL, choice5 varchar(255) NOT NULL, answer varchar(255) NOT NULL, PRIMARY KEY(question_id), FOREIGN KEY(quiz_id) REFERENCES Quiz(quiz_id))");
+			PreparedStatement create = con.prepareStatement("CREATE TABLE Question(question_id int NOT NULL AUTO_INCREMENT, quiz_id int NOT NULL, questionTxt varchar(255) NOT NULL, choice1 varchar(255) NOT NULL, choice2 varchar(255) NOT NULL, choice3 varchar(255) NOT NULL, choice4 varchar(255) NOT NULL, choice5 varchar(255) NOT NULL, answer varchar(255) NOT NULL, PRIMARY KEY(question_id), FOREIGN KEY(quiz_id) REFERENCES Quiz(quiz_id))");
 																														
 
 			create.executeUpdate();
