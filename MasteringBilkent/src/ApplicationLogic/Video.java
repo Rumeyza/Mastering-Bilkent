@@ -13,7 +13,7 @@ public class Video extends Content{
     }
 
     public Video() {
-        this.videoUrl = "https://www.youtube.com/embed/watch?v=UxkCLqFZ0E0";
+        this.videoUrl = "https://www.youtube.com/embed/UxkCLqFZ0E0?rel=0&amp&autoplay=1;showinfo=0";
     }
 
     public String getVideoUrl() {
