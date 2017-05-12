@@ -14,6 +14,7 @@ import javafx.geometry.Insets;
 import javafx.scene.text.Text;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.control.PasswordField;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Font;
@@ -155,6 +156,7 @@ public class LoginApp  extends Application {
         primaryStage.setY(bounds.getMinY());
         primaryStage.setWidth(bounds.getWidth());
         primaryStage.setHeight(bounds.getHeight());
+
         scene = new Scene(grid);
         primaryStage.setScene(scene);
         myStage = primaryStage;

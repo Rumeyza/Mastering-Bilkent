@@ -80,7 +80,7 @@ public class CoursePage {
       
 
         VBox courseBox = new VBox();
-        for(int i = 0 ; i < quizList.size();i++){
+     /*   for(int i = 0 ; i < quizList.size();i++){
             Quiz quiz = quizList.get(i);
 
             courseBox = new VBox();
@@ -104,7 +104,7 @@ public class CoursePage {
             quizDesc.setFont(Font.font("Helvetica",18));
             courseBox.getChildren().addAll(quizName, quizDesc);
 
-        }
+        }*/
         if(userId == course.getInstructorId()){
             Hyperlink selection = new Hyperlink("Add Content");
             selection.setOnAction(e-> ContentSelectionBox.display(course, user));
