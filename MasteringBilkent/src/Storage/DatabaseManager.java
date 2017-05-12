@@ -71,7 +71,7 @@ public class DatabaseManager {
 		try{
 			Connection con = getConnection();
 			
-			PreparedStatement create = con.prepareStatement("CREATE TABLE Quiz(quiz_id int NOT NULL AUTO_INCREMENT, course_id NOT NULL, quizName varchar(255) NOT NULL, nofQuestions int NOT NULL, quizTxt varchar(255) NOT NULL, isGraded boolean NOT NULL DEFAULT TRUE, PRIMARY KEY(quiz_id, quizName))");
+			PreparedStatement create = con.prepareStatement("CREATE TABLE Quiz(quiz_id int NOT NULL AUTO_INCREMENT, course_id int NOT NULL, quizName varchar(255) NOT NULL, nofQuestions int NOT NULL, quizTxt varchar(255) NOT NULL, isGraded boolean NOT NULL DEFAULT TRUE, PRIMARY KEY(quiz_id, quizName))");
 																														
 
 			create.executeUpdate();
