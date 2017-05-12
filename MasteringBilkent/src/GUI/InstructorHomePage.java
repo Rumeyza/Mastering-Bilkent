@@ -86,7 +86,7 @@ public class InstructorHomePage{
      			// TODO Auto-generated catch block
      			e1.printStackTrace();
      		}
-             Text ins = new Text(courseCreator.getUserName()+" / Spring 2017");
+             Text ins = new Text(courseCreator.getUserTitle()+" "+courseCreator.getUserName() +" "+ courseCreator.getUserSurname()+" / Spring 2017");
              ins.setFill(Color.WHITE);
              ins.setFont(Font.font("Helvetica",18));
              courseBox.getChildren().addAll(courseLink, ins);

@@ -11,12 +11,13 @@ public class Course extends Content {
     private String courseKey;
     private boolean visibility;
     public ArrayList<Content> contentList;
-
+    public Quiz defaultQuiz; 
     public Course() {
         super("Default Course");
         this.instructorId = 0;;
         this.courseKey = null;
         this.visibility = true;
+        this.defaultQuiz = new Quiz();
     }
 
     public Course(String contentName, int instr, String key, boolean v)

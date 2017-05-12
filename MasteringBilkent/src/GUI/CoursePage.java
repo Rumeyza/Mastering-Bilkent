@@ -5,6 +5,7 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Hyperlink;
+import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -109,8 +110,42 @@ public class CoursePage {
             selection.setOnAction(e-> ContentSelectionBox.display(course, user));
             centerMenu.getChildren().addAll(logo,line, courseBox, selection);
         }
+        else if(user.getUserRole().equals("student")){
+        	Hyperlink register = new Hyperlink("Register to Course");
+            register.setOnAction(e-> {
+				try {
+					dbms.insertToTakes(course.getContentName(), user.getUserName());
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			});
+            centerMenu.getChildren().addAll(logo,line, courseBox, register);
+        }
         else centerMenu.getChildren().addAll(logo,line, courseBox);
+        
+        Label quizText = new Label("Quiz");
+        quizText.setTextFill(Color.web("#003366"));
+        quizText.setFont(Font.font("Helvetica", 36));
+        quizText.setAlignment(Pos.TOP_LEFT);
+        Hyperlink quizLink = new Hyperlink("No Quiz To Display ");
+        
+        Label videoText = new Label("Video");   
+        videoText.setTextFill(Color.web("#003366"));
+        Hyperlink videoLink = new Hyperlink("Default Video ");
+        Video defVideo = new Video();
+        videoLink.setOnAction(e->VideoBox.display(defVideo));
+        videoText.setFont(Font.font("Helvetica", 36));
+        videoText.setAlignment(Pos.TOP_LEFT);
+        
+        Label pdfText = new Label("Documents");
+        pdfText.setTextFill(Color.web("#003366"));
+        pdfText.setFont(Font.font("Helvetica", 36));
+        pdfText.setAlignment(Pos.TOP_LEFT);
+        Hyperlink pdfLink = new Hyperlink("No Contents To Display ");
 
+        centerMenu.getChildren().addAll(quizText,quizLink, videoText,videoLink, pdfText,pdfLink);
+        
         sp.setFitToHeight(true);
         sp.setVmax(1000);
         sp.setPrefSize(115, 150);
@@ -147,7 +182,7 @@ public class CoursePage {
         double titleFontSize1 = 16;
 
 
-        Text courseName = new Text(10, 20, courseCreator.getUserName());
+        Text courseName = new Text(10, 20, courseCreator.getUserTitle()+" "+courseCreator.getUserName() +" "+ courseCreator.getUserSurname());
         courseName.setFont(Font.font(fontFamily1, titleFontSize1));
         courseName.setFill(Color.WHITE);
         GridPane.setConstraints(courseName, 0,3,2,1);

@@ -95,7 +95,7 @@ public class Offerings {
 	     			// TODO Auto-generated catch block
 	     			e1.printStackTrace();
 	     		}
-	            ins = new Text(courseCreator.getUserName()+" / Spring 2017");
+	            ins = new Text(courseCreator.getUserTitle()+" "+courseCreator.getUserName() +" "+ courseCreator.getUserSurname()+ " / Spring 2017");
 				ins.setFill(Color.WHITE);
 				ins.setFont(Font.font("Helvetica",18));
 				courseBox.getChildren().addAll(courseHyperlinkList.get(i), ins);
