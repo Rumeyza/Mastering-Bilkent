@@ -1,7 +1,7 @@
-Mastering Bilkent 
-Object Oriented Software Engineering(CS 319) Course Project
-Group 1.A
-Team Members: 
+#Mastering Bilkent 
+#Object Oriented Software Engineering(CS 319) Course Project
+#Group 1.A
+#Team Members: 
 Ertan Aday, Furkan Arif Bozdağ, Rümeyza Dinçer
 
 "BEFORE DOWNLOADING PLEASE READ DEPLOYMENT DESCRIPTOR CAREFULLY!!"
