@@ -15,8 +15,8 @@ public class DatabaseManager {
   	try{
   		String driver = "com.mysql.jdbc.Driver";
   		String url = "jdbc:mysql://localhost:3306/masteringbilkentdb";
-  		String username = "root";
-  		String password = "599724667";
+  		String username = "ertanaday";
+  		String password = "ertanmbdpass";
   		
   		Class.forName(driver);
   		
@@ -71,7 +71,7 @@ public class DatabaseManager {
 		try{
 			Connection con = getConnection();
 			
-			PreparedStatement create = con.prepareStatement("CREATE TABLE Quiz(quiz_id int NOT NULL AUTO_INCREMENT, quizName varchar(255) NOT NULL, nofQuestions int NOT NULL, quizTxt varchar(255) NOT NULL, isGraded boolean NOT NULL DEFAULT TRUE, PRIMARY KEY(quiz_id, quizName))");
+			PreparedStatement create = con.prepareStatement("CREATE TABLE Quiz(quiz_id int NOT NULL AUTO_INCREMENT, course_id NOT NULL, quizName varchar(255) NOT NULL, nofQuestions int NOT NULL, quizTxt varchar(255) NOT NULL, isGraded boolean NOT NULL DEFAULT TRUE, PRIMARY KEY(quiz_id, quizName))");
 																														
 
 			create.executeUpdate();
@@ -104,7 +104,7 @@ public class DatabaseManager {
 			create.executeUpdate();
 		}catch(Exception e){System.out.println(e);}
 	}
-	public void createTableQuizzesInCourse() throws Exception{
+	/*public void createTableQuizzesInCourse() throws Exception{
 		try{
 			Connection con = getConnection();
 			PreparedStatement create = con.prepareStatement("CREATE TABLE QuizzesInCourse(course_id int NOT NULL, quiz_id int NOT NULL, PRIMARY KEY(course_id, quiz_id), FOREIGN KEY(course_id) REFERENCES Course(course_id), FOREIGN KEY(quiz_id) REFERENCES Quiz(quiz_id))");
@@ -119,7 +119,7 @@ public class DatabaseManager {
 			
 			create.executeUpdate();
 		}catch(Exception e){System.out.println(e);}
-	}
+	}*/
 
 	public void createTableVideo() throws Exception{
 		try{
@@ -221,11 +221,11 @@ public class DatabaseManager {
 		} catch(Exception e){System.out.println(e);}
 	}
 	
-		public void insertToQuiz(String contentName, int size, String description, boolean graded)throws Exception{
+		public void insertToQuiz(int courseId, String contentName, int size, String description, boolean graded)throws Exception{
 			
 			try {
 				Connection con = getConnection();
-				PreparedStatement insert  = con.prepareStatement("INSERT INTO Quiz (quizName, nofQuestions, quizTxt, isGraded) VALUES ('" +contentName+ "', "+size+", '" +description+ "', "+graded+")");
+				PreparedStatement insert  = con.prepareStatement("INSERT INTO Quiz (course_id, quizName, nofQuestions, quizTxt, isGraded) VALUES ('" +courseId+ "', '"+contentName+ "', "+size+", '" +description+ "', "+graded+")");
 				
 				insert.executeUpdate();
 			} catch (Exception e) {System.out.println(e);}
@@ -662,6 +662,23 @@ public int getVideoId(String content)throws Exception{
 				videoList.add(video);
 			}
 			return videoList;
+		}catch(Exception e){System.out.println(e);}
+		return null;
+	}
+	public ArrayList<Quiz> getQuizzes(int courseId)throws Exception{
+		try{
+			Connection con = getConnection();
+			PreparedStatement statement = con.prepareStatement("SELECT quizName, nofQuestions, quizTxt, isGraded FROM Quiz");
+			
+			ResultSet result = statement.executeQuery();
+			ArrayList<Quiz> quizList = new ArrayList<Quiz>();
+			while(result.next()){
+				Quiz quiz = new Quiz(result.getString("quizName"), result.getInt("nofQuestions"), result.getString("quizTxt"), result.getBoolean("isGraded"));
+				quizList.add(quiz);
+			}
+			return quizList;
+				//String contentName, int size, String description, boolean graded
+					//quiz_id int NOT NULL AUTO_INCREMENT, course_id NOT NULL, quizName varchar(255) NOT NULL, nofQuestions int NOT NULL, quizTxt varchar(255) NOT NULL, isGraded boolean NOT NULL DEFAULT TRUE, PRIMARY KEY(quiz_id, quizName))
 		}catch(Exception e){System.out.println(e);}
 		return null;
 	}
