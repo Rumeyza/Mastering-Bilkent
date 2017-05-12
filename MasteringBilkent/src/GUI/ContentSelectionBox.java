@@ -46,6 +46,10 @@ public class ContentSelectionBox {
         });
         Hyperlink videoContent = new Hyperlink("Upload Video");
         grid.add(videoContent, 0, 2);
+        videoContent.setOnAction(e->{
+            VideoCreationBox.display(course, user);
+            window.close();
+        });
 
         Hyperlink pdfBox = new Hyperlink("Upload Text Document");
         grid.add(pdfBox, 0, 3);

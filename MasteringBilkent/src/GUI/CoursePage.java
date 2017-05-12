@@ -76,8 +76,7 @@ public class CoursePage {
             e.printStackTrace();
         }
 
-        Quiz q = new Quiz("name", 4,"abim ya", true);
-        quizList.add(q);
+      
 
         VBox courseBox = new VBox();
         for(int i = 0 ; i < quizList.size();i++){
