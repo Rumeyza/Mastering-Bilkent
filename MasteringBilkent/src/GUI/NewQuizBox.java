@@ -38,7 +38,7 @@ public class NewQuizBox {
         Stage window = new Stage();
 
         window.initModality(Modality.APPLICATION_MODAL);
-        window.setTitle("New Course");
+        window.setTitle("Add Quiz");
         window.setWidth(600);
         window.setHeight(400);
 

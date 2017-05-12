@@ -30,7 +30,7 @@ public class VideoCreationBox {
         Stage window = new Stage();
 
         window.initModality(Modality.APPLICATION_MODAL);
-        window.setTitle("New Course");
+        window.setTitle("Add Video");
         window.setWidth(600);
         window.setHeight(400);
 

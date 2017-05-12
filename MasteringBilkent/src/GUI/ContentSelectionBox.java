@@ -26,7 +26,7 @@ public class ContentSelectionBox {
         Stage window = new Stage();
 
         window.initModality(Modality.APPLICATION_MODAL);
-        window.setTitle("Course Key");
+        window.setTitle("Choose Content");
         window.setWidth(300);
         window.setHeight(300);
 
