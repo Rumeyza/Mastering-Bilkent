@@ -44,7 +44,7 @@ public class Instructor extends User {
         return true;
     }
 
-    public void createQuiz(String contentName, int size, String description, boolean graded) throws Exception{
-        dbms.insertToQuiz(contentName, size, description, graded);
+    public void createQuiz(int courseId, String contentName, int size, String description, boolean graded) throws Exception{
+        dbms.insertToQuiz(courseId, contentName, size, description, graded);
     }
 }

@@ -25,8 +25,8 @@ public class Main {
     	dbms.createTableTakes();
     	dbms.createTableQuiz();
     	dbms.createTableQuestion();
-    	dbms.createTableQuizzesInCourse();
-    	dbms.createTableQuestionsInQuiz();
+    	//dbms.createTableQuizzesInCourse();
+    	//dbms.createTableQuestionsInQuiz();
     	dbms.createTableVideo();
 
     	/*

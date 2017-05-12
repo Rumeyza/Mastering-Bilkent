@@ -458,7 +458,7 @@ public class DatabaseManager {
 		}catch(Exception e){System.out.println(e);}
 		return null;
 	}
-	public ArrayList<Quiz> getAddedQuizzes( int course_id) throws Exception{
+	public ArrayList<Quiz> getQuizez( int course_id) throws Exception{
 		try{
 			Connection con = getConnection();
 			PreparedStatement statement = con.prepareStatement("SELECT quizName, nofQuestions, quizTxt, isGraded FROM Quiz WHERE quiz_id IN (SELECT quiz_id FROM QuizzesInCourse WHERE course_id = "+course_id+")");

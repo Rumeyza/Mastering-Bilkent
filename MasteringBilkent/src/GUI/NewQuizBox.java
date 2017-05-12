@@ -1,6 +1,7 @@
 package GUI;
 
 import ApplicationLogic.*;
+import Storage.DatabaseManager;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -34,7 +35,11 @@ public class NewQuizBox {
         return true;
     }
 
-    public static void display( Instructor inst, Course course ){
+    public static void display( Instructor inst, Course course ) throws Exception {
+
+        DatabaseManager dbms = new DatabaseManager();
+        int course_id = dbms.getCourseId(course.getContentName());
+
         Stage window = new Stage();
 
         window.initModality(Modality.APPLICATION_MODAL);
@@ -107,11 +112,16 @@ public class NewQuizBox {
                 boolean check = checkbox.isSelected();
                 int qSizeInt = Integer.parseInt(qSize);
                 try {
-                    inst.createQuiz( qName, qSizeInt, qDesc,!check);
+                    inst.createQuiz(course_id, qName, qSizeInt, qDesc,!check);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
                 Quiz quiz = new Quiz(qName,qSizeInt,qDesc,!check);
+                try {
+                    dbms.insertToQuiz(course_id, qName, qSizeInt, qDesc, !check);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
                 LoginApp.myStage.setScene(AddQuizQuestionPage.startScene(quiz, course, inst, 1));
                 window.close();
                 return;

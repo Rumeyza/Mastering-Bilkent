@@ -71,7 +71,7 @@ public class CoursePage {
         //Intructor Course List
         ArrayList<Quiz> quizList = null;
         try {
-            quizList = dbms.getAddedQuizzes(dbms.getCourseId(course.getContentName()));
+            quizList = dbms.getQuizez(dbms.getCourseId(course.getContentName()));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -91,7 +91,7 @@ public class CoursePage {
             Hyperlink quizName = new Hyperlink(quiz.getContentName());
             int id = quizList.get(i).getContentId();
             quizName.setOnAction(e -> {
-                //LoginApp.myStage.setScene(QuizPage.startScene(user));
+                LoginApp.myStage.setScene(QuizPage.startScene(quiz, user));
             });
             quizName.setStyle("-fx-text-fill: white");
             quizName.setFont(Font.font("Helvetica", 24));

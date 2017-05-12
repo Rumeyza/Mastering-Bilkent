@@ -41,7 +41,11 @@ public class ContentSelectionBox {
         Hyperlink quizContent = new Hyperlink("Create Quiz");
         grid.add(quizContent, 0, 1);
         quizContent.setOnAction(e->{
-            NewQuizBox.display((Instructor)user, course);
+            try {
+                NewQuizBox.display((Instructor)user, course);
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
             window.close();
         });
         Hyperlink videoContent = new Hyperlink("Upload Video");
